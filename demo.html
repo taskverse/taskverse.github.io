@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>MuJoCo Robot Viewer</title>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js",
+        "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+    import load_mujoco from './static/dist/mujoco_wasm.js';
+    import {
+      loadSceneFromURL,
+      getPosition,
+      getQuaternion,
+      standardNormal
+    } from './static/dist/mujocoUtils.js';
+
+    const mujoco = await load_mujoco();
+
+    // Set up FS directories
+    mujoco.FS.mkdir('/working');
+    mujoco.FS.mount(mujoco.MEMFS, { root: '.' }, '/working');
+    mujoco.FS.mkdir('/working/assets');
+
+    // Load XML model and meshes
+    const xmlURL = './static/scene/kitchen/scene.xml';
+
+    const meshFiles = [
+'counter.png',
+'drawer_600_full.obj',
+'drawer_600_full.png',
+'drawer_600_half.obj',
+'drawer_600_half.png',
+'drawer_600_quarter.obj',
+'drawer_600_quarter.png',
+'drawer_handle.obj',
+'finger_0.obj',
+'finger_1.obj',
+'hand_0.obj',
+'hand_1.obj',
+'hand_2.obj',
+'hand_3.obj',
+'hand_4.obj',
+'hand.stl',
+'handle.png',
+'hob.png',
+'link0_0.obj',
+'link0_1.obj',
+'link0_10.obj',
+'link0_11.obj',
+'link0_2.obj',
+'link0_3.obj',
+'link0_4.obj',
+'link0_5.obj',
+'link0_7.obj',
+'link0_8.obj',
+'link0_9.obj',
+'link0.stl',
+'link1.obj',
+'link1.stl',
+'link2.obj',
+'link2.stl',
+'link3_0.obj',
+'link3_1.obj',
+'link3_2.obj',
+'link3_3.obj',
+'link3.stl',
+'link4_0.obj',
+'link4_1.obj',
+'link4_2.obj',
+'link4_3.obj',
+'link4.stl',
+'link5_0.obj',
+'link5_1.obj',
+'link5_2.obj',
+'link5_collision_0.obj',
+'link5_collision_1.obj',
+'link5_collision_2.obj',
+'link6_0.obj',
+'link6_1.obj',
+'link6_10.obj',
+'link6_11.obj',
+'link6_12.obj',
+'link6_13.obj',
+'link6_14.obj',
+'link6_15.obj',
+'link6_16.obj',
+'link6_2.obj',
+'link6_3.obj',
+'link6_4.obj',
+'link6_5.obj',
+'link6_6.obj',
+'link6_7.obj',
+'link6_8.obj',
+'link6_9.obj',
+'link6.stl',
+'link7_0.obj',
+'link7_1.obj',
+'link7_2.obj',
+'link7_3.obj',
+'link7_4.obj',
+'link7_5.obj',
+'link7_6.obj',
+'link7_7.obj',
+'link7.stl',
+'wood_tray_collision_0.obj',
+'wood_tray_collision_1.obj',
+'wood_tray_collision_10.obj',
+'wood_tray_collision_11.obj',
+'wood_tray_collision_2.obj',
+'wood_tray_collision_3.obj',
+'wood_tray_collision_4.obj',
+'wood_tray_collision_5.obj',
+'wood_tray_collision_6.obj',
+'wood_tray_collision_7.obj',
+'wood_tray_collision_8.obj',
+'wood_tray_collision_9.obj',
+'wood_tray_diffuse.png',
+'wood_tray.obj',
+    ];
+
+
+    const xmlText = await (await fetch(xmlURL)).text();
+    mujoco.FS.writeFile('/working/scene.xml', xmlText);
+    console.log(xmlText);
+
+    for (const meshFile of meshFiles) {
+      const res = await fetch(`./static/scene/kitchen/assets/${meshFile}`);
+      if (!res.ok) {
+        console.error(`Failed to load ${meshFile}: ${res.statusText}`);
+        continue;
+      }
+      const buf = await res.arrayBuffer();
+      mujoco.FS.writeFile(`/working/assets/${meshFile}`, new Uint8Array(buf));
+    }
+
+    async function loadData() {
+      const response = await fetch('./static/data/LiftTrayEnv_BimanualPanda_2025-04-21_20-00-24.json');
+      const data = await response.json();
+      return data["proprioception"];
+    }
+    const data = await loadData();
+
+    // THREE.js Scene Setup
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.01, 100);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+
+    scene.add(new THREE.AmbientLight(0x404040));
+    const light = new THREE.DirectionalLight(0xffffff, 1);
+    light.position.set(4, 4, 4);
+    scene.add(light);
+
+    let i = 0;
+
+    const parent = {
+      scene: scene,
+      camera: camera,
+      controls: controls,
+      model: {},
+      state: {},
+      simulation: {}
+    };
+
+
+    var bodies = {};
+    var lights = {};
+    let model = parent.model;
+    let state = parent.state;
+    let simulation = parent.simulation;
+
+    
+    [model, state, simulation, bodies, lights] = await loadSceneFromURL(mujoco, 'scene.xml', parent);
+
+    camera.position.set(2, 2, -1);
+
+    function animate() {
+
+      requestAnimationFrame(animate);
+      simulation.step();
+
+      controls.update();
+      renderer.render(scene, camera);
+      
+      for (let a = 0; a < data[0].length; a++) {
+        let k = Math.floor(i);
+        //simulation.ctrl[a] = data[k][a];
+        simulation.qpos[a] = data[k][a];
+        i = (i + 0.02) % (data.length);
+      }
+
+      simulation.forward();
+
+      // update world positions
+      for (let b = 0; b < model.nbody; b++) {
+        if (bodies[b]) {
+          getPosition(simulation.xpos, b, bodies[b].position);
+          getQuaternion(simulation.xquat, b, bodies[b].quaternion);
+          bodies[b].updateWorldMatrix();
+        }
+      }
+    }
+
+    animate();
+  </script>
+</body>
+
+</html>

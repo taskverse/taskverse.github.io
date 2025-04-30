@@ -1,0 +1,745 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="world">
+  <compiler angle="radian" meshdir="assets" autolimits="true"/>
+
+  <option impratio="10" integrator="implicitfast" noslip_iterations="3">
+    <flag multiccd="enable" />
+  </option>
+
+  <size memory="50000000" />
+
+  <visual>
+    <global azimuth="160" elevation="-20" />
+    <headlight ambient="0.3 0.3 0.3" diffuse="0.6 0.6 0.6" specular="0 0 0" />
+    <rgba haze="0.15 0.25 0.35 1" />
+  </visual>
+
+  <statistic extent="1.8" center="0 0 1" />
+
+  <default>
+    <default class="/">
+      <default class="_" />
+      <default class="panda nohand_left_">
+        <default class="panda nohand_left_panda">
+          <material shininess="0.25" />
+          <joint range="-2.8973 2.8973" armature="0.1" damping="1" />
+          <site size="0.001 0.005 0.005" group="4" rgba="0.5 0.5 0.5 0.3" />
+          <general ctrlrange="-2.8973 2.8973" forcerange="-87 87" biastype="affine" />
+          <default class="panda nohand_left_finger">
+            <joint type="slide" range="0 0.04" />
+          </default>
+          <default class="panda nohand_left_panda_visual">
+            <geom type="mesh" contype="0" conaffinity="0" group="2" />
+          </default>
+          <default class="panda nohand_left_panda_collision">
+            <geom type="mesh" group="3" />
+          </default>
+        </default>
+      </default>
+      <default class="panda nohand_left_panda hand_left_">
+        <default class="panda nohand_left_panda hand_left_panda">
+          <material shininess="0.25" />
+          <joint range="-2.8973 2.8973" armature="0.1" damping="1" />
+          <general ctrlrange="-2.8973 2.8973" forcerange="-87 87" biastype="affine" />
+          <default class="panda nohand_left_panda hand_left_finger">
+            <joint type="slide" range="0 0.04" />
+          </default>
+          <default class="panda nohand_left_panda hand_left_visual">
+            <geom type="mesh" contype="0" conaffinity="0" group="2" />
+          </default>
+          <default class="panda nohand_left_panda hand_left_collision">
+            <geom type="mesh" group="3" />
+            <default class="panda nohand_left_panda hand_left_fingertip_pad_collision_1">
+              <geom size="0.0085 0.004 0.0085" type="box" condim="6" friction="2 0.2 0.01" />
+            </default>
+            <default class="panda nohand_left_panda hand_left_fingertip_pad_collision_2">
+              <geom size="0.003 0.002 0.003" type="box" condim="6" friction="2 0.2 0.01" />
+            </default>
+            <default class="panda nohand_left_panda hand_left_fingertip_pad_collision_3">
+              <geom size="0.003 0.002 0.003" type="box" condim="6" friction="2 0.2 0.01" />
+            </default>
+            <default class="panda nohand_left_panda hand_left_fingertip_pad_collision_4">
+              <geom size="0.003 0.002 0.0035" type="box" condim="6" friction="2 0.2 0.01" />
+            </default>
+            <default class="panda nohand_left_panda hand_left_fingertip_pad_collision_5">
+              <geom size="0.003 0.002 0.0035" type="box" condim="6" friction="2 0.2 0.01" />
+            </default>
+          </default>
+        </default>
+      </default>
+      <default class="panda nohand_right_">
+        <default class="panda nohand_right_panda">
+          <material shininess="0.25" />
+          <joint range="-2.8973 2.8973" armature="0.1" damping="1" />
+          <site size="0.001 0.005 0.005" group="4" rgba="0.5 0.5 0.5 0.3" />
+          <general ctrlrange="-2.8973 2.8973" forcerange="-87 87" biastype="affine" />
+          <default class="panda nohand_right_finger">
+            <joint type="slide" range="0 0.04" />
+          </default>
+          <default class="panda nohand_right_panda_visual">
+            <geom type="mesh" contype="0" conaffinity="0" group="2" />
+          </default>
+          <default class="panda nohand_right_panda_collision">
+            <geom type="mesh" group="3" />
+          </default>
+        </default>
+      </default>
+      <default class="panda nohand_right_panda hand_right_">
+        <default class="panda nohand_right_panda hand_right_panda">
+          <material shininess="0.25" />
+          <joint range="-2.8973 2.8973" armature="0.1" damping="1" />
+          <general ctrlrange="-2.8973 2.8973" forcerange="-87 87" biastype="affine" />
+          <default class="panda nohand_right_panda hand_right_finger">
+            <joint type="slide" range="0 0.04" />
+          </default>
+          <default class="panda nohand_right_panda hand_right_visual">
+            <geom type="mesh" contype="0" conaffinity="0" group="2" />
+          </default>
+          <default class="panda nohand_right_panda hand_right_collision">
+            <geom type="mesh" group="3" />
+            <default class="panda nohand_right_panda hand_right_fingertip_pad_collision_1">
+              <geom size="0.0085 0.004 0.0085" type="box" condim="6" friction="2 0.2 0.01" />
+            </default>
+            <default class="panda nohand_right_panda hand_right_fingertip_pad_collision_2">
+              <geom size="0.003 0.002 0.003" type="box" condim="6" friction="2 0.2 0.01" />
+            </default>
+            <default class="panda nohand_right_panda hand_right_fingertip_pad_collision_3">
+              <geom size="0.003 0.002 0.003" type="box" condim="6" friction="2 0.2 0.01" />
+            </default>
+            <default class="panda nohand_right_panda hand_right_fingertip_pad_collision_4">
+              <geom size="0.003 0.002 0.0035" type="box" condim="6" friction="2 0.2 0.01" />
+            </default>
+            <default class="panda nohand_right_panda hand_right_fingertip_pad_collision_5">
+              <geom size="0.003 0.002 0.0035" type="box" condim="6" friction="2 0.2 0.01" />
+            </default>
+          </default>
+        </default>
+      </default>
+      <default class="wood_tray_">
+        <default class="wood_tray_visual">
+          <geom type="mesh" contype="0" conaffinity="0" group="2" />
+        </default>
+        <default class="wood_tray_collision">
+          <geom type="mesh" group="3" solref="0.004" solimp="0.95 0.99" />
+        </default>
+      </default>
+      <default class="base_cabinet_600_">
+        <default class="base_cabinet_600_base_cabinet_600">
+          <joint solreflimit="0.004" solimplimit="0.998 0.998" />
+          <geom solref="0.004" solimp="0.998 0.998" density="10" />
+          <site size="0.001 0.005 0.005" group="4" rgba="0.5 0.5 0.5 0.3" />
+          <default class="base_cabinet_600_visual">
+            <geom contype="0" conaffinity="0" />
+          </default>
+          <default class="base_cabinet_600_collision">
+            <geom group="3" />
+          </default>
+        </default>
+      </default>
+      <default class="base_cabinet_600_1_">
+        <default class="base_cabinet_600_1_base_cabinet_600">
+          <joint solreflimit="0.004" solimplimit="0.998 0.998" />
+          <geom solref="0.004" solimp="0.998 0.998" density="10" />
+          <site size="0.001 0.005 0.005" group="4" rgba="0.5 0.5 0.5 0.3" />
+          <default class="base_cabinet_600_1_visual">
+            <geom contype="0" conaffinity="0" />
+          </default>
+          <default class="base_cabinet_600_1_collision">
+            <geom group="3" />
+          </default>
+        </default>
+      </default>
+    </default>
+  </default>
+  <asset>
+  <!-- 
+    <texture type="skybox" name="__unnamed_texture_0" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072" />
+    <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300" />
+    <texture type="2d" name="wood_tray_wood_tray_diffuse" file="wood_tray_diffuse.png" />
+    <texture type="2d" name="base_cabinet_600_drawer_600_full" file="drawer_600_full.png" />
+    <texture type="2d" name="base_cabinet_600_drawer_600_half" file="drawer_600_half.png" />
+    <texture type="2d" name="base_cabinet_600_drawer_600_quarter" file="drawer_600_quarter.png" />
+    <texture type="2d" name="base_cabinet_600_counter" file="counter.png" />
+    <texture type="2d" name="base_cabinet_600_hob" file="hob.png" />
+    <texture type="2d" name="base_cabinet_600_handle" file="handle.png" />
+    <texture type="2d" name="base_cabinet_600_1_drawer_600_full" file="drawer_600_full.png" />
+    <texture type="2d" name="base_cabinet_600_1_drawer_600_half" file="drawer_600_half.png" />
+    <texture type="2d" name="base_cabinet_600_1_drawer_600_quarter" file="drawer_600_quarter.png" />
+    <texture type="2d" name="base_cabinet_600_1_counter" file="counter.png" />
+    <texture type="2d" name="base_cabinet_600_1_hob" file="hob.png" />
+    <texture type="2d" name="base_cabinet_600_1_handle" file="handle.png" />
+  -->
+    <material name="groundplane" class="_" reflectance="0.2" />
+    <material name="panda nohand_left_white" class="panda nohand_left_panda" />
+    <material name="panda nohand_left_off_white" class="panda nohand_left_panda" rgba="0.901961 0.921569 0.929412 1" />
+    <material name="panda nohand_left_dark_grey" class="panda nohand_left_panda" rgba="0.25 0.25 0.25 1" />
+    <material name="panda nohand_left_green" class="panda nohand_left_panda" rgba="0 1 0 1" />
+    <material name="panda nohand_left_light_blue" class="panda nohand_left_panda" rgba="0.039216 0.541176 0.780392 1" />
+    <material name="panda nohand_left_panda hand_left_white" class="panda nohand_left_panda hand_left_panda" />
+    <material name="panda nohand_left_panda hand_left_off_white" class="panda nohand_left_panda hand_left_panda" rgba="0.901961 0.921569 0.929412 1" />
+    <material name="panda nohand_left_panda hand_left_black" class="panda nohand_left_panda hand_left_panda" rgba="0.25 0.25 0.25 1" />
+    <material name="panda nohand_right_white" class="panda nohand_right_panda" />
+    <material name="panda nohand_right_off_white" class="panda nohand_right_panda" rgba="0.901961 0.921569 0.929412 1" />
+    <material name="panda nohand_right_dark_grey" class="panda nohand_right_panda" rgba="0.25 0.25 0.25 1" />
+    <material name="panda nohand_right_green" class="panda nohand_right_panda" rgba="0 1 0 1" />
+    <material name="panda nohand_right_light_blue" class="panda nohand_right_panda" rgba="0.039216 0.541176 0.780392 1" />
+    <material name="panda nohand_right_panda hand_right_white" class="panda nohand_right_panda hand_right_panda" />
+    <material name="panda nohand_right_panda hand_right_off_white" class="panda nohand_right_panda hand_right_panda" rgba="0.901961 0.921569 0.929412 1" />
+    <material name="panda nohand_right_panda hand_right_black" class="panda nohand_right_panda hand_right_panda" rgba="0.25 0.25 0.25 1" />
+    <material name="wood_tray_bake_to" class="wood_tray_" specular="0.894545" shininess="0.0761653" />
+    <material name="base_cabinet_600_cabinet" class="base_cabinet_600_" shininess="0.1" />
+    <material name="base_cabinet_600_back" class="base_cabinet_600_" shininess="0.1" />
+    <material name="base_cabinet_600_counter" class="base_cabinet_600_"  texuniform="true" texrepeat="2 2" shininess="0.1" />
+    <material name="base_cabinet_600_hob" class="base_cabinet_600_" />
+    <material name="base_cabinet_600_drawer_600_full" class="base_cabinet_600_" shininess="0.1" />
+    <material name="base_cabinet_600_drawer_600_half" class="base_cabinet_600_"  shininess="0.1" />
+    <material name="base_cabinet_600_drawer_600_quarter" class="base_cabinet_600_"  shininess="0.1" />
+    <material name="base_cabinet_600_handle" class="base_cabinet_600_" rgba="0.5 0.5 0.5 1" />
+    <material name="base_cabinet_600_1_cabinet" class="base_cabinet_600_1_" shininess="0.1" />
+    <material name="base_cabinet_600_1_back" class="base_cabinet_600_1_" shininess="0.1" />
+    <material name="base_cabinet_600_1_counter" class="base_cabinet_600_1_" texuniform="true" texrepeat="2 2" shininess="0.1" />
+    <material name="base_cabinet_600_1_hob" class="base_cabinet_600_1_" />
+    <material name="base_cabinet_600_1_drawer_600_full" class="base_cabinet_600_1_"  shininess="0.1" />
+    <material name="base_cabinet_600_1_drawer_600_half" class="base_cabinet_600_1_"  shininess="0.1" />
+    <material name="base_cabinet_600_1_drawer_600_quarter" class="base_cabinet_600_1_" shininess="0.1" />
+    <material name="base_cabinet_600_1_handle" class="base_cabinet_600_1_" rgba="0.5 0.5 0.5 1" />
+    <mesh name="panda nohand_left_link0_c" class="panda nohand_left_" content_type="model/stl" file="link0.stl" />
+    <mesh name="panda nohand_left_link1_c" class="panda nohand_left_" content_type="model/stl" file="link1.stl" />
+    <mesh name="panda nohand_left_link2_c" class="panda nohand_left_" content_type="model/stl" file="link2.stl" />
+    <mesh name="panda nohand_left_link3_c" class="panda nohand_left_" content_type="model/stl" file="link3.stl" />
+    <mesh name="panda nohand_left_link4_c" class="panda nohand_left_" content_type="model/stl" file="link4.stl" />
+    <mesh name="panda nohand_left_link5_c0" class="panda nohand_left_" content_type="model/obj" file="link5_collision_0.obj" />
+    <mesh name="panda nohand_left_link5_c1" class="panda nohand_left_" content_type="model/obj" file="link5_collision_1.obj" />
+    <mesh name="panda nohand_left_link5_c2" class="panda nohand_left_" content_type="model/obj" file="link5_collision_2.obj" />
+    <mesh name="panda nohand_left_link6_c" class="panda nohand_left_" content_type="model/stl" file="link6.stl" />
+    <mesh name="panda nohand_left_link7_c" class="panda nohand_left_" content_type="model/stl" file="link7.stl" />
+    <mesh name="panda nohand_left_link0_0" class="panda nohand_left_" content_type="model/obj" file="link0_0.obj" />
+    <mesh name="panda nohand_left_link0_1" class="panda nohand_left_" content_type="model/obj" file="link0_1.obj" />
+    <mesh name="panda nohand_left_link0_2" class="panda nohand_left_" content_type="model/obj" file="link0_2.obj" />
+    <mesh name="panda nohand_left_link0_3" class="panda nohand_left_" content_type="model/obj" file="link0_3.obj" />
+    <mesh name="panda nohand_left_link0_4" class="panda nohand_left_" content_type="model/obj" file="link0_4.obj" />
+    <mesh name="panda nohand_left_link0_5" class="panda nohand_left_" content_type="model/obj" file="link0_5.obj" />
+    <mesh name="panda nohand_left_link0_7" class="panda nohand_left_" content_type="model/obj" file="link0_7.obj" />
+    <mesh name="panda nohand_left_link0_8" class="panda nohand_left_" content_type="model/obj" file="link0_8.obj" />
+    <mesh name="panda nohand_left_link0_9" class="panda nohand_left_" content_type="model/obj" file="link0_9.obj" />
+    <mesh name="panda nohand_left_link0_10" class="panda nohand_left_" content_type="model/obj" file="link0_10.obj" />
+    <mesh name="panda nohand_left_link0_11" class="panda nohand_left_" content_type="model/obj" file="link0_11.obj" />
+    <mesh name="panda nohand_left_link1" class="panda nohand_left_" content_type="model/obj" file="link1.obj" />
+    <mesh name="panda nohand_left_link2" class="panda nohand_left_" content_type="model/obj" file="link2.obj" />
+    <mesh name="panda nohand_left_link3_0" class="panda nohand_left_" content_type="model/obj" file="link3_0.obj" />
+    <mesh name="panda nohand_left_link3_1" class="panda nohand_left_" content_type="model/obj" file="link3_1.obj" />
+    <mesh name="panda nohand_left_link3_2" class="panda nohand_left_" content_type="model/obj" file="link3_2.obj" />
+    <mesh name="panda nohand_left_link3_3" class="panda nohand_left_" content_type="model/obj" file="link3_3.obj" />
+    <mesh name="panda nohand_left_link4_0" class="panda nohand_left_" content_type="model/obj" file="link4_0.obj" />
+    <mesh name="panda nohand_left_link4_1" class="panda nohand_left_" content_type="model/obj" file="link4_1.obj" />
+    <mesh name="panda nohand_left_link4_2" class="panda nohand_left_" content_type="model/obj" file="link4_2.obj" />
+    <mesh name="panda nohand_left_link4_3" class="panda nohand_left_" content_type="model/obj" file="link4_3.obj" />
+    <mesh name="panda nohand_left_link5_0" class="panda nohand_left_" content_type="model/obj" file="link5_0.obj" />
+    <mesh name="panda nohand_left_link5_1" class="panda nohand_left_" content_type="model/obj" file="link5_1.obj" />
+    <mesh name="panda nohand_left_link5_2" class="panda nohand_left_" content_type="model/obj" file="link5_2.obj" />
+    <mesh name="panda nohand_left_link6_0" class="panda nohand_left_" content_type="model/obj" file="link6_0.obj" />
+    <mesh name="panda nohand_left_link6_1" class="panda nohand_left_" content_type="model/obj" file="link6_1.obj" />
+    <mesh name="panda nohand_left_link6_2" class="panda nohand_left_" content_type="model/obj" file="link6_2.obj" />
+    <mesh name="panda nohand_left_link6_3" class="panda nohand_left_" content_type="model/obj" file="link6_3.obj" />
+    <mesh name="panda nohand_left_link6_4" class="panda nohand_left_" content_type="model/obj" file="link6_4.obj" />
+    <mesh name="panda nohand_left_link6_5" class="panda nohand_left_" content_type="model/obj" file="link6_5.obj" />
+    <mesh name="panda nohand_left_link6_6" class="panda nohand_left_" content_type="model/obj" file="link6_6.obj" />
+    <mesh name="panda nohand_left_link6_7" class="panda nohand_left_" content_type="model/obj" file="link6_7.obj" />
+    <mesh name="panda nohand_left_link6_8" class="panda nohand_left_" content_type="model/obj" file="link6_8.obj" />
+    <mesh name="panda nohand_left_link6_9" class="panda nohand_left_" content_type="model/obj" file="link6_9.obj" />
+    <mesh name="panda nohand_left_link6_10" class="panda nohand_left_" content_type="model/obj" file="link6_10.obj" />
+    <mesh name="panda nohand_left_link6_11" class="panda nohand_left_" content_type="model/obj" file="link6_11.obj" />
+    <mesh name="panda nohand_left_link6_12" class="panda nohand_left_" content_type="model/obj" file="link6_12.obj" />
+    <mesh name="panda nohand_left_link6_13" class="panda nohand_left_" content_type="model/obj" file="link6_13.obj" />
+    <mesh name="panda nohand_left_link6_14" class="panda nohand_left_" content_type="model/obj" file="link6_14.obj" />
+    <mesh name="panda nohand_left_link6_15" class="panda nohand_left_" content_type="model/obj" file="link6_15.obj" />
+    <mesh name="panda nohand_left_link6_16" class="panda nohand_left_" content_type="model/obj" file="link6_16.obj" />
+    <mesh name="panda nohand_left_link7_0" class="panda nohand_left_" content_type="model/obj" file="link7_0.obj" />
+    <mesh name="panda nohand_left_link7_1" class="panda nohand_left_" content_type="model/obj" file="link7_1.obj" />
+    <mesh name="panda nohand_left_link7_2" class="panda nohand_left_" content_type="model/obj" file="link7_2.obj" />
+    <mesh name="panda nohand_left_link7_3" class="panda nohand_left_" content_type="model/obj" file="link7_3.obj" />
+    <mesh name="panda nohand_left_link7_4" class="panda nohand_left_" content_type="model/obj" file="link7_4.obj" />
+    <mesh name="panda nohand_left_link7_5" class="panda nohand_left_" content_type="model/obj" file="link7_5.obj" />
+    <mesh name="panda nohand_left_link7_6" class="panda nohand_left_" content_type="model/obj" file="link7_6.obj" />
+    <mesh name="panda nohand_left_link7_7" class="panda nohand_left_" content_type="model/obj" file="link7_7.obj" />
+    <mesh name="panda nohand_left_panda hand_left_hand_c" class="panda nohand_left_panda hand_left_" content_type="model/stl" file="hand.stl" />
+    <mesh name="panda nohand_left_panda hand_left_hand_0" class="panda nohand_left_panda hand_left_" content_type="model/obj" file="hand_0.obj" />
+    <mesh name="panda nohand_left_panda hand_left_hand_1" class="panda nohand_left_panda hand_left_" content_type="model/obj" file="hand_1.obj" />
+    <mesh name="panda nohand_left_panda hand_left_hand_2" class="panda nohand_left_panda hand_left_" content_type="model/obj" file="hand_2.obj" />
+    <mesh name="panda nohand_left_panda hand_left_hand_3" class="panda nohand_left_panda hand_left_" content_type="model/obj" file="hand_3.obj" />
+    <mesh name="panda nohand_left_panda hand_left_hand_4" class="panda nohand_left_panda hand_left_" content_type="model/obj" file="hand_4.obj" />
+    <mesh name="panda nohand_left_panda hand_left_finger_0" class="panda nohand_left_panda hand_left_" content_type="model/obj" file="finger_0.obj" />
+    <mesh name="panda nohand_left_panda hand_left_finger_1" class="panda nohand_left_panda hand_left_" content_type="model/obj" file="finger_1.obj" />
+    <mesh name="panda nohand_right_link0_c" class="panda nohand_right_" file="link0.stl" />
+    <mesh name="panda nohand_right_link1_c" class="panda nohand_right_" file="link1.stl" />
+    <mesh name="panda nohand_right_link2_c" class="panda nohand_right_" file="link2.stl" />
+    <mesh name="panda nohand_right_link3_c" class="panda nohand_right_" file="link3.stl" />
+    <mesh name="panda nohand_right_link4_c" class="panda nohand_right_" file="link4.stl" />
+    <mesh name="panda nohand_right_link5_c0" class="panda nohand_right_" file="link5_collision_0.obj" />
+    <mesh name="panda nohand_right_link5_c1" class="panda nohand_right_" file="link5_collision_1.obj" />
+    <mesh name="panda nohand_right_link5_c2" class="panda nohand_right_" file="link5_collision_2.obj" />
+    <mesh name="panda nohand_right_link6_c" class="panda nohand_right_" file="link6.stl" />
+    <mesh name="panda nohand_right_link7_c" class="panda nohand_right_" file="link7.stl" />
+    <mesh name="panda nohand_right_link0_0" class="panda nohand_right_" file="link0_0.obj" />
+    <mesh name="panda nohand_right_link0_1" class="panda nohand_right_" file="link0_1.obj" />
+    <mesh name="panda nohand_right_link0_2" class="panda nohand_right_" file="link0_2.obj" />
+    <mesh name="panda nohand_right_link0_3" class="panda nohand_right_" file="link0_3.obj" />
+    <mesh name="panda nohand_right_link0_4" class="panda nohand_right_" file="link0_4.obj" />
+    <mesh name="panda nohand_right_link0_5" class="panda nohand_right_" file="link0_5.obj" />
+    <mesh name="panda nohand_right_link0_7" class="panda nohand_right_" file="link0_7.obj" />
+    <mesh name="panda nohand_right_link0_8" class="panda nohand_right_" file="link0_8.obj" />
+    <mesh name="panda nohand_right_link0_9" class="panda nohand_right_" file="link0_9.obj" />
+    <mesh name="panda nohand_right_link0_10" class="panda nohand_right_" file="link0_10.obj" />
+    <mesh name="panda nohand_right_link0_11" class="panda nohand_right_" file="link0_11.obj" />
+    <mesh name="panda nohand_right_link1" class="panda nohand_right_" file="link1.obj" />
+    <mesh name="panda nohand_right_link2" class="panda nohand_right_" file="link2.obj" />
+    <mesh name="panda nohand_right_link3_0" class="panda nohand_right_" file="link3_0.obj" />
+    <mesh name="panda nohand_right_link3_1" class="panda nohand_right_" file="link3_1.obj" />
+    <mesh name="panda nohand_right_link3_2" class="panda nohand_right_" file="link3_2.obj" />
+    <mesh name="panda nohand_right_link3_3" class="panda nohand_right_" file="link3_3.obj" />
+    <mesh name="panda nohand_right_link4_0" class="panda nohand_right_" file="link4_0.obj" />
+    <mesh name="panda nohand_right_link4_1" class="panda nohand_right_" file="link4_1.obj" />
+    <mesh name="panda nohand_right_link4_2" class="panda nohand_right_" file="link4_2.obj" />
+    <mesh name="panda nohand_right_link4_3" class="panda nohand_right_" file="link4_3.obj" />
+    <mesh name="panda nohand_right_link5_0" class="panda nohand_right_" file="link5_0.obj" />
+    <mesh name="panda nohand_right_link5_1" class="panda nohand_right_" file="link5_1.obj" />
+    <mesh name="panda nohand_right_link5_2" class="panda nohand_right_" file="link5_2.obj" />
+    <mesh name="panda nohand_right_link6_0" class="panda nohand_right_" file="link6_0.obj" />
+    <mesh name="panda nohand_right_link6_1" class="panda nohand_right_" file="link6_1.obj" />
+    <mesh name="panda nohand_right_link6_2" class="panda nohand_right_" file="link6_2.obj" />
+    <mesh name="panda nohand_right_link6_3" class="panda nohand_right_" file="link6_3.obj" />
+    <mesh name="panda nohand_right_link6_4" class="panda nohand_right_" file="link6_4.obj" />
+    <mesh name="panda nohand_right_link6_5" class="panda nohand_right_" file="link6_5.obj" />
+    <mesh name="panda nohand_right_link6_6" class="panda nohand_right_" file="link6_6.obj" />
+    <mesh name="panda nohand_right_link6_7" class="panda nohand_right_" file="link6_7.obj" />
+    <mesh name="panda nohand_right_link6_8" class="panda nohand_right_" file="link6_8.obj" />
+    <mesh name="panda nohand_right_link6_9" class="panda nohand_right_" file="link6_9.obj" />
+    <mesh name="panda nohand_right_link6_10" class="panda nohand_right_" file="link6_10.obj" />
+    <mesh name="panda nohand_right_link6_11" class="panda nohand_right_" file="link6_11.obj" />
+    <mesh name="panda nohand_right_link6_12" class="panda nohand_right_" file="link6_12.obj" />
+    <mesh name="panda nohand_right_link6_13" class="panda nohand_right_" file="link6_13.obj" />
+    <mesh name="panda nohand_right_link6_14" class="panda nohand_right_" file="link6_14.obj" />
+    <mesh name="panda nohand_right_link6_15" class="panda nohand_right_" file="link6_15.obj" />
+    <mesh name="panda nohand_right_link6_16" class="panda nohand_right_" file="link6_16.obj" />
+    <mesh name="panda nohand_right_link7_0" class="panda nohand_right_" file="link7_0.obj" />
+    <mesh name="panda nohand_right_link7_1" class="panda nohand_right_" file="link7_1.obj" />
+    <mesh name="panda nohand_right_link7_2" class="panda nohand_right_" file="link7_2.obj" />
+    <mesh name="panda nohand_right_link7_3" class="panda nohand_right_" file="link7_3.obj" />
+    <mesh name="panda nohand_right_link7_4" class="panda nohand_right_" file="link7_4.obj" />
+    <mesh name="panda nohand_right_link7_5" class="panda nohand_right_" file="link7_5.obj" />
+    <mesh name="panda nohand_right_link7_6" class="panda nohand_right_" file="link7_6.obj" />
+    <mesh name="panda nohand_right_link7_7" class="panda nohand_right_" file="link7_7.obj" />
+    <mesh name="panda nohand_right_panda hand_right_hand_c" class="panda nohand_right_panda hand_right_" file="hand.stl" />
+    <mesh name="panda nohand_right_panda hand_right_hand_0" class="panda nohand_right_panda hand_right_" file="hand_0.obj" />
+    <mesh name="panda nohand_right_panda hand_right_hand_1" class="panda nohand_right_panda hand_right_" file="hand_1.obj" />
+    <mesh name="panda nohand_right_panda hand_right_hand_2" class="panda nohand_right_panda hand_right_" file="hand_2.obj" />
+    <mesh name="panda nohand_right_panda hand_right_hand_3" class="panda nohand_right_panda hand_right_" file="hand_3.obj" />
+    <mesh name="panda nohand_right_panda hand_right_hand_4" class="panda nohand_right_panda hand_right_" file="hand_4.obj" />
+    <mesh name="panda nohand_right_panda hand_right_finger_0" class="panda nohand_right_panda hand_right_" file="finger_0.obj" />
+    <mesh name="panda nohand_right_panda hand_right_finger_1" class="panda nohand_right_panda hand_right_" file="finger_1.obj" />
+    <mesh name="wood_tray_wood_tray" class="wood_tray_" content_type="model/obj" file="wood_tray.obj" scale="1.1 1.1 1.1" />
+    <mesh name="wood_tray_wood_tray_collision_0" class="wood_tray_" content_type="model/obj" file="wood_tray_collision_0.obj" scale="1.1 1.1 1.1" />
+    <mesh name="wood_tray_wood_tray_collision_1" class="wood_tray_" content_type="model/obj" file="wood_tray_collision_1.obj" scale="1.1 1.1 1.1" />
+    <mesh name="wood_tray_wood_tray_collision_2" class="wood_tray_" content_type="model/obj" file="wood_tray_collision_2.obj" scale="1.1 1.1 1.1" />
+    <mesh name="wood_tray_wood_tray_collision_3" class="wood_tray_" content_type="model/obj" file="wood_tray_collision_3.obj" scale="1.1 1.1 1.1" />
+    <mesh name="wood_tray_wood_tray_collision_4" class="wood_tray_" content_type="model/obj" file="wood_tray_collision_4.obj" scale="1.1 1.1 1.1" />
+    <mesh name="wood_tray_wood_tray_collision_5" class="wood_tray_" content_type="model/obj" file="wood_tray_collision_5.obj" scale="2.5 1.1 1.3" />
+    <mesh name="wood_tray_wood_tray_collision_6" class="wood_tray_" content_type="model/obj" file="wood_tray_collision_6.obj" scale="1.1 1.1 1.1" />
+    <mesh name="wood_tray_wood_tray_collision_7" class="wood_tray_" content_type="model/obj" file="wood_tray_collision_7.obj" scale="1.1 1.1 1.1" />
+    <mesh name="wood_tray_wood_tray_collision_8" class="wood_tray_" content_type="model/obj" file="wood_tray_collision_8.obj" scale="1.1 1.1 1.1" />
+    <mesh name="wood_tray_wood_tray_collision_9" class="wood_tray_" content_type="model/obj" file="wood_tray_collision_9.obj" scale="1.1 1.1 1.1" />
+    <mesh name="wood_tray_wood_tray_collision_10" class="wood_tray_" content_type="model/obj" file="wood_tray_collision_10.obj" scale="1.1 1.1 1.1" />
+    <mesh name="wood_tray_wood_tray_collision_11" class="wood_tray_" content_type="model/obj" file="wood_tray_collision_11.obj" scale="1.1 1.1 1.1" />
+    <mesh name="base_cabinet_600_drawer_600_full" class="base_cabinet_600_" content_type="model/obj" file="drawer_600_full.obj" />
+    <mesh name="base_cabinet_600_drawer_600_half" class="base_cabinet_600_" content_type="model/obj" file="drawer_600_half.obj" />
+    <mesh name="base_cabinet_600_drawer_600_quarter" class="base_cabinet_600_" content_type="model/obj" file="drawer_600_quarter.obj" />
+    <mesh name="base_cabinet_600_drawer_handle" class="base_cabinet_600_" content_type="model/obj" file="drawer_handle.obj" />
+    <mesh name="base_cabinet_600_1_drawer_600_full" class="base_cabinet_600_1_" file="drawer_600_full.obj" />
+    <mesh name="base_cabinet_600_1_drawer_600_half" class="base_cabinet_600_1_" file="drawer_600_half.obj" />
+    <mesh name="base_cabinet_600_1_drawer_600_quarter" class="base_cabinet_600_1_" file="drawer_600_quarter.obj" />
+    <mesh name="base_cabinet_600_1_drawer_handle" class="base_cabinet_600_1_" file="drawer_handle.obj" />
+  </asset>
+
+  <worldbody>
+    <site name="ee_origin_site" class="/" pos="0 0 0" />
+    <camera name="external" class="_" pos="0 -2 3" quat="0.92388 0.382683 0 0" />
+    <light name="__unnamed_light_0" class="_" pos="0 0 3.5" dir="0 0 -1" directional="true" />
+    <body name="floor" gravcomp="1">
+      <geom name="floor" class="_" size="0 0 0.05" type="plane" contype="0" conaffinity="0" material="groundplane" />
+    </body>
+    <body name="invisible_base" gravcomp="1">
+      <inertial pos="0 0 0" mass="0.01" diaginertia="0.01 0.01 0.01" />
+      <geom name="torso" class="_" size="0.2 0.6 0.6" type="box" contype="0" conaffinity="0" />
+      <site name="left_arm_mount" class="_" pos="0 0.3 0.6" />
+      <site name="right_arm_mount" class="_" pos="0 -0.3 0.6" />
+      <camera name="__unnamed_camera_1" class="_" pos="-0.4 0 1.35" quat="0.612359 0.353576 -0.353576 -0.612359" />
+      <body name="panda nohand_left_" pos="0 0.3 0.6" gravcomp="1">
+        <light name="panda nohand_left_top" class="panda nohand_left_" pos="0 0 2" dir="0 0 -1" mode="trackcom" />
+        <body name="panda nohand_left_link0" childclass="panda nohand_left_panda" gravcomp="1">
+          <inertial pos="-0.041018 -0.00014 0.049974" quat="0.00630474 0.751245 0.00741774 0.659952" mass="0.629769" diaginertia="0.00430465 0.00387984 0.00313051" />
+          <geom name="panda nohand_left__unnamed_geom_0" class="panda nohand_left_panda_visual" material="panda nohand_left_off_white" mesh="panda nohand_left_link0_0" />
+          <geom name="panda nohand_left__unnamed_geom_1" class="panda nohand_left_panda_visual" material="panda nohand_left_dark_grey" mesh="panda nohand_left_link0_1" />
+          <geom name="panda nohand_left__unnamed_geom_2" class="panda nohand_left_panda_visual" material="panda nohand_left_off_white" mesh="panda nohand_left_link0_2" />
+          <geom name="panda nohand_left__unnamed_geom_3" class="panda nohand_left_panda_visual" material="panda nohand_left_dark_grey" mesh="panda nohand_left_link0_3" />
+          <geom name="panda nohand_left__unnamed_geom_4" class="panda nohand_left_panda_visual" material="panda nohand_left_off_white" mesh="panda nohand_left_link0_4" />
+          <geom name="panda nohand_left__unnamed_geom_5" class="panda nohand_left_panda_visual" material="panda nohand_left_dark_grey" mesh="panda nohand_left_link0_5" />
+          <geom name="panda nohand_left__unnamed_geom_6" class="panda nohand_left_panda_visual" material="panda nohand_left_white" mesh="panda nohand_left_link0_7" />
+          <geom name="panda nohand_left__unnamed_geom_7" class="panda nohand_left_panda_visual" material="panda nohand_left_white" mesh="panda nohand_left_link0_8" />
+          <geom name="panda nohand_left__unnamed_geom_8" class="panda nohand_left_panda_visual" material="panda nohand_left_dark_grey" mesh="panda nohand_left_link0_9" />
+          <geom name="panda nohand_left__unnamed_geom_9" class="panda nohand_left_panda_visual" material="panda nohand_left_off_white" mesh="panda nohand_left_link0_10" />
+          <geom name="panda nohand_left__unnamed_geom_10" class="panda nohand_left_panda_visual" material="panda nohand_left_white" mesh="panda nohand_left_link0_11" />
+          <geom name="panda nohand_left__unnamed_geom_11" class="panda nohand_left_panda_collision" contype="0" conaffinity="0" mesh="panda nohand_left_link0_c" />
+          <body name="panda nohand_left_link1" pos="0 0 0.333" gravcomp="1">
+            <inertial pos="0.003875 0.002081 -0.04762" quat="0.711549 0.00634377 -0.0131124 0.702485" mass="4.97068" diaginertia="0.707137 0.703435 0.00852456" />
+            <joint name="panda nohand_left_joint1" pos="0 0 0" axis="0 0 1" damping="5" />
+            <geom name="panda nohand_left__unnamed_geom_12" class="panda nohand_left_panda_visual" material="panda nohand_left_white" mesh="panda nohand_left_link1" />
+            <geom name="panda nohand_left__unnamed_geom_13" class="panda nohand_left_panda_collision" contype="0" conaffinity="0" mesh="panda nohand_left_link1_c" />
+            <body name="panda nohand_left_link2" quat="0.707107 -0.707107 0 0" gravcomp="1">
+              <inertial pos="-0.003141 -0.02872 0.003495" quat="-0.168175 0.828366 -0.122878 0.520027" mass="0.646926" diaginertia="0.0310326 0.0283001 0.00273425" />
+              <joint name="panda nohand_left_joint2" pos="0 0 0" axis="0 0 1" range="-1.7628 1.7628" damping="5" />
+              <geom name="panda nohand_left__unnamed_geom_14" class="panda nohand_left_panda_visual" material="panda nohand_left_white" mesh="panda nohand_left_link2" />
+              <geom name="panda nohand_left__unnamed_geom_15" class="panda nohand_left_panda_collision" contype="0" conaffinity="0" mesh="panda nohand_left_link2_c" />
+              <body name="panda nohand_left_link3" pos="0 -0.316 0" quat="0.707107 0.707107 0 0" gravcomp="1">
+                <inertial pos="0.027518 0.039252 -0.066502" quat="0.662769 -0.00678331 0.252053 0.705096" mass="3.2286" diaginertia="0.0415014 0.0414793 0.00124635" />
+                <joint name="panda nohand_left_joint3" pos="0 0 0" axis="0 0 1" damping="5" />
+                <geom name="panda nohand_left__unnamed_geom_16" class="panda nohand_left_panda_visual" material="panda nohand_left_white" mesh="panda nohand_left_link3_0" />
+                <geom name="panda nohand_left__unnamed_geom_17" class="panda nohand_left_panda_visual" material="panda nohand_left_white" mesh="panda nohand_left_link3_1" />
+                <geom name="panda nohand_left__unnamed_geom_18" class="panda nohand_left_panda_visual" material="panda nohand_left_white" mesh="panda nohand_left_link3_2" />
+                <geom name="panda nohand_left__unnamed_geom_19" class="panda nohand_left_panda_visual" material="panda nohand_left_dark_grey" mesh="panda nohand_left_link3_3" />
+                <geom name="panda nohand_left__unnamed_geom_20" class="panda nohand_left_panda_collision" contype="0" conaffinity="0" mesh="panda nohand_left_link3_c" />
+                <body name="panda nohand_left_link4" pos="0.0825 0 0" quat="0.707107 0.707107 0 0" gravcomp="1">
+                  <inertial pos="-0.05317 0.104419 0.027454" quat="0.65058 0.529822 -0.0962034 0.535518" mass="3.5879" diaginertia="0.0349596 0.0281483 0.0106201" />
+                  <joint name="panda nohand_left_joint4" pos="0 0 0" axis="0 0 1" range="-3.0718 -0.0698" damping="5" />
+                  <geom name="panda nohand_left__unnamed_geom_21" class="panda nohand_left_panda_visual" material="panda nohand_left_white" mesh="panda nohand_left_link4_0" />
+                  <geom name="panda nohand_left__unnamed_geom_22" class="panda nohand_left_panda_visual" material="panda nohand_left_white" mesh="panda nohand_left_link4_1" />
+                  <geom name="panda nohand_left__unnamed_geom_23" class="panda nohand_left_panda_visual" material="panda nohand_left_dark_grey" mesh="panda nohand_left_link4_2" />
+                  <geom name="panda nohand_left__unnamed_geom_24" class="panda nohand_left_panda_visual" material="panda nohand_left_white" mesh="panda nohand_left_link4_3" />
+                  <geom name="panda nohand_left__unnamed_geom_25" class="panda nohand_left_panda_collision" contype="0" conaffinity="0" mesh="panda nohand_left_link4_c" />
+                  <body name="panda nohand_left_link5" pos="-0.0825 0.384 0" quat="0.707107 -0.707107 0 0" gravcomp="1">
+                    <inertial pos="-0.011953 0.041065 -0.038437" quat="0.987313 -0.0121954 0.0719187 -0.141037" mass="1.22595" diaginertia="0.0367625 0.0288531 0.00803437" />
+                    <joint name="panda nohand_left_joint5" pos="0 0 0" axis="0 0 1" damping="5" />
+                    <geom name="panda nohand_left__unnamed_geom_26" class="panda nohand_left_panda_visual" material="panda nohand_left_dark_grey" mesh="panda nohand_left_link5_0" />
+                    <geom name="panda nohand_left__unnamed_geom_27" class="panda nohand_left_panda_visual" material="panda nohand_left_white" mesh="panda nohand_left_link5_1" />
+                    <geom name="panda nohand_left__unnamed_geom_28" class="panda nohand_left_panda_visual" material="panda nohand_left_white" mesh="panda nohand_left_link5_2" />
+                    <geom name="panda nohand_left__unnamed_geom_29" class="panda nohand_left_panda_collision" contype="0" conaffinity="0" mesh="panda nohand_left_link5_c0" />
+                    <geom name="panda nohand_left__unnamed_geom_30" class="panda nohand_left_panda_collision" contype="0" conaffinity="0" mesh="panda nohand_left_link5_c1" />
+                    <geom name="panda nohand_left__unnamed_geom_31" class="panda nohand_left_panda_collision" contype="0" conaffinity="0" mesh="panda nohand_left_link5_c2" />
+                    <body name="panda nohand_left_link6" quat="0.707107 0.707107 0 0" gravcomp="1">
+                      <inertial pos="0.060149 -0.014117 -0.010517" quat="0.101075 0.59332 0.0287227 0.798079" mass="1.66656" diaginertia="0.00584276 0.00431037 0.00159787" />
+                      <joint name="panda nohand_left_joint6" pos="0 0 0" axis="0 0 1" range="-0.0175 3.7525" damping="5" />
+                      <geom name="panda nohand_left__unnamed_geom_32" class="panda nohand_left_panda_visual" material="panda nohand_left_off_white" mesh="panda nohand_left_link6_0" />
+                      <geom name="panda nohand_left__unnamed_geom_33" class="panda nohand_left_panda_visual" material="panda nohand_left_white" mesh="panda nohand_left_link6_1" />
+                      <geom name="panda nohand_left__unnamed_geom_34" class="panda nohand_left_panda_visual" material="panda nohand_left_dark_grey" mesh="panda nohand_left_link6_2" />
+                      <geom name="panda nohand_left__unnamed_geom_35" class="panda nohand_left_panda_visual" material="panda nohand_left_white" mesh="panda nohand_left_link6_3" />
+                      <geom name="panda nohand_left__unnamed_geom_36" class="panda nohand_left_panda_visual" material="panda nohand_left_white" mesh="panda nohand_left_link6_4" />
+                      <geom name="panda nohand_left__unnamed_geom_37" class="panda nohand_left_panda_visual" material="panda nohand_left_white" mesh="panda nohand_left_link6_5" />
+                      <geom name="panda nohand_left__unnamed_geom_38" class="panda nohand_left_panda_visual" material="panda nohand_left_white" mesh="panda nohand_left_link6_6" />
+                      <geom name="panda nohand_left__unnamed_geom_39" class="panda nohand_left_panda_visual" material="panda nohand_left_light_blue" mesh="panda nohand_left_link6_7" />
+                      <geom name="panda nohand_left__unnamed_geom_40" class="panda nohand_left_panda_visual" material="panda nohand_left_light_blue" mesh="panda nohand_left_link6_8" />
+                      <geom name="panda nohand_left__unnamed_geom_41" class="panda nohand_left_panda_visual" material="panda nohand_left_dark_grey" mesh="panda nohand_left_link6_9" />
+                      <geom name="panda nohand_left__unnamed_geom_42" class="panda nohand_left_panda_visual" material="panda nohand_left_dark_grey" mesh="panda nohand_left_link6_10" />
+                      <geom name="panda nohand_left__unnamed_geom_43" class="panda nohand_left_panda_visual" material="panda nohand_left_white" mesh="panda nohand_left_link6_11" />
+                      <geom name="panda nohand_left__unnamed_geom_44" class="panda nohand_left_panda_visual" material="panda nohand_left_green" mesh="panda nohand_left_link6_12" />
+                      <geom name="panda nohand_left__unnamed_geom_45" class="panda nohand_left_panda_visual" material="panda nohand_left_white" mesh="panda nohand_left_link6_13" />
+                      <geom name="panda nohand_left__unnamed_geom_46" class="panda nohand_left_panda_visual" material="panda nohand_left_dark_grey" mesh="panda nohand_left_link6_14" />
+                      <geom name="panda nohand_left__unnamed_geom_47" class="panda nohand_left_panda_visual" material="panda nohand_left_dark_grey" mesh="panda nohand_left_link6_15" />
+                      <geom name="panda nohand_left__unnamed_geom_48" class="panda nohand_left_panda_visual" material="panda nohand_left_white" mesh="panda nohand_left_link6_16" />
+                      <geom name="panda nohand_left__unnamed_geom_49" class="panda nohand_left_panda_collision" contype="0" conaffinity="0" mesh="panda nohand_left_link6_c" />
+                      <body name="panda nohand_left_link7" pos="0.088 0 0" quat="0.707107 0.707107 0 0" gravcomp="1">
+                        <inertial pos="0.010517 -0.004252 0.061597" quat="0.992939 -0.0762041 0.0733595 -0.0537067" mass="0.735522" diaginertia="0.0127345 0.0101055 0.00451803" />
+                        <joint name="panda nohand_left_joint7" pos="0 0 0" axis="0 0 1" damping="5" />
+                        <geom name="panda nohand_left__unnamed_geom_50" class="panda nohand_left_panda_visual" material="panda nohand_left_white" mesh="panda nohand_left_link7_0" />
+                        <geom name="panda nohand_left__unnamed_geom_51" class="panda nohand_left_panda_visual" material="panda nohand_left_dark_grey" mesh="panda nohand_left_link7_1" />
+                        <geom name="panda nohand_left__unnamed_geom_52" class="panda nohand_left_panda_visual" material="panda nohand_left_dark_grey" mesh="panda nohand_left_link7_2" />
+                        <geom name="panda nohand_left__unnamed_geom_53" class="panda nohand_left_panda_visual" material="panda nohand_left_dark_grey" mesh="panda nohand_left_link7_3" />
+                        <geom name="panda nohand_left__unnamed_geom_54" class="panda nohand_left_panda_visual" material="panda nohand_left_dark_grey" mesh="panda nohand_left_link7_4" />
+                        <geom name="panda nohand_left__unnamed_geom_55" class="panda nohand_left_panda_visual" material="panda nohand_left_dark_grey" mesh="panda nohand_left_link7_5" />
+                        <geom name="panda nohand_left__unnamed_geom_56" class="panda nohand_left_panda_visual" material="panda nohand_left_dark_grey" mesh="panda nohand_left_link7_6" />
+                        <geom name="panda nohand_left__unnamed_geom_57" class="panda nohand_left_panda_visual" material="panda nohand_left_white" mesh="panda nohand_left_link7_7" />
+                        <geom name="panda nohand_left__unnamed_geom_58" class="panda nohand_left_panda_collision" contype="0" conaffinity="0" mesh="panda nohand_left_link7_c" />
+                        <body name="panda nohand_left_attachment" pos="0 0 0.107" quat="0.382683 0 0 0.92388" gravcomp="1">
+                          <body name="panda nohand_left_left_wrist_link" gravcomp="1">
+                            <inertial pos="0 0 0" mass="0" diaginertia="0 0 0" />
+                            <site name="panda nohand_left_attachment_site" pos="0 0 0" />
+                            <camera name="panda nohand_left__unnamed_camera_0" pos="0.05 0 0.07" quat="0 1 0 0" />
+                            <body name="panda nohand_left_panda hand_left_" gravcomp="1">
+                              <site name="panda nohand_left_panda hand_left__unnamed_site_0" class="panda nohand_left_panda hand_left_" pos="0 0 0" size="0.01" group="5" rgba="1 1 1 1" />
+                              <body name="panda nohand_left_panda hand_left_hand" childclass="panda nohand_left_panda hand_left_panda" quat="0 0 0 1" gravcomp="1">
+                                <inertial pos="-0.01 0 0.03" mass="0.73" diaginertia="0.001 0.0025 0.0017" />
+                                <geom name="panda nohand_left_panda hand_left__unnamed_geom_0" class="panda nohand_left_panda hand_left_visual" material="panda nohand_left_panda hand_left_off_white" mesh="panda nohand_left_panda hand_left_hand_0" />
+                                <geom name="panda nohand_left_panda hand_left__unnamed_geom_1" class="panda nohand_left_panda hand_left_visual" material="panda nohand_left_panda hand_left_black" mesh="panda nohand_left_panda hand_left_hand_1" />
+                                <geom name="panda nohand_left_panda hand_left__unnamed_geom_2" class="panda nohand_left_panda hand_left_visual" material="panda nohand_left_panda hand_left_black" mesh="panda nohand_left_panda hand_left_hand_2" />
+                                <geom name="panda nohand_left_panda hand_left__unnamed_geom_3" class="panda nohand_left_panda hand_left_visual" material="panda nohand_left_panda hand_left_white" mesh="panda nohand_left_panda hand_left_hand_3" />
+                                <geom name="panda nohand_left_panda hand_left__unnamed_geom_4" class="panda nohand_left_panda hand_left_visual" material="panda nohand_left_panda hand_left_off_white" mesh="panda nohand_left_panda hand_left_hand_4" />
+                                <geom name="panda nohand_left_panda hand_left__unnamed_geom_5" class="panda nohand_left_panda hand_left_collision" contype="0" conaffinity="0" mesh="panda nohand_left_panda hand_left_hand_c" />
+                                <body name="panda nohand_left_panda hand_left_left_finger" pos="0 0 0.0584" gravcomp="1">
+                                  <inertial pos="0 0 0" mass="0.015" diaginertia="2.375e-06 2.375e-06 7.5e-07" />
+                                  <geom name="panda nohand_left_panda hand_left__unnamed_geom_6" class="panda nohand_left_panda hand_left_visual" material="panda nohand_left_panda hand_left_off_white" mesh="panda nohand_left_panda hand_left_finger_0" />
+                                  <geom name="panda nohand_left_panda hand_left__unnamed_geom_7" class="panda nohand_left_panda hand_left_visual" material="panda nohand_left_panda hand_left_black" mesh="panda nohand_left_panda hand_left_finger_1" />
+                                  <geom name="panda nohand_left_panda hand_left__unnamed_geom_8" class="panda nohand_left_panda hand_left_collision" contype="0" conaffinity="0" mesh="panda nohand_left_panda hand_left_finger_0" />
+                                  <geom name="panda nohand_left_panda hand_left_fingertip_pad_collision_left" size="0.01 0.002 0.012" pos="0 0.002 0.045" type="box" contype="0" conaffinity="0" condim="6" group="3" friction="3 0.2 0.01" solref="0.002 0.5" />
+                                </body>
+                                <body name="panda nohand_left_panda hand_left_right_finger" pos="0 0 0.0584" quat="0 0 0 1" gravcomp="1">
+                                  <inertial pos="0 0 0" mass="0.015" diaginertia="2.375e-06 2.375e-06 7.5e-07" />
+                                  <geom name="panda nohand_left_panda hand_left__unnamed_geom_10" class="panda nohand_left_panda hand_left_visual" material="panda nohand_left_panda hand_left_off_white" mesh="panda nohand_left_panda hand_left_finger_0" />
+                                  <geom name="panda nohand_left_panda hand_left__unnamed_geom_11" class="panda nohand_left_panda hand_left_visual" material="panda nohand_left_panda hand_left_black" mesh="panda nohand_left_panda hand_left_finger_1" />
+                                  <geom name="panda nohand_left_panda hand_left__unnamed_geom_12" class="panda nohand_left_panda hand_left_collision" contype="0" conaffinity="0" mesh="panda nohand_left_panda hand_left_finger_0" />
+                                  <geom name="panda nohand_left_panda hand_left_fingertip_pad_collision_right" size="0.01 0.003 0.012" pos="0 0.0055 0.045" type="box" contype="0" conaffinity="0" condim="6" group="3" friction="3 0.2 0.01" solref="0.002 0.5" />
+                                </body>
+                              </body>
+                            </body>
+                          </body>
+                        </body>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="panda nohand_right_" pos="0 -0.3 0.6" gravcomp="1">
+        <light name="panda nohand_right_top" class="panda nohand_right_" pos="0 0 2" dir="0 0 -1" mode="trackcom" />
+        <body name="panda nohand_right_link0" childclass="panda nohand_right_panda" gravcomp="1">
+          <inertial pos="-0.041018 -0.00014 0.049974" quat="0.00630474 0.751245 0.00741774 0.659952" mass="0.629769" diaginertia="0.00430465 0.00387984 0.00313051" />
+          <geom name="panda nohand_right__unnamed_geom_0" class="panda nohand_right_panda_visual" material="panda nohand_right_off_white" mesh="panda nohand_right_link0_0" />
+          <geom name="panda nohand_right__unnamed_geom_1" class="panda nohand_right_panda_visual" material="panda nohand_right_dark_grey" mesh="panda nohand_right_link0_1" />
+          <geom name="panda nohand_right__unnamed_geom_2" class="panda nohand_right_panda_visual" material="panda nohand_right_off_white" mesh="panda nohand_right_link0_2" />
+          <geom name="panda nohand_right__unnamed_geom_3" class="panda nohand_right_panda_visual" material="panda nohand_right_dark_grey" mesh="panda nohand_right_link0_3" />
+          <geom name="panda nohand_right__unnamed_geom_4" class="panda nohand_right_panda_visual" material="panda nohand_right_off_white" mesh="panda nohand_right_link0_4" />
+          <geom name="panda nohand_right__unnamed_geom_5" class="panda nohand_right_panda_visual" material="panda nohand_right_dark_grey" mesh="panda nohand_right_link0_5" />
+          <geom name="panda nohand_right__unnamed_geom_6" class="panda nohand_right_panda_visual" material="panda nohand_right_white" mesh="panda nohand_right_link0_7" />
+          <geom name="panda nohand_right__unnamed_geom_7" class="panda nohand_right_panda_visual" material="panda nohand_right_white" mesh="panda nohand_right_link0_8" />
+          <geom name="panda nohand_right__unnamed_geom_8" class="panda nohand_right_panda_visual" material="panda nohand_right_dark_grey" mesh="panda nohand_right_link0_9" />
+          <geom name="panda nohand_right__unnamed_geom_9" class="panda nohand_right_panda_visual" material="panda nohand_right_off_white" mesh="panda nohand_right_link0_10" />
+          <geom name="panda nohand_right__unnamed_geom_10" class="panda nohand_right_panda_visual" material="panda nohand_right_white" mesh="panda nohand_right_link0_11" />
+          <geom name="panda nohand_right__unnamed_geom_11" class="panda nohand_right_panda_collision" contype="0" conaffinity="0" mesh="panda nohand_right_link0_c" />
+          <body name="panda nohand_right_link1" pos="0 0 0.333" gravcomp="1">
+            <inertial pos="0.003875 0.002081 -0.04762" quat="0.711549 0.00634377 -0.0131124 0.702485" mass="4.97068" diaginertia="0.707137 0.703435 0.00852456" />
+            <joint name="panda nohand_right_joint1" pos="0 0 0" axis="0 0 1" damping="5" />
+            <geom name="panda nohand_right__unnamed_geom_12" class="panda nohand_right_panda_visual" material="panda nohand_right_white" mesh="panda nohand_right_link1" />
+            <geom name="panda nohand_right__unnamed_geom_13" class="panda nohand_right_panda_collision" contype="0" conaffinity="0" mesh="panda nohand_right_link1_c" />
+            <body name="panda nohand_right_link2" quat="0.707107 -0.707107 0 0" gravcomp="1">
+              <inertial pos="-0.003141 -0.02872 0.003495" quat="-0.168175 0.828366 -0.122878 0.520027" mass="0.646926" diaginertia="0.0310326 0.0283001 0.00273425" />
+              <joint name="panda nohand_right_joint2" pos="0 0 0" axis="0 0 1" range="-1.7628 1.7628" damping="5" />
+              <geom name="panda nohand_right__unnamed_geom_14" class="panda nohand_right_panda_visual" material="panda nohand_right_white" mesh="panda nohand_right_link2" />
+              <geom name="panda nohand_right__unnamed_geom_15" class="panda nohand_right_panda_collision" contype="0" conaffinity="0" mesh="panda nohand_right_link2_c" />
+              <body name="panda nohand_right_link3" pos="0 -0.316 0" quat="0.707107 0.707107 0 0" gravcomp="1">
+                <inertial pos="0.027518 0.039252 -0.066502" quat="0.662769 -0.00678331 0.252053 0.705096" mass="3.2286" diaginertia="0.0415014 0.0414793 0.00124635" />
+                <joint name="panda nohand_right_joint3" pos="0 0 0" axis="0 0 1" damping="5" />
+                <geom name="panda nohand_right__unnamed_geom_16" class="panda nohand_right_panda_visual" material="panda nohand_right_white" mesh="panda nohand_right_link3_0" />
+                <geom name="panda nohand_right__unnamed_geom_17" class="panda nohand_right_panda_visual" material="panda nohand_right_white" mesh="panda nohand_right_link3_1" />
+                <geom name="panda nohand_right__unnamed_geom_18" class="panda nohand_right_panda_visual" material="panda nohand_right_white" mesh="panda nohand_right_link3_2" />
+                <geom name="panda nohand_right__unnamed_geom_19" class="panda nohand_right_panda_visual" material="panda nohand_right_dark_grey" mesh="panda nohand_right_link3_3" />
+                <geom name="panda nohand_right__unnamed_geom_20" class="panda nohand_right_panda_collision" contype="0" conaffinity="0" mesh="panda nohand_right_link3_c" />
+                <body name="panda nohand_right_link4" pos="0.0825 0 0" quat="0.707107 0.707107 0 0" gravcomp="1">
+                  <inertial pos="-0.05317 0.104419 0.027454" quat="0.65058 0.529822 -0.0962034 0.535518" mass="3.5879" diaginertia="0.0349596 0.0281483 0.0106201" />
+                  <joint name="panda nohand_right_joint4" pos="0 0 0" axis="0 0 1" range="-3.0718 -0.0698" damping="5" />
+                  <geom name="panda nohand_right__unnamed_geom_21" class="panda nohand_right_panda_visual" material="panda nohand_right_white" mesh="panda nohand_right_link4_0" />
+                  <geom name="panda nohand_right__unnamed_geom_22" class="panda nohand_right_panda_visual" material="panda nohand_right_white" mesh="panda nohand_right_link4_1" />
+                  <geom name="panda nohand_right__unnamed_geom_23" class="panda nohand_right_panda_visual" material="panda nohand_right_dark_grey" mesh="panda nohand_right_link4_2" />
+                  <geom name="panda nohand_right__unnamed_geom_24" class="panda nohand_right_panda_visual" material="panda nohand_right_white" mesh="panda nohand_right_link4_3" />
+                  <geom name="panda nohand_right__unnamed_geom_25" class="panda nohand_right_panda_collision" contype="0" conaffinity="0" mesh="panda nohand_right_link4_c" />
+                  <body name="panda nohand_right_link5" pos="-0.0825 0.384 0" quat="0.707107 -0.707107 0 0" gravcomp="1">
+                    <inertial pos="-0.011953 0.041065 -0.038437" quat="0.987313 -0.0121954 0.0719187 -0.141037" mass="1.22595" diaginertia="0.0367625 0.0288531 0.00803437" />
+                    <joint name="panda nohand_right_joint5" pos="0 0 0" axis="0 0 1" damping="5" />
+                    <geom name="panda nohand_right__unnamed_geom_26" class="panda nohand_right_panda_visual" material="panda nohand_right_dark_grey" mesh="panda nohand_right_link5_0" />
+                    <geom name="panda nohand_right__unnamed_geom_27" class="panda nohand_right_panda_visual" material="panda nohand_right_white" mesh="panda nohand_right_link5_1" />
+                    <geom name="panda nohand_right__unnamed_geom_28" class="panda nohand_right_panda_visual" material="panda nohand_right_white" mesh="panda nohand_right_link5_2" />
+                    <geom name="panda nohand_right__unnamed_geom_29" class="panda nohand_right_panda_collision" contype="0" conaffinity="0" mesh="panda nohand_right_link5_c0" />
+                    <geom name="panda nohand_right__unnamed_geom_30" class="panda nohand_right_panda_collision" contype="0" conaffinity="0" mesh="panda nohand_right_link5_c1" />
+                    <geom name="panda nohand_right__unnamed_geom_31" class="panda nohand_right_panda_collision" contype="0" conaffinity="0" mesh="panda nohand_right_link5_c2" />
+                    <body name="panda nohand_right_link6" quat="0.707107 0.707107 0 0" gravcomp="1">
+                      <inertial pos="0.060149 -0.014117 -0.010517" quat="0.101075 0.59332 0.0287227 0.798079" mass="1.66656" diaginertia="0.00584276 0.00431037 0.00159787" />
+                      <joint name="panda nohand_right_joint6" pos="0 0 0" axis="0 0 1" range="-0.0175 3.7525" damping="5" />
+                      <geom name="panda nohand_right__unnamed_geom_32" class="panda nohand_right_panda_visual" material="panda nohand_right_off_white" mesh="panda nohand_right_link6_0" />
+                      <geom name="panda nohand_right__unnamed_geom_33" class="panda nohand_right_panda_visual" material="panda nohand_right_white" mesh="panda nohand_right_link6_1" />
+                      <geom name="panda nohand_right__unnamed_geom_34" class="panda nohand_right_panda_visual" material="panda nohand_right_dark_grey" mesh="panda nohand_right_link6_2" />
+                      <geom name="panda nohand_right__unnamed_geom_35" class="panda nohand_right_panda_visual" material="panda nohand_right_white" mesh="panda nohand_right_link6_3" />
+                      <geom name="panda nohand_right__unnamed_geom_36" class="panda nohand_right_panda_visual" material="panda nohand_right_white" mesh="panda nohand_right_link6_4" />
+                      <geom name="panda nohand_right__unnamed_geom_37" class="panda nohand_right_panda_visual" material="panda nohand_right_white" mesh="panda nohand_right_link6_5" />
+                      <geom name="panda nohand_right__unnamed_geom_38" class="panda nohand_right_panda_visual" material="panda nohand_right_white" mesh="panda nohand_right_link6_6" />
+                      <geom name="panda nohand_right__unnamed_geom_39" class="panda nohand_right_panda_visual" material="panda nohand_right_light_blue" mesh="panda nohand_right_link6_7" />
+                      <geom name="panda nohand_right__unnamed_geom_40" class="panda nohand_right_panda_visual" material="panda nohand_right_light_blue" mesh="panda nohand_right_link6_8" />
+                      <geom name="panda nohand_right__unnamed_geom_41" class="panda nohand_right_panda_visual" material="panda nohand_right_dark_grey" mesh="panda nohand_right_link6_9" />
+                      <geom name="panda nohand_right__unnamed_geom_42" class="panda nohand_right_panda_visual" material="panda nohand_right_dark_grey" mesh="panda nohand_right_link6_10" />
+                      <geom name="panda nohand_right__unnamed_geom_43" class="panda nohand_right_panda_visual" material="panda nohand_right_white" mesh="panda nohand_right_link6_11" />
+                      <geom name="panda nohand_right__unnamed_geom_44" class="panda nohand_right_panda_visual" material="panda nohand_right_green" mesh="panda nohand_right_link6_12" />
+                      <geom name="panda nohand_right__unnamed_geom_45" class="panda nohand_right_panda_visual" material="panda nohand_right_white" mesh="panda nohand_right_link6_13" />
+                      <geom name="panda nohand_right__unnamed_geom_46" class="panda nohand_right_panda_visual" material="panda nohand_right_dark_grey" mesh="panda nohand_right_link6_14" />
+                      <geom name="panda nohand_right__unnamed_geom_47" class="panda nohand_right_panda_visual" material="panda nohand_right_dark_grey" mesh="panda nohand_right_link6_15" />
+                      <geom name="panda nohand_right__unnamed_geom_48" class="panda nohand_right_panda_visual" material="panda nohand_right_white" mesh="panda nohand_right_link6_16" />
+                      <geom name="panda nohand_right__unnamed_geom_49" class="panda nohand_right_panda_collision" contype="0" conaffinity="0" mesh="panda nohand_right_link6_c" />
+                      <body name="panda nohand_right_link7" pos="0.088 0 0" quat="0.707107 0.707107 0 0" gravcomp="1">
+                        <inertial pos="0.010517 -0.004252 0.061597" quat="0.992939 -0.0762041 0.0733595 -0.0537067" mass="0.735522" diaginertia="0.0127345 0.0101055 0.00451803" />
+                        <joint name="panda nohand_right_joint7" pos="0 0 0" axis="0 0 1" damping="5" />
+                        <geom name="panda nohand_right__unnamed_geom_50" class="panda nohand_right_panda_visual" material="panda nohand_right_white" mesh="panda nohand_right_link7_0" />
+                        <geom name="panda nohand_right__unnamed_geom_51" class="panda nohand_right_panda_visual" material="panda nohand_right_dark_grey" mesh="panda nohand_right_link7_1" />
+                        <geom name="panda nohand_right__unnamed_geom_52" class="panda nohand_right_panda_visual" material="panda nohand_right_dark_grey" mesh="panda nohand_right_link7_2" />
+                        <geom name="panda nohand_right__unnamed_geom_53" class="panda nohand_right_panda_visual" material="panda nohand_right_dark_grey" mesh="panda nohand_right_link7_3" />
+                        <geom name="panda nohand_right__unnamed_geom_54" class="panda nohand_right_panda_visual" material="panda nohand_right_dark_grey" mesh="panda nohand_right_link7_4" />
+                        <geom name="panda nohand_right__unnamed_geom_55" class="panda nohand_right_panda_visual" material="panda nohand_right_dark_grey" mesh="panda nohand_right_link7_5" />
+                        <geom name="panda nohand_right__unnamed_geom_56" class="panda nohand_right_panda_visual" material="panda nohand_right_dark_grey" mesh="panda nohand_right_link7_6" />
+                        <geom name="panda nohand_right__unnamed_geom_57" class="panda nohand_right_panda_visual" material="panda nohand_right_white" mesh="panda nohand_right_link7_7" />
+                        <geom name="panda nohand_right__unnamed_geom_58" class="panda nohand_right_panda_collision" contype="0" conaffinity="0" mesh="panda nohand_right_link7_c" />
+                        <body name="panda nohand_right_attachment" pos="0 0 0.107" quat="0.382683 0 0 0.92388" gravcomp="1">
+                          <body name="panda nohand_right_right_wrist_link" gravcomp="1">
+                            <inertial pos="0 0 0" mass="0" diaginertia="0 0 0" />
+                            <site name="panda nohand_right_attachment_site" pos="0 0 0" />
+                            <camera name="panda nohand_right__unnamed_camera_0" pos="0.05 0 0.07" quat="0 1 0 0" />
+                            <body name="panda nohand_right_panda hand_right_" gravcomp="1">
+                              <site name="panda nohand_right_panda hand_right__unnamed_site_0" class="panda nohand_right_panda hand_right_" pos="0 0 0" size="0.01" group="5" rgba="1 1 1 1" />
+                              <body name="panda nohand_right_panda hand_right_hand" childclass="panda nohand_right_panda hand_right_panda" quat="0 0 0 1" gravcomp="1">
+                                <inertial pos="-0.01 0 0.03" mass="0.73" diaginertia="0.001 0.0025 0.0017" />
+                                <geom name="panda nohand_right_panda hand_right__unnamed_geom_0" class="panda nohand_right_panda hand_right_visual" material="panda nohand_right_panda hand_right_off_white" mesh="panda nohand_right_panda hand_right_hand_0" />
+                                <geom name="panda nohand_right_panda hand_right__unnamed_geom_1" class="panda nohand_right_panda hand_right_visual" material="panda nohand_right_panda hand_right_black" mesh="panda nohand_right_panda hand_right_hand_1" />
+                                <geom name="panda nohand_right_panda hand_right__unnamed_geom_2" class="panda nohand_right_panda hand_right_visual" material="panda nohand_right_panda hand_right_black" mesh="panda nohand_right_panda hand_right_hand_2" />
+                                <geom name="panda nohand_right_panda hand_right__unnamed_geom_3" class="panda nohand_right_panda hand_right_visual" material="panda nohand_right_panda hand_right_white" mesh="panda nohand_right_panda hand_right_hand_3" />
+                                <geom name="panda nohand_right_panda hand_right__unnamed_geom_4" class="panda nohand_right_panda hand_right_visual" material="panda nohand_right_panda hand_right_off_white" mesh="panda nohand_right_panda hand_right_hand_4" />
+                                <geom name="panda nohand_right_panda hand_right__unnamed_geom_5" class="panda nohand_right_panda hand_right_collision" contype="0" conaffinity="0" mesh="panda nohand_right_panda hand_right_hand_c" />
+                                <body name="panda nohand_right_panda hand_right_left_finger" pos="0 0 0.0584" gravcomp="1">
+                                  <inertial pos="0 0 0" mass="0.015" diaginertia="2.375e-06 2.375e-06 7.5e-07" />
+                                  <geom name="panda nohand_right_panda hand_right__unnamed_geom_6" class="panda nohand_right_panda hand_right_visual" material="panda nohand_right_panda hand_right_off_white" mesh="panda nohand_right_panda hand_right_finger_0" />
+                                  <geom name="panda nohand_right_panda hand_right__unnamed_geom_7" class="panda nohand_right_panda hand_right_visual" material="panda nohand_right_panda hand_right_black" mesh="panda nohand_right_panda hand_right_finger_1" />
+                                  <geom name="panda nohand_right_panda hand_right__unnamed_geom_8" class="panda nohand_right_panda hand_right_collision" contype="0" conaffinity="0" mesh="panda nohand_right_panda hand_right_finger_0" />
+                                  <geom name="panda nohand_right_panda hand_right_fingertip_pad_collision_left" size="0.01 0.002 0.012" pos="0 0.002 0.045" type="box" contype="0" conaffinity="0" condim="6" group="3" friction="3 0.2 0.01" solref="0.002 0.5" />
+                                </body>
+                                <body name="panda nohand_right_panda hand_right_right_finger" pos="0 0 0.0584" quat="0 0 0 1" gravcomp="1">
+                                  <inertial pos="0 0 0" mass="0.015" diaginertia="2.375e-06 2.375e-06 7.5e-07" />
+                                  <geom name="panda nohand_right_panda hand_right__unnamed_geom_10" class="panda nohand_right_panda hand_right_visual" material="panda nohand_right_panda hand_right_off_white" mesh="panda nohand_right_panda hand_right_finger_0" />
+                                  <geom name="panda nohand_right_panda hand_right__unnamed_geom_11" class="panda nohand_right_panda hand_right_visual" material="panda nohand_right_panda hand_right_black" mesh="panda nohand_right_panda hand_right_finger_1" />
+                                  <geom name="panda nohand_right_panda hand_right__unnamed_geom_12" class="panda nohand_right_panda hand_right_collision" contype="0" conaffinity="0" mesh="panda nohand_right_panda hand_right_finger_0" />
+                                  <geom name="panda nohand_right_panda hand_right_fingertip_pad_collision_right" size="0.01 0.003 0.012" pos="0 0.0055 0.045" type="box" contype="0" conaffinity="0" condim="6" group="3" friction="3 0.2 0.01" solref="0.002 0.5" />
+                                </body>
+                              </body>
+                            </body>
+                          </body>
+                        </body>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="wood_tray_" pos="0.65 -0.325 0.9" quat="0.5 0.5 0.5 0.5" gravcomp="1">
+      <joint name="wood_tray_" type="free" limited="false" actuatorfrclimited="false" />
+      <body name="wood_tray_wood_tray" gravcomp="1">
+        <geom name="wood_tray__unnamed_geom_0" class="wood_tray_visual" material="wood_tray_bake_to" mesh="wood_tray_wood_tray" />
+        <geom name="wood_tray__unnamed_geom_1" class="wood_tray_collision" contype="0" conaffinity="0" mass="2" rgba="0.45219 0.994523 0.553787 1" mesh="wood_tray_wood_tray_collision_0" />
+        <geom name="wood_tray__unnamed_geom_2" class="wood_tray_collision" contype="0" conaffinity="0" mass="2" rgba="0.509113 0.429375 0.294612 1" mesh="wood_tray_wood_tray_collision_1" />
+        <geom name="wood_tray__unnamed_geom_3" class="wood_tray_collision" contype="0" conaffinity="0" mass="2" rgba="0.470072 0.625677 0.86021 1" mesh="wood_tray_wood_tray_collision_2" />
+        <geom name="wood_tray__unnamed_geom_4" class="wood_tray_collision" contype="0" conaffinity="0" mass="2" rgba="0.311147 0.4318 0.346839 1" mesh="wood_tray_wood_tray_collision_3" />
+        <geom name="wood_tray__unnamed_geom_5" class="wood_tray_collision" pos="-0.26 0 0" quat="1 0 0 0" contype="0" conaffinity="0" mass="2" rgba="0.347702 0.715538 0.126968 1" mesh="wood_tray_wood_tray_collision_5" />
+        <geom name="wood_tray__unnamed_geom_6" class="wood_tray_collision" contype="0" conaffinity="0" mass="2" rgba="0.899257 0.698168 0.69656 1" mesh="wood_tray_wood_tray_collision_7" />
+        <geom name="wood_tray__unnamed_geom_7" class="wood_tray_collision" contype="0" conaffinity="0" mass="2" rgba="0.136884 0.824998 0.108743 1" mesh="wood_tray_wood_tray_collision_9" />
+        <geom name="wood_tray__unnamed_geom_8" class="wood_tray_collision" contype="0" conaffinity="0" mass="2" rgba="0.574654 0.27937 0.614533 1" mesh="wood_tray_wood_tray_collision_11" />
+      </body>
+    </body>
+    <body name="base_cabinet_600_" pos="1 -0.325 0" quat="0.707107 0 0 -0.707107" gravcomp="1">
+      <body name="base_cabinet_600_base_cabinet_600" childclass="base_cabinet_600_base_cabinet_600" gravcomp="1">
+        <body name="base_cabinet_600_walls" gravcomp="1">
+          <geom name="base_cabinet_600__unnamed_geom_0" size="0.298 0.35 0.002" pos="0 -0.048 0.47" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" material="base_cabinet_600_back" />
+          <geom name="base_cabinet_600__unnamed_geom_1" size="0.25 0.35 0.008" pos="0.292 -0.3 0.47" quat="0.499998 0.5 0.5 0.500002" type="box" contype="0" conaffinity="0" material="base_cabinet_600_cabinet" />
+          <geom name="base_cabinet_600__unnamed_geom_2" size="0.25 0.35 0.008" pos="-0.292 -0.3 0.47" quat="0.499998 0.5 0.5 0.500002" type="box" contype="0" conaffinity="0" material="base_cabinet_600_cabinet" />
+          <geom name="base_cabinet_600__unnamed_geom_4" size="0.04 0.284 0.008" pos="0 -0.51 0.812" quat="0.707105 0 0 0.707108" type="box" contype="0" conaffinity="0" material="base_cabinet_600_cabinet" />
+          <geom name="base_cabinet_600__unnamed_geom_5" size="0.3 0.06 0.248" pos="0 -0.298 0.06" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" material="base_cabinet_600_cabinet" />
+          <body name="base_cabinet_600_shelf_bottom" gravcomp="1">
+            <geom name="base_cabinet_600__unnamed_geom_3" size="0.25 0.284 0.008" pos="0 -0.3 0.128" quat="0.707105 0 0 0.707108" type="box" contype="0" conaffinity="0" material="base_cabinet_600_cabinet" />
+          </body>
+        </body>
+        <body name="base_cabinet_600_counter" pos="0 -0.2985 0.84" gravcomp="1">
+          <geom name="base_cabinet_600__unnamed_geom_6" class="base_cabinet_600_visual" size="0.298 0.298 0.019" quat="0.707105 0 0 0.707108" type="box" material="base_cabinet_600_counter" />
+          <geom name="base_cabinet_600__unnamed_geom_7" class="base_cabinet_600_visual" size="0.3 0.019 0.001" pos="0 -0.299 0" quat="0.707105 0.707108 0 0" type="box" material="base_cabinet_600_counter" />
+          <geom name="base_cabinet_600__unnamed_geom_8" class="base_cabinet_600_visual" size="0.3 0.019 0.001" pos="0 0.299 0" quat="0.707105 0.707108 0 0" type="box" material="base_cabinet_600_counter" />
+          <geom name="base_cabinet_600__unnamed_geom_9" class="base_cabinet_600_visual" size="0.3 0.019 0.001" pos="0.299 0 0" quat="0.499998 0.5 0.5 0.500002" type="box" material="base_cabinet_600_counter" />
+          <geom name="base_cabinet_600__unnamed_geom_10" class="base_cabinet_600_visual" size="0.3 0.019 0.001" pos="-0.299 0 0" quat="0.499998 0.5 0.5 0.500002" type="box" material="base_cabinet_600_counter" />
+          <geom name="base_cabinet_600__unnamed_geom_11" class="base_cabinet_600_collision" size="0.3 0.3 0.019" quat="0.707105 0 0 0.707108" type="box" contype="0" conaffinity="0" solimp="0.95 0.98" mass="0" />
+        </body>
+        <body name="base_cabinet_600_hob" pos="0 -0.3 0.85" gravcomp="1">
+          <geom name="base_cabinet_600__unnamed_geom_12" size="0.29 0.257 0.02" type="box" contype="0" conaffinity="0" solimp="0.95 0.98" material="base_cabinet_600_hob" />
+          <site name="base_cabinet_600_hob_site_1" pos="-0.155 -0.08 0.02" />
+          <site name="base_cabinet_600_hob_site_2" pos="-0.155 0.142 0.02" />
+          <site name="base_cabinet_600_hob_site_3" pos="0.122 0.122 0.02" />
+          <site name="base_cabinet_600_hob_site_4" pos="0.168 -0.096 0.02" />
+        </body>
+        <body name="base_cabinet_600_shelf" pos="0 -0.2985 0.474" gravcomp="1">
+          <geom name="base_cabinet_600__unnamed_geom_13" size="0.25 0.284 0.008" quat="0.707105 0 0 0.707108" type="box" contype="0" conaffinity="0" material="base_cabinet_600_cabinet" />
+        </body>
+        <body name="base_cabinet_600_door_right" pos="-0.29 -0.56 0.474" gravcomp="1">
+          <joint name="base_cabinet_600_door_right" pos="0 -0.008 0" axis="0 0 -1" range="0 1.5708" damping="0.2" />
+          <geom name="base_cabinet_600__unnamed_geom_14" pos="0.29 -0.004 0" quat="0.707105 0.707108 0 0" type="mesh" contype="0" conaffinity="0" material="base_cabinet_600_drawer_600_full" mesh="base_cabinet_600_drawer_600_full" />
+          <body name="base_cabinet_600__unnamed_body_7" pos="0.56 0 0.2" quat="-2.59734e-06 -0.707105 -2.59735e-06 -0.707108" gravcomp="1">
+            <geom name="base_cabinet_600__unnamed_geom_15" class="base_cabinet_600_visual" quat="0.707105 0.707108 0 0" type="mesh" material="base_cabinet_600_handle" mesh="base_cabinet_600_drawer_handle" />
+            <geom name="base_cabinet_600__unnamed_geom_16" class="base_cabinet_600_collision" size="0.06 0.0032 0.006" pos="0 0.027 0" type="box" contype="0" conaffinity="0" mass="0" />
+            <geom name="base_cabinet_600__unnamed_geom_17" class="base_cabinet_600_collision" size="0.006 0.015 0.006" pos="-0.0425 0.015 0" type="box" contype="0" conaffinity="0" mass="0" />
+            <geom name="base_cabinet_600__unnamed_geom_18" class="base_cabinet_600_collision" size="0.006 0.015 0.006" pos="0.0425 0.015 0" type="box" contype="0" conaffinity="0" mass="0" />
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="base_cabinet_600_1_" pos="1 0.325 0" quat="0.707107 0 0 -0.707107" gravcomp="1">
+      <body name="base_cabinet_600_1_base_cabinet_600" childclass="base_cabinet_600_1_base_cabinet_600" gravcomp="1">
+        <body name="base_cabinet_600_1_walls" gravcomp="1">
+          <geom name="base_cabinet_600_1__unnamed_geom_0" size="0.298 0.35 0.002" pos="0 -0.048 0.47" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" material="base_cabinet_600_1_back" />
+          <geom name="base_cabinet_600_1__unnamed_geom_1" size="0.25 0.35 0.008" pos="0.292 -0.3 0.47" quat="0.499998 0.5 0.5 0.500002" type="box" contype="0" conaffinity="0" material="base_cabinet_600_1_cabinet" />
+          <geom name="base_cabinet_600_1__unnamed_geom_2" size="0.25 0.35 0.008" pos="-0.292 -0.3 0.47" quat="0.499998 0.5 0.5 0.500002" type="box" contype="0" conaffinity="0" material="base_cabinet_600_1_cabinet" />
+          <geom name="base_cabinet_600_1__unnamed_geom_4" size="0.04 0.284 0.008" pos="0 -0.51 0.812" quat="0.707105 0 0 0.707108" type="box" contype="0" conaffinity="0" material="base_cabinet_600_1_cabinet" />
+          <geom name="base_cabinet_600_1__unnamed_geom_5" size="0.3 0.06 0.248" pos="0 -0.298 0.06" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" material="base_cabinet_600_1_cabinet" />
+          <body name="base_cabinet_600_1_shelf_bottom" gravcomp="1">
+            <geom name="base_cabinet_600_1__unnamed_geom_3" size="0.25 0.284 0.008" pos="0 -0.3 0.128" quat="0.707105 0 0 0.707108" type="box" contype="0" conaffinity="0" material="base_cabinet_600_1_cabinet" />
+          </body>
+        </body>
+        <body name="base_cabinet_600_1_counter" pos="0 -0.2985 0.84" gravcomp="1">
+          <geom name="base_cabinet_600_1__unnamed_geom_6" class="base_cabinet_600_1_visual" size="0.298 0.298 0.019" quat="0.707105 0 0 0.707108" type="box" material="base_cabinet_600_1_counter" />
+          <geom name="base_cabinet_600_1__unnamed_geom_7" class="base_cabinet_600_1_visual" size="0.3 0.019 0.001" pos="0 -0.299 0" quat="0.707105 0.707108 0 0" type="box" material="base_cabinet_600_1_counter" />
+          <geom name="base_cabinet_600_1__unnamed_geom_8" class="base_cabinet_600_1_visual" size="0.3 0.019 0.001" pos="0 0.299 0" quat="0.707105 0.707108 0 0" type="box" material="base_cabinet_600_1_counter" />
+          <geom name="base_cabinet_600_1__unnamed_geom_9" class="base_cabinet_600_1_visual" size="0.3 0.019 0.001" pos="0.299 0 0" quat="0.499998 0.5 0.5 0.500002" type="box" material="base_cabinet_600_1_counter" />
+          <geom name="base_cabinet_600_1__unnamed_geom_10" class="base_cabinet_600_1_visual" size="0.3 0.019 0.001" pos="-0.299 0 0" quat="0.499998 0.5 0.5 0.500002" type="box" material="base_cabinet_600_1_counter" />
+          <geom name="base_cabinet_600_1__unnamed_geom_11" class="base_cabinet_600_1_collision" size="0.3 0.3 0.019" quat="0.707105 0 0 0.707108" type="box" contype="0" conaffinity="0" solimp="0.95 0.98" mass="0" />
+        </body>
+        <body name="base_cabinet_600_1_hob" pos="0 -0.3 0.85" gravcomp="1">
+          <geom name="base_cabinet_600_1__unnamed_geom_12" size="0.29 0.257 0.02" type="box" contype="0" conaffinity="0" solimp="0.95 0.98" material="base_cabinet_600_1_hob" />
+          <site name="base_cabinet_600_1_hob_site_1" pos="-0.155 -0.08 0.02" />
+          <site name="base_cabinet_600_1_hob_site_2" pos="-0.155 0.142 0.02" />
+          <site name="base_cabinet_600_1_hob_site_3" pos="0.122 0.122 0.02" />
+          <site name="base_cabinet_600_1_hob_site_4" pos="0.168 -0.096 0.02" />
+        </body>
+        <body name="base_cabinet_600_1_door_left" pos="0.29 -0.56 0.474" gravcomp="1">
+          <joint name="base_cabinet_600_1_door_left" pos="0 -0.008 0" axis="0 0 1" range="0 1.5708" damping="0.2" />
+          <geom name="base_cabinet_600_1__unnamed_geom_13" pos="-0.29 -0.004 0" quat="0.707105 0.707108 0 0" type="mesh" contype="0" conaffinity="0" material="base_cabinet_600_1_drawer_600_full" mesh="base_cabinet_600_1_drawer_600_full" />
+          <body name="base_cabinet_600_1__unnamed_body_6" pos="-0.56 0 0.2" quat="-2.59734e-06 -0.707105 -2.59735e-06 -0.707108" gravcomp="1">
+            <geom name="base_cabinet_600_1__unnamed_geom_14" class="base_cabinet_600_1_visual" quat="0.707105 0.707108 0 0" type="mesh" material="base_cabinet_600_1_handle" mesh="base_cabinet_600_1_drawer_handle" />
+            <geom name="base_cabinet_600_1__unnamed_geom_15" class="base_cabinet_600_1_collision" size="0.06 0.0032 0.006" pos="0 0.027 0" type="box" contype="0" conaffinity="0" mass="0" />
+            <geom name="base_cabinet_600_1__unnamed_geom_16" class="base_cabinet_600_1_collision" size="0.006 0.015 0.006" pos="-0.0425 0.015 0" type="box" contype="0" conaffinity="0" mass="0" />
+            <geom name="base_cabinet_600_1__unnamed_geom_17" class="base_cabinet_600_1_collision" size="0.006 0.015 0.006" pos="0.0425 0.015 0" type="box" contype="0" conaffinity="0" mass="0" />
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <contact>
+    <exclude name="__unnamed_contact_0" body1="invisible_base" body2="panda nohand_left_link0" />
+    <exclude name="__unnamed_contact_1" body1="invisible_base" body2="panda nohand_right_link0" />
+  </contact>
+
+  <actuator>
+    <general name="panda nohand_left_attachment_site_ee_x" class="/" site="panda nohand_left_attachment_site" refsite="ee_origin_site" ctrlrange="-10 10" biastype="affine" gainprm="100" biasprm="0 -100 -10" />
+    <general name="panda nohand_left_attachment_site_ee_y" class="/" site="panda nohand_left_attachment_site" refsite="ee_origin_site" ctrlrange="-10 10" gear="0 1 0 0 0 0" biastype="affine" gainprm="100" biasprm="0 -100 -10" />
+    <general name="panda nohand_left_attachment_site_ee_z" class="/" site="panda nohand_left_attachment_site" refsite="ee_origin_site" ctrlrange="-10 10" gear="0 0 1 0 0 0" biastype="affine" gainprm="100" biasprm="0 -100 -10" />
+    <general name="panda nohand_left_attachment_site_ee_rx" class="/" site="panda nohand_left_attachment_site" refsite="ee_origin_site" ctrlrange="-1.57 1.57" gear="0 0 0 1 0 0" biastype="affine" biasprm="0 -1 -0.1" />
+    <general name="panda nohand_left_attachment_site_ee_ry" class="/" site="panda nohand_left_attachment_site" refsite="ee_origin_site" ctrlrange="-1.57 1.57" gear="0 0 0 0 1 0" biastype="affine" biasprm="0 -1 -0.1" />
+    <general name="panda nohand_left_attachment_site_ee_rz" class="/" site="panda nohand_left_attachment_site" refsite="ee_origin_site" ctrlrange="-1.57 1.57" gear="0 0 0 0 0 1" biastype="affine" biasprm="0 -1 -0.1" />
+    <general name="panda nohand_right_attachment_site_ee_x" class="/" site="panda nohand_right_attachment_site" refsite="ee_origin_site" ctrlrange="-10 10" biastype="affine" gainprm="100" biasprm="0 -100 -10" />
+    <general name="panda nohand_right_attachment_site_ee_y" class="/" site="panda nohand_right_attachment_site" refsite="ee_origin_site" ctrlrange="-10 10" gear="0 1 0 0 0 0" biastype="affine" gainprm="100" biasprm="0 -100 -10" />
+    <general name="panda nohand_right_attachment_site_ee_z" class="/" site="panda nohand_right_attachment_site" refsite="ee_origin_site" ctrlrange="-10 10" gear="0 0 1 0 0 0" biastype="affine" gainprm="100" biasprm="0 -100 -10" />
+    <general name="panda nohand_right_attachment_site_ee_rx" class="/" site="panda nohand_right_attachment_site" refsite="ee_origin_site" ctrlrange="-1.57 1.57" gear="0 0 0 1 0 0" biastype="affine" biasprm="0 -1 -0.1" />
+    <general name="panda nohand_right_attachment_site_ee_ry" class="/" site="panda nohand_right_attachment_site" refsite="ee_origin_site" ctrlrange="-1.57 1.57" gear="0 0 0 0 1 0" biastype="affine" biasprm="0 -1 -0.1" />
+    <general name="panda nohand_right_attachment_site_ee_rz" class="/" site="panda nohand_right_attachment_site" refsite="ee_origin_site" ctrlrange="-1.57 1.57" gear="0 0 0 0 0 1" biastype="affine" biasprm="0 -1 -0.1" />
+  </actuator>
+</mujoco>

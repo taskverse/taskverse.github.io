@@ -1,0 +1,1040 @@
+<mujoco model="world">
+  <compiler angle="radian"/>
+  <option impratio="10" integrator="implicitfast" cone="elliptic">
+    <flag multiccd="enable"/>
+  </option>
+  <size memory="50000000"/>
+  <visual>
+    <global azimuth="160" elevation="-20"/>
+    <headlight ambient="0.3 0.3 0.3" diffuse="0.6 0.6 0.6" specular="0 0 0"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+  </visual>
+  <statistic meansize="0.05" extent="1.8" center="0 0 1"/>
+  <default class="main">
+    <default class="/"/>
+    <default class="h1/">
+      <default class="h1/h1">
+        <joint armature="0.1" damping="1"/>
+        <site size="0.001 0.005 0.005" group="4" rgba="0.5 0.5 0.5 0.3"/>
+        <default class="h1/visual">
+          <geom type="mesh" contype="0" conaffinity="0" group="2" material="h1/black"/>
+        </default>
+        <default class="h1/collision">
+          <geom group="3"/>
+          <default class="h1/foot">
+            <geom size="0.014 0 0" type="capsule"/>
+            <default class="h1/foot1"/>
+            <default class="h1/foot2"/>
+            <default class="h1/foot3"/>
+          </default>
+        </default>
+      </default>
+    </default>
+    <default class="h1/h1_floating_base/">
+      <default class="h1/h1_floating_base/h1_floating_base">
+        <default class="h1/h1_floating_base/visual">
+          <geom type="mesh" contype="0" conaffinity="0" group="2" material="h1/h1_floating_base/black"/>
+        </default>
+        <default class="h1/h1_floating_base/collision">
+          <geom group="3"/>
+        </default>
+      </default>
+    </default>
+    <default class="h1/robotiq_2f85_left/">
+      <default class="h1/robotiq_2f85_left/2f85">
+        <mesh scale="0.001 0.001 0.001"/>
+        <general biastype="affine"/>
+        <default class="h1/robotiq_2f85_left/driver">
+          <joint solreflimit="0.005" solimplimit="0.95 0.99" range="0 0.8" armature="0.005" damping="0.1"/>
+        </default>
+        <default class="h1/robotiq_2f85_left/follower">
+          <joint solreflimit="0.005" solimplimit="0.95 0.99" range="-0.872664 0.872664" armature="0.001"/>
+        </default>
+        <default class="h1/robotiq_2f85_left/spring_link">
+          <joint springref="2.62" stiffness="0.05" range="-0.296706 0.8" armature="0.001" damping="0.00125"/>
+        </default>
+        <default class="h1/robotiq_2f85_left/coupler">
+          <joint solreflimit="0.005" solimplimit="0.95 0.99" range="-0.001 0.001" armature="0.001"/>
+        </default>
+        <default class="h1/robotiq_2f85_left/visual">
+          <geom type="mesh" contype="0" conaffinity="0" group="2"/>
+        </default>
+        <default class="h1/robotiq_2f85_left/collision">
+          <geom type="mesh" group="3"/>
+          <default class="h1/robotiq_2f85_left/pad_box1">
+            <geom size="0.011 0.004 0.009375" type="box" priority="1" friction="1 0.05 0.001" solref="0.004" solimp="0.95 0.99" rgba="0.55 0.55 0.55 1"/>
+          </default>
+          <default class="h1/robotiq_2f85_left/pad_box2">
+            <geom size="0.011 0.004 0.009375" type="box" priority="1" friction="0.95 0.05 0.001" solref="0.004" solimp="0.95 0.99" rgba="0.45 0.45 0.45 1"/>
+          </default>
+        </default>
+      </default>
+    </default>
+    <default class="h1/robotiq_2f85_right/">
+      <default class="h1/robotiq_2f85_right/2f85">
+        <mesh scale="0.001 0.001 0.001"/>
+        <general biastype="affine"/>
+        <default class="h1/robotiq_2f85_right/driver">
+          <joint solreflimit="0.005" solimplimit="0.95 0.99" range="0 0.8" armature="0.005" damping="0.1"/>
+        </default>
+        <default class="h1/robotiq_2f85_right/follower">
+          <joint solreflimit="0.005" solimplimit="0.95 0.99" range="-0.872664 0.872664" armature="0.001"/>
+        </default>
+        <default class="h1/robotiq_2f85_right/spring_link">
+          <joint springref="2.62" stiffness="0.05" range="-0.296706 0.8" armature="0.001" damping="0.00125"/>
+        </default>
+        <default class="h1/robotiq_2f85_right/coupler">
+          <joint solreflimit="0.005" solimplimit="0.95 0.99" range="-0.001 0.001" armature="0.001"/>
+        </default>
+        <default class="h1/robotiq_2f85_right/visual">
+          <geom type="mesh" contype="0" conaffinity="0" group="2"/>
+        </default>
+        <default class="h1/robotiq_2f85_right/collision">
+          <geom type="mesh" group="3"/>
+          <default class="h1/robotiq_2f85_right/pad_box1">
+            <geom size="0.011 0.004 0.009375" type="box" priority="1" friction="1 0.05 0.001" solref="0.004" solimp="0.95 0.99" rgba="0.55 0.55 0.55 1"/>
+          </default>
+          <default class="h1/robotiq_2f85_right/pad_box2">
+            <geom size="0.011 0.004 0.009375" type="box" priority="1" friction="0.95 0.05 0.001" solref="0.004" solimp="0.95 0.99" rgba="0.45 0.45 0.45 1"/>
+          </default>
+        </default>
+      </default>
+    </default>
+    <default class="table/">
+      <default class="table/table">
+        <default class="table/visual">
+          <geom type="mesh" contype="0" conaffinity="0" group="2"/>
+        </default>
+        <default class="table/collision">
+          <geom type="mesh" group="3" solref="0.004" solimp="0.95 0.99"/>
+        </default>
+      </default>
+    </default>
+    <default class="kitchen-floor/">
+      <default class="kitchen-floor/default">
+        <default class="kitchen-floor/visual">
+          <geom contype="0" conaffinity="0"/>
+        </default>
+        <default class="kitchen-floor/structural">
+          <geom contype="8" conaffinity="7" group="4" friction="0.9 0.9 0.001" solref="0.025" solimp="0.998 0.998"/>
+        </default>
+      </default>
+    </default>
+    <default class="kitchen-wall/">
+      <default class="kitchen-wall/default">
+        <default class="kitchen-wall/visual">
+          <geom contype="0" conaffinity="0"/>
+        </default>
+        <default class="kitchen-wall/structural">
+          <geom contype="8" conaffinity="7" group="4" friction="0.9 0.9 0.001" solref="0.025" solimp="0.998 0.998"/>
+        </default>
+      </default>
+    </default>
+    <default class="kitchen-wall_1/">
+      <default class="kitchen-wall_1/default">
+        <default class="kitchen-wall_1/visual">
+          <geom contype="0" conaffinity="0"/>
+        </default>
+        <default class="kitchen-wall_1/structural">
+          <geom contype="8" conaffinity="7" group="4" friction="0.9 0.9 0.001" solref="0.025" solimp="0.998 0.998"/>
+        </default>
+      </default>
+    </default>
+    <default class="kitchen-wall_2/">
+      <default class="kitchen-wall_2/default">
+        <default class="kitchen-wall_2/visual">
+          <geom contype="0" conaffinity="0"/>
+        </default>
+        <default class="kitchen-wall_2/structural">
+          <geom contype="8" conaffinity="7" group="4" friction="0.9 0.9 0.001" solref="0.025" solimp="0.998 0.998"/>
+        </default>
+      </default>
+    </default>
+    <default class="kitchen-wall_3/">
+      <default class="kitchen-wall_3/default">
+        <default class="kitchen-wall_3/visual">
+          <geom contype="0" conaffinity="0"/>
+        </default>
+        <default class="kitchen-wall_3/structural">
+          <geom contype="8" conaffinity="7" group="4" friction="0.9 0.9 0.001" solref="0.025" solimp="0.998 0.998"/>
+        </default>
+      </default>
+    </default>
+    <default class="partnet_a44c2110f646309bc7fb1a0a584939a5/"/>
+    <default class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/"/>
+    <default class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/">
+      <default class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/default">
+        <default class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/microwave-visual">
+          <mesh scale="0.5 0.5 0.5"/>
+        </default>
+      </default>
+    </default>
+    <default class="ycb-003_cracker_box/"/>
+    <default class="ycb-004_sugar_box/"/>
+    <default class="ycb-006_mustard_bottle/"/>
+  </default>
+  <asset>
+    <texture type="skybox" name="//unnamed_texture_0" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+    <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300"/>
+    <texture type="2d" name="table/table" file="table-ee834850109e7b68c6d7297b546e3e436c6c06b6.png"/>
+    <texture type="2d" name="kitchen-floor/tex_kitchen_floor" file="kitchen_floor-54e86e260a95bf479b25562276b78351cf92591e.png"/>
+    <texture type="2d" name="kitchen-wall/tex_light_wood_counters" file="kitchen_floor-54e86e260a95bf479b25562276b78351cf92591e.png"/>
+    <texture type="2d" name="kitchen-wall/tex_white_fabric" file="kitchen_wall_1-7a41be586958e55e31eca11d3cc5679790c7f482.png"/>
+    <texture type="2d" name="kitchen-wall_1/tex_white_fabric" file="kitchen_wall_1-7a41be586958e55e31eca11d3cc5679790c7f482.png"/>
+    <texture type="2d" name="kitchen-wall_1/LightWoodCounters" file="LightWoodCounters-54e86e260a95bf479b25562276b78351cf92591e.png"/>
+    <texture type="2d" name="kitchen-wall_1/TexturesCom_WoodFine0050_1_seamless_S" file="TexturesCom_WoodFine0050_1_seamless_S-12ebe269c96e5e388b9040e7c5d067278c2efa51.png"/>
+    <texture type="2d" name="kitchen-wall_2/tex_kitchen_tile" file="kitchen_wall_3-3cebe616408f076b0b9d3489c8dc9b9c014a6f3e.png"/>
+    <texture type="2d" name="kitchen-wall_3/tex_kitchen_tile" file="kitchen_wall_3-3cebe616408f076b0b9d3489c8dc9b9c014a6f3e.png"/>
+    <texture type="2d" name="kitchen-wall_3/LightWoodCounters" file="LightWoodCounters-54e86e260a95bf479b25562276b78351cf92591e.png"/>
+    <texture type="2d" name="ycb-003_cracker_box/ycb-object-texture" file="texture_map-c64c3dd22a3dacde4eb1e8ab1c89ca2cda4d50b4.png"/>
+    <texture type="2d" name="ycb-004_sugar_box/ycb-object-texture" file="texture_map-79c07f6ec4579975efb77811b63bc72aef10c117.png"/>
+    <texture type="2d" name="ycb-006_mustard_bottle/ycb-object-texture" file="texture_map-498a58c88cc3a55e0994bafbaea31b0599735766.png"/>
+    <material name="groundplane" class="/" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
+    <material name="h1/black" class="h1/" rgba="0.1 0.1 0.1 1"/>
+    <material name="h1/white" class="h1/"/>
+    <material name="h1/h1_floating_base/black" class="h1/h1_floating_base/" rgba="0.1 0.1 0.1 1"/>
+    <material name="h1/h1_floating_base/white" class="h1/h1_floating_base/"/>
+    <material name="h1/robotiq_2f85_left/metal" class="h1/robotiq_2f85_left/" rgba="0.58 0.58 0.58 1"/>
+    <material name="h1/robotiq_2f85_left/silicone" class="h1/robotiq_2f85_left/" rgba="0.1882 0.1882 0.1882 1"/>
+    <material name="h1/robotiq_2f85_left/gray" class="h1/robotiq_2f85_left/" rgba="0.4627 0.4627 0.4627 1"/>
+    <material name="h1/robotiq_2f85_left/black" class="h1/robotiq_2f85_left/" rgba="0.149 0.149 0.149 1"/>
+    <material name="h1/robotiq_2f85_right/metal" class="h1/robotiq_2f85_right/" rgba="0.58 0.58 0.58 1"/>
+    <material name="h1/robotiq_2f85_right/silicone" class="h1/robotiq_2f85_right/" rgba="0.1882 0.1882 0.1882 1"/>
+    <material name="h1/robotiq_2f85_right/gray" class="h1/robotiq_2f85_right/" rgba="0.4627 0.4627 0.4627 1"/>
+    <material name="h1/robotiq_2f85_right/black" class="h1/robotiq_2f85_right/" rgba="0.149 0.149 0.149 1"/>
+    <material name="table/table" class="table/" texture="table/table" specular="0.3" rgba="0.62 0.62 0.6 1"/>
+    <material name="table/table_legs" class="table/" texture="table/table" specular="0.3"/>
+    <material name="kitchen-floor/mat_kitchen_floor" class="kitchen-floor/default" texture="kitchen-floor/tex_kitchen_floor" rgba="0.698113 0.339363 0.135012 1"/>
+    <material name="kitchen-wall/mat_white_plastic" class="kitchen-wall/default"/>
+    <material name="kitchen-wall/mat_glass_white" class="kitchen-wall/default" rgba="1 1 1 0.5"/>
+    <material name="kitchen-wall/mat_light_wood_cabinets" class="kitchen-wall/default" texture="kitchen-wall/tex_light_wood_counters" rgba="0.745283 0.465802 0.186321 1"/>
+    <material name="kitchen-wall/mat_pure_white" class="kitchen-wall/default" texture="kitchen-wall/tex_white_fabric"/>
+    <material name="kitchen-wall_1/mat_pure_white" class="kitchen-wall_1/default" texture="kitchen-wall_1/tex_white_fabric"/>
+    <material name="kitchen-wall_1/BlackPlastic" class="kitchen-wall_1/default" rgba="0.198529 0.198529 0.198529 1"/>
+    <material name="kitchen-wall_1/LightWoodCounters2" class="kitchen-wall_1/default" texture="kitchen-wall_1/LightWoodCounters" rgba="0.764151 0.517355 0.299172 1"/>
+    <material name="kitchen-wall_1/TexturesCom_WoodFine0050_1_seamless_S_rich" class="kitchen-wall_1/default" texture="kitchen-wall_1/TexturesCom_WoodFine0050_1_seamless_S" rgba="0.529412 0.307526 0.307526 1"/>
+    <material name="kitchen-wall_2/mat_kitchen_tile" class="kitchen-wall_2/default" texture="kitchen-wall_2/tex_kitchen_tile"/>
+    <material name="kitchen-wall_3/mat_kitchen_tile" class="kitchen-wall_3/default" texture="kitchen-wall_3/tex_kitchen_tile"/>
+    <material name="kitchen-wall_3/Glass_White_Mat" class="kitchen-wall_3/default" rgba="1 1 1 0.5"/>
+    <material name="kitchen-wall_3/LightWoodCabinets" class="kitchen-wall_3/default" texture="kitchen-wall_3/LightWoodCounters" rgba="0.745283 0.465802 0.186321 1"/>
+    <material name="kitchen-wall_3/WhitePlastic" class="kitchen-wall_3/default"/>
+    <material name="ycb-003_cracker_box/ycb-object-material" class="ycb-003_cracker_box/" texture="ycb-003_cracker_box/ycb-object-texture" specular="0.2" shininess="0.2"/>
+    <material name="ycb-004_sugar_box/ycb-object-material" class="ycb-004_sugar_box/" texture="ycb-004_sugar_box/ycb-object-texture" specular="0.2" shininess="0.2"/>
+    <material name="ycb-006_mustard_bottle/ycb-object-material" class="ycb-006_mustard_bottle/" texture="ycb-006_mustard_bottle/ycb-object-texture" specular="0.2" shininess="0.2"/>
+    <mesh name="h1/pelvis" class="h1/" file="pelvis-df22b3c8ffb402f0a99f99a1ff69c6d06df6824b.stl"/>
+    <mesh name="h1/left_hip_yaw_link" class="h1/" file="left_hip_yaw_link-494e2431c66e182a535ce4cf2d4dc4b2028b6ff4.stl"/>
+    <mesh name="h1/left_hip_roll_link" class="h1/" file="left_hip_roll_link-357d6dfd2955a19b686f1739678fabeab41a331e.stl"/>
+    <mesh name="h1/left_hip_pitch_link" class="h1/" file="left_hip_pitch_link-a117f6124d5faaca23025e0adf62feffe9ba4004.stl"/>
+    <mesh name="h1/left_knee_link" class="h1/" file="left_knee_link-b3f1dc3282a07758c360cc832370f7d31e6f183f.stl"/>
+    <mesh name="h1/left_ankle_link" class="h1/" file="left_ankle_link-7b3e177ce59314da1a0d1e43be29ce2ce95fafb7.stl"/>
+    <mesh name="h1/right_hip_yaw_link" class="h1/" file="right_hip_yaw_link-b5f7dfaf54b8c7e72c98388bf40626e27391db5d.stl"/>
+    <mesh name="h1/right_hip_roll_link" class="h1/" file="right_hip_roll_link-13b6f0700f7b642bb41920412bbc8f21ad593f09.stl"/>
+    <mesh name="h1/right_hip_pitch_link" class="h1/" file="right_hip_pitch_link-8ea70aa41408ab69b27cf3f21bc3f18a34771403.stl"/>
+    <mesh name="h1/right_knee_link" class="h1/" file="right_knee_link-34c63d03ee95c13e0705e2b6f22dcb6279a5fb93.stl"/>
+    <mesh name="h1/right_ankle_link" class="h1/" file="right_ankle_link-e221f4e4a4b92d59298e64ad0e229ec59aeaa811.stl"/>
+    <mesh name="h1/torso_link" class="h1/" file="torso_link-da0b2a088d5683280651d46d5379a9b4d02ed0e7.stl"/>
+    <mesh name="h1/left_shoulder_pitch_link" class="h1/" file="left_shoulder_pitch_link-db61428f6606af254eae566cf43abcc9a5646dfa.stl"/>
+    <mesh name="h1/left_shoulder_roll_link" class="h1/" file="left_shoulder_roll_link-0a25e37b165e6b3a70bb9004166e898c6c48f597.stl"/>
+    <mesh name="h1/left_shoulder_yaw_link" class="h1/" file="left_shoulder_yaw_link-e59c21b2ab06f40100090a2d941bf30c101c0916.stl"/>
+    <mesh name="h1/left_elbow_link" class="h1/" file="left_elbow_link-4ec4ac14ef4c3fe15d7bfb6f56b0de39c33b7138.stl"/>
+    <mesh name="h1/right_shoulder_pitch_link" class="h1/" file="right_shoulder_pitch_link-51e52ba571074d048a8488abff55e99cf118a3a3.stl"/>
+    <mesh name="h1/right_shoulder_roll_link" class="h1/" file="right_shoulder_roll_link-9686d47c6102e6fc601611fcbbe432a57bc75ea1.stl"/>
+    <mesh name="h1/right_shoulder_yaw_link" class="h1/" file="right_shoulder_yaw_link-c9db09eeb683b883476f391b270db668c77fa0ab.stl"/>
+    <mesh name="h1/right_elbow_link" class="h1/" file="right_elbow_link-c162ccfa1d51f1c81ef688664ca0f758f2aee107.stl"/>
+    <mesh name="h1/logo_link" class="h1/" file="logo_link-10057dae98625f181444678810ff8cea114d3937.stl"/>
+    <mesh name="h1/h1_floating_base/pelvis" class="h1/h1_floating_base/" file="pelvis-df22b3c8ffb402f0a99f99a1ff69c6d06df6824b.stl"/>
+    <mesh name="h1/h1_floating_base/left_hip_yaw_link" class="h1/h1_floating_base/" file="left_hip_yaw_link-494e2431c66e182a535ce4cf2d4dc4b2028b6ff4.stl"/>
+    <mesh name="h1/h1_floating_base/left_hip_roll_link" class="h1/h1_floating_base/" file="left_hip_roll_link-357d6dfd2955a19b686f1739678fabeab41a331e.stl"/>
+    <mesh name="h1/h1_floating_base/left_hip_pitch_link" class="h1/h1_floating_base/" file="left_hip_pitch_link-a117f6124d5faaca23025e0adf62feffe9ba4004.stl"/>
+    <mesh name="h1/h1_floating_base/left_knee_link" class="h1/h1_floating_base/" file="left_knee_link-b3f1dc3282a07758c360cc832370f7d31e6f183f.stl"/>
+    <mesh name="h1/h1_floating_base/left_ankle_link" class="h1/h1_floating_base/" file="left_ankle_link-7b3e177ce59314da1a0d1e43be29ce2ce95fafb7.stl"/>
+    <mesh name="h1/h1_floating_base/right_hip_yaw_link" class="h1/h1_floating_base/" file="right_hip_yaw_link-b5f7dfaf54b8c7e72c98388bf40626e27391db5d.stl"/>
+    <mesh name="h1/h1_floating_base/right_hip_roll_link" class="h1/h1_floating_base/" file="right_hip_roll_link-13b6f0700f7b642bb41920412bbc8f21ad593f09.stl"/>
+    <mesh name="h1/h1_floating_base/right_hip_pitch_link" class="h1/h1_floating_base/" file="right_hip_pitch_link-8ea70aa41408ab69b27cf3f21bc3f18a34771403.stl"/>
+    <mesh name="h1/h1_floating_base/right_knee_link" class="h1/h1_floating_base/" file="right_knee_link-34c63d03ee95c13e0705e2b6f22dcb6279a5fb93.stl"/>
+    <mesh name="h1/h1_floating_base/right_ankle_link" class="h1/h1_floating_base/" file="right_ankle_link-e221f4e4a4b92d59298e64ad0e229ec59aeaa811.stl"/>
+    <mesh name="h1/robotiq_2f85_left/base_mount" class="h1/robotiq_2f85_left/2f85" file="base_mount-22e57178defe77afb6bdd333bfae16607f1eb3dd.stl"/>
+    <mesh name="h1/robotiq_2f85_left/base" class="h1/robotiq_2f85_left/2f85" file="base-e5dacbcc3971bfdb549ff8c7d38ea873ca7f2933.stl"/>
+    <mesh name="h1/robotiq_2f85_left/driver" class="h1/robotiq_2f85_left/2f85" file="driver-97efa43184c575b31ff1f3980641896f51492762.stl"/>
+    <mesh name="h1/robotiq_2f85_left/coupler" class="h1/robotiq_2f85_left/2f85" file="coupler-0a4240dc94992944cca6ec9e270ff1658fa86c55.stl"/>
+    <mesh name="h1/robotiq_2f85_left/follower" class="h1/robotiq_2f85_left/2f85" file="follower-39e4b8048f1395ee38cb45b37b5fec0e6f2aaec9.stl"/>
+    <mesh name="h1/robotiq_2f85_left/pad" class="h1/robotiq_2f85_left/2f85" file="pad-e6a633b2c81740b1f783ec4c6e695c8cc570f09d.stl"/>
+    <mesh name="h1/robotiq_2f85_left/silicone_pad" class="h1/robotiq_2f85_left/2f85" file="silicone_pad-c284384f3ca6dcdc24d6188a5d1a2d4c42c412ac.stl"/>
+    <mesh name="h1/robotiq_2f85_left/spring_link" class="h1/robotiq_2f85_left/2f85" file="spring_link-8f50234325193b84e9f86b7a63a24560a389c9bf.stl"/>
+    <mesh name="h1/robotiq_2f85_right/base_mount" class="h1/robotiq_2f85_right/2f85" file="base_mount-22e57178defe77afb6bdd333bfae16607f1eb3dd.stl"/>
+    <mesh name="h1/robotiq_2f85_right/base" class="h1/robotiq_2f85_right/2f85" file="base-e5dacbcc3971bfdb549ff8c7d38ea873ca7f2933.stl"/>
+    <mesh name="h1/robotiq_2f85_right/driver" class="h1/robotiq_2f85_right/2f85" file="driver-97efa43184c575b31ff1f3980641896f51492762.stl"/>
+    <mesh name="h1/robotiq_2f85_right/coupler" class="h1/robotiq_2f85_right/2f85" file="coupler-0a4240dc94992944cca6ec9e270ff1658fa86c55.stl"/>
+    <mesh name="h1/robotiq_2f85_right/follower" class="h1/robotiq_2f85_right/2f85" file="follower-39e4b8048f1395ee38cb45b37b5fec0e6f2aaec9.stl"/>
+    <mesh name="h1/robotiq_2f85_right/pad" class="h1/robotiq_2f85_right/2f85" file="pad-e6a633b2c81740b1f783ec4c6e695c8cc570f09d.stl"/>
+    <mesh name="h1/robotiq_2f85_right/silicone_pad" class="h1/robotiq_2f85_right/2f85" file="silicone_pad-c284384f3ca6dcdc24d6188a5d1a2d4c42c412ac.stl"/>
+    <mesh name="h1/robotiq_2f85_right/spring_link" class="h1/robotiq_2f85_right/2f85" file="spring_link-8f50234325193b84e9f86b7a63a24560a389c9bf.stl"/>
+    <mesh name="table/table" class="table/" file="table-5e01ff7eba34315e402b748480ee0e9ffc0b9f46.obj"/>
+    <mesh name="table/table_legs" class="table/" file="table_legs-9e0e06bf9ae21ff87d47388f766cd1557e923748.obj"/>
+    <mesh name="table/table_collision_001" class="table/" file="table_collision_001-8d36f2a965e680e7c326435d5652b061f0930015.obj"/>
+    <mesh name="table/table_collision_002" class="table/" file="table_collision_002-938bf1f6da2b9158ea27ba951eafbe4a50155f41.obj"/>
+    <mesh name="table/table_collision_003" class="table/" file="table_collision_003-f6b265ab2616a1f5d37cfb6937af35e0cf97aa06.obj"/>
+    <mesh name="table/table_collision_004" class="table/" file="table_collision_004-019b01237fad73fd080b5e834fab0343b4a5fd7f.obj"/>
+    <mesh name="table/table_collision_005" class="table/" file="table_collision_005-c164c36446594960020d53a1d6ffb1a23a6b9884.obj"/>
+    <mesh name="table/table_collision_006" class="table/" file="table_collision_006-bcc7610a6f3fd5b588d7aeef4e9cb0ea1e9593ed.obj"/>
+    <mesh name="table/table_collision_007" class="table/" file="table_collision_007-10500f34f5ccdbe230e81475e76676f372e421c0.obj"/>
+    <mesh name="kitchen-floor/mesh_floor" class="kitchen-floor/default" file="kitchen_floor-42a9841a33671eeca2a660014adbd061533dc749.obj" scale="-1 1 1"/>
+    <mesh name="kitchen-wall/mesh_wall" class="kitchen-wall/default" file="kitchen_wall_1-5aadee557a74a4de0ac4874c5e7fa8168f337ce5.obj" scale="-1 1 1"/>
+    <mesh name="kitchen-wall/mesh_window_slider_0" class="kitchen-wall/default" file="window_slider_0-79a2561a18471c384c7360d9db03669e986c1d52.obj"/>
+    <mesh name="kitchen-wall/mesh_window_slider_1" class="kitchen-wall/default" file="window_slider_1-fa2f5aaa4e3a39c062be439b6fdddf324127ae5f.obj"/>
+    <mesh name="kitchen-wall/mesh_window_slider_2" class="kitchen-wall/default" file="window_slider_2-40648bff0fbdd9a797af169b55de0d3cff87b804.obj"/>
+    <mesh name="kitchen-wall_1/mesh_wall" class="kitchen-wall_1/default" file="kitchen_wall_2-187863eee4499d93c9db07815060294f3bfe5baa.obj" scale="-1 1 1"/>
+    <mesh name="kitchen-wall_1/mesh_wall_collider_0" class="kitchen-wall_1/default" file="kitchen_wall_2_collider0-336838bff664ef02dabd2b9ce262385c11ec561e.obj" scale="-1 1 1"/>
+    <mesh name="kitchen-wall_1/mesh_wall_collider_1" class="kitchen-wall_1/default" file="kitchen_wall_2_collider1-3ada292b26e86247c45fe9bda24244b73e2c4146.obj" scale="-1 1 1"/>
+    <mesh name="kitchen-wall_1/mesh_wall_collider_2" class="kitchen-wall_1/default" file="kitchen_wall_2_collider2-a067f6da1f985e83cfaa27280269a689c3b1ebd9.obj" scale="-1 1 1"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_4_0" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_4_0-64e2537dff08033707119cd4ef73e33d16a45bf6.obj"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_4_0_collision_0" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_4_0_collision_0-3bf7ca1b75c6308f8a972afb60bc85e0a0adc612.obj"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_4_0_collision_1" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_4_0_collision_1-5bb024a92f3a7ec1f4c387753c17558a46dc6d30.obj"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_4_0_collision_2" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_4_0_collision_2-f86e1e6decf861f9a18204d4db2246eccbf45eaf.obj"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_0_0" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_0_0-3839e24c1be270210fbdd9930b3e77ae8145beff.obj"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_0_0_collision_0" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_0_0_collision_0-da0fb99ed48c503a432b94e43f5164c4951479f8.obj"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_0_1" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_0_1-a27e7794f2fbcfc70fb843787f38e632dffbc09b.obj"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_0_1_collision_0" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_0_1_collision_0-e962e0b34c3e4430415e33d69d0a1d9feefbfe23.obj"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_2_0" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_2_0-b5bb56f4ba9fbaf6510cafa6595abb9476e922cd.obj"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_2_0_collision_0" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_2_0_collision_0-da0fb99ed48c503a432b94e43f5164c4951479f8.obj"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_2_1" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_2_1-7d1f1e19e3f6aa6da095315e82a7fe4305a5cc22.obj"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_2_1_collision_0" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_2_1_collision_0-e962e0b34c3e4430415e33d69d0a1d9feefbfe23.obj"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_1_0" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_1_0-833d095b434c8160e0aa111ddddd8af1fa3a81d0.obj"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_1_0_collision_0" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_1_0_collision_0-fd81c85bb47ff350b33a8769e92500244fb4586b.obj"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_1_0_collision_1" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_1_0_collision_1-0f7b3b70d0cb70c904006ba1c6837e4c208af9e2.obj"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_1_0_collision_2" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_1_0_collision_2-01f8c71b8336ebf52f5c2aa17d5070fbab02920d.obj"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_1_0_collision_3" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_1_0_collision_3-d18f22d614d45003b6d33e3cca195e4000e36950.obj"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_1_0_collision_4" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_1_0_collision_4-ffbbce853893f71049693251620b5abb83c8bb28.obj"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_3_0" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_3_0-edec1a09ce63daf84b9913939faead1e53237ff0.obj"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_3_0_collision_0" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_3_0_collision_0-fd81c85bb47ff350b33a8769e92500244fb4586b.obj"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_3_0_collision_1" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_3_0_collision_1-0f7b3b70d0cb70c904006ba1c6837e4c208af9e2.obj"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_3_0_collision_2" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_3_0_collision_2-01f8c71b8336ebf52f5c2aa17d5070fbab02920d.obj"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_3_0_collision_3" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_3_0_collision_3-d18f22d614d45003b6d33e3cca195e4000e36950.obj"/>
+    <mesh name="kitchen-wall_1/Doorway_Double_7_mesh_3_0_collision_4" class="kitchen-wall_1/default" file="Doorway_Double_7_mesh_3_0_collision_4-ffbbce853893f71049693251620b5abb83c8bb28.obj"/>
+    <mesh name="kitchen-wall_2/mesh_wall" class="kitchen-wall_2/default" file="kitchen_wall_3-da50499feefd082c467e7f77d950d8381e7be0bc.obj" scale="-1 1 1"/>
+    <mesh name="kitchen-wall_3/mesh_wall" class="kitchen-wall_3/default" file="kitchen_wall_4-efa742fc5d4e2a67dc55534a10086a19541891c5.obj" scale="-1 1 1"/>
+    <mesh name="kitchen-wall_3/Window_Slider_48x36_0" class="kitchen-wall_3/default" file="Window_Slider_48x36_0-07634ffb0317861cea1bf99baf89764810f68f99.obj"/>
+    <mesh name="kitchen-wall_3/Window_Slider_48x36_1" class="kitchen-wall_3/default" file="Window_Slider_48x36_1-fcd82fb6a6cf7d730e18578e2a5c56b89baf484a.obj"/>
+    <mesh name="kitchen-wall_3/Window_Slider_48x36_2" class="kitchen-wall_3/default" file="Window_Slider_48x36_2-cb4f89c62dfa68d7320fcd645e1e9899c32204c5.obj"/>
+    <mesh name="kitchen-wall_3/Window_Slider_48x36_collision_0" class="kitchen-wall_3/default" file="Window_Slider_48x36_collision_0-0b31973f611c630f5693fe058d70f96f77fec155.obj"/>
+    <mesh name="kitchen-wall_3/Window_Slider_48x36_collision_1" class="kitchen-wall_3/default" file="Window_Slider_48x36_collision_1-4319b7df4bdc517b58037115ed284df5d5ed188c.obj"/>
+    <mesh name="kitchen-wall_3/Window_Slider_48x36_collision_2" class="kitchen-wall_3/default" file="Window_Slider_48x36_collision_2-2cd9cd0892fbf327898f238256b2d72a992cda1b.obj"/>
+    <mesh name="kitchen-wall_3/Window_Slider_48x36_collision_3" class="kitchen-wall_3/default" file="Window_Slider_48x36_collision_3-d2bcae7a22afc1c12aac8bc4f2d914496939e31b.obj"/>
+    <mesh name="kitchen-wall_3/Window_Slider_48x36_collision_4" class="kitchen-wall_3/default" file="Window_Slider_48x36_collision_4-d1a06e55d06da2ee2dc72372eb2502f783e1f816.obj"/>
+    <mesh name="kitchen-wall_3/Window_Slider_48x36_collision_5" class="kitchen-wall_3/default" file="Window_Slider_48x36_collision_5-0bc76760c7c09cb594735df253348644e6c484a4.obj"/>
+    <mesh name="kitchen-wall_3/Window_Slider_48x36_collision_6" class="kitchen-wall_3/default" file="Window_Slider_48x36_collision_6-31cb706ad7a64a8e4e44dc5329739a57e41fbf12.obj"/>
+    <mesh name="kitchen-wall_3/Window_Slider_48x36_collision_7" class="kitchen-wall_3/default" file="Window_Slider_48x36_collision_7-f0b4a486403ef38eef63aeaf042e4308c4470d5e.obj"/>
+    <mesh name="kitchen-wall_3/Window_Slider_48x36_collision_8" class="kitchen-wall_3/default" file="Window_Slider_48x36_collision_8-a773a0cb230a762fca57a83f81c4c9764e4b083f.obj"/>
+    <mesh name="kitchen-wall_3/Window_Slider_48x36_collision_9" class="kitchen-wall_3/default" file="Window_Slider_48x36_collision_9-30a4fc282e5f86ad81a1c4fcf2a7cb2df073cc5a.obj"/>
+    <mesh name="kitchen-wall_3/Window_Slider_48x36_collision_10" class="kitchen-wall_3/default" file="Window_Slider_48x36_collision_10-d422f6f7ba1a4f4f4836966673a5619dfebde658.obj"/>
+    <mesh name="kitchen-wall_3/Window_Slider_48x36_collision_11" class="kitchen-wall_3/default" file="Window_Slider_48x36_collision_11-e24b3010fcb2c1b372ca8ed936195c86ec86a42f.obj"/>
+    <mesh name="kitchen-wall_3/Window_Slider_48x36_collision_12" class="kitchen-wall_3/default" file="Window_Slider_48x36_collision_12-cee07ff87bdcb990c14712d80ea2319c5b1a5285.obj"/>
+    <mesh name="kitchen-wall_3/Window_Slider_48x36_collision_13" class="kitchen-wall_3/default" file="Window_Slider_48x36_collision_13-155fc37f4b00a7d6af33ceed55823f52c9463928.obj"/>
+    <mesh name="kitchen-wall_3/Window_Slider_48x36_collision_14" class="kitchen-wall_3/default" file="Window_Slider_48x36_collision_14-c387eb3ef244b8b4114dc89b5e317808bd780700.obj"/>
+    <mesh name="kitchen-wall_3/Window_Slider_48x36_collision_15" class="kitchen-wall_3/default" file="Window_Slider_48x36_collision_15-0a91438bc9f6d6ddf95236f497ccdbd60311b231.obj"/>
+    <mesh name="kitchen-wall_3/Window_Slider_48x36_collision_16" class="kitchen-wall_3/default" file="Window_Slider_48x36_collision_16-02c19abc5c5511987b45b9094afd97743ebe8e8a.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5/new-5" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" file="new-5-ca93720352dbfb64f56638b87c43049b0f33ba82.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5/new-0" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" file="new-0-8aa1b9ec3b977162712ebab89732ac8c1371a58e.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5/new-3" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" file="new-3-a09709f0aeeb00101cd229207f66c75165068455.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5/new-1" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" file="new-1-12136acbe39c57851b537faa3cdbf9783517cfe9.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5/original-3" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" file="original-3-b5d8a914ca890a97bb27051de378cc98e6bb2986.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5/original-2" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" file="original-2-f8c7ef138e11a40435817dae7bcd223e502d4c39.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5/original-4" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" file="original-4-433932ed3419259e4105523b52f7820235206004.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5/original-5" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" file="original-5-4b5fe9eb4e1939b29e58e945d6c590361f41a2f7.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5/original-6" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" file="original-6-a491a4b12f4eb921e8c41861853f9b20107edce1.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5/original-7" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" file="original-7-0297297269c063e15e1efc2f36d9c97af182efb2.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5/original-8" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" file="original-8-78efd03d759f149afac77743533371dfa73669d9.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5/original-9" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" file="original-9-5c01ea43da49f7c3eb85d7463db1242e8a2371df.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5/new-4" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" file="new-4-97c030bf551a42430314354dcafb8350dc31bd24.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5/new-2" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" file="new-2-60317a20357c320f1ab3022c953d3016988e3d58.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/new-5" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" file="new-5-ca93720352dbfb64f56638b87c43049b0f33ba82.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/new-0" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" file="new-0-8aa1b9ec3b977162712ebab89732ac8c1371a58e.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/new-3" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" file="new-3-a09709f0aeeb00101cd229207f66c75165068455.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/new-1" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" file="new-1-12136acbe39c57851b537faa3cdbf9783517cfe9.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-3" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" file="original-3-b5d8a914ca890a97bb27051de378cc98e6bb2986.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-2" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" file="original-2-f8c7ef138e11a40435817dae7bcd223e502d4c39.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-4" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" file="original-4-433932ed3419259e4105523b52f7820235206004.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-5" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" file="original-5-4b5fe9eb4e1939b29e58e945d6c590361f41a2f7.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-6" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" file="original-6-a491a4b12f4eb921e8c41861853f9b20107edce1.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-7" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" file="original-7-0297297269c063e15e1efc2f36d9c97af182efb2.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-8" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" file="original-8-78efd03d759f149afac77743533371dfa73669d9.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-9" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" file="original-9-5c01ea43da49f7c3eb85d7463db1242e8a2371df.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/new-4" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" file="new-4-97c030bf551a42430314354dcafb8350dc31bd24.obj"/>
+    <mesh name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/new-2" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" file="new-2-60317a20357c320f1ab3022c953d3016988e3d58.obj"/>
+    <mesh name="partnet_dc5c91c8c01b1c8c506c648223cdabe9/original-12" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/microwave-visual" file="original-12-5fcc4483797be0e906408680885abeeb94582a0f.obj"/>
+    <mesh name="partnet_dc5c91c8c01b1c8c506c648223cdabe9/original-9" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/microwave-visual" file="original-9-86bf4379d72290d3cca8789fd2ff33a764e335cd.obj"/>
+    <mesh name="partnet_dc5c91c8c01b1c8c506c648223cdabe9/original-11" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/microwave-visual" file="original-11-939f57a5721b67fc25054239f6b17a3b75a3ea17.obj"/>
+    <mesh name="partnet_dc5c91c8c01b1c8c506c648223cdabe9/original-10" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/microwave-visual" file="original-10-257267c2aee098cc4796782cb9bd26b2e9b9f997.obj"/>
+    <mesh name="partnet_dc5c91c8c01b1c8c506c648223cdabe9/original-4" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/microwave-visual" file="original-4-702619155c91a3ce998cb9bff1029ec22a6829a4.obj"/>
+    <mesh name="partnet_dc5c91c8c01b1c8c506c648223cdabe9/original-3" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/microwave-visual" file="original-3-e0e252289b93a78488cbed89dbb7342f110a479e.obj"/>
+    <mesh name="partnet_dc5c91c8c01b1c8c506c648223cdabe9/original-5" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/microwave-visual" file="original-5-797ed37b4180d33d7f28c746c28c6b48b4de041a.obj"/>
+    <mesh name="partnet_dc5c91c8c01b1c8c506c648223cdabe9/new-4" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/microwave-visual" file="new-4-8be9e2b1d8f169f58bdfb18a1fb5cce1ce78e736.obj"/>
+    <mesh name="partnet_dc5c91c8c01b1c8c506c648223cdabe9/new-3" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/microwave-visual" file="new-3-14b70ecd3a049432c7fac3eda45541b49db88272.obj"/>
+    <mesh name="partnet_dc5c91c8c01b1c8c506c648223cdabe9/new-2" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/microwave-visual" file="new-2-ed84f66b70ccc8f6aed5936f6101ee73bfd0daef.obj"/>
+    <mesh name="partnet_dc5c91c8c01b1c8c506c648223cdabe9/new-1" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/microwave-visual" file="new-1-96d780056b1842c00cdb665bcac1daaaa8a2ecc0.obj"/>
+    <mesh name="partnet_dc5c91c8c01b1c8c506c648223cdabe9/new-0" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/microwave-visual" file="new-0-53ac4855cd559c3ba25590c28b0dfb8f4281c81e.obj"/>
+    <mesh name="ycb-003_cracker_box/ycb-object-meshfile" class="ycb-003_cracker_box/" file="textured-6cbb62798ddf7c474bff4f2457e6d9066853d017.obj"/>
+    <mesh name="ycb-004_sugar_box/ycb-object-meshfile" class="ycb-004_sugar_box/" file="textured-444877e3a277c3228896cca680f7e9252bf81e9e.obj"/>
+    <mesh name="ycb-006_mustard_bottle/ycb-object-meshfile" class="ycb-006_mustard_bottle/" file="textured-a2f49e48a187a04be74afe58c2d001a5d506a8db.obj"/>
+  </asset>
+  <worldbody>
+    <camera name="external" class="/" pos="0 -2 3" quat="0.92388 0.382683 0 0"/>
+    <light name="//unnamed_light_0" class="/" pos="0 0 3.5" dir="0 0 -1" directional="true"/>
+    <body name="floor">
+      <geom name="floor" class="/" size="0 0 0.05" type="plane" material="groundplane"/>
+    </body>
+    <body name="h1/">
+      <body name="h1/pelvis" childclass="h1/h1">
+        <inertial pos="-0.0002 4e-05 -0.04522" quat="0.498303 0.499454 -0.500496 0.501741" mass="5.39" diaginertia="0.0490211 0.0445821 0.00824619"/>
+        <joint name="h1/pelvis_x" pos="0 0 0" axis="1 0 0" type="slide" limited="false" damping="1143.34"/>
+        <joint name="h1/pelvis_y" pos="0 0 0" axis="0 1 0" type="slide" limited="false" damping="1143.34"/>
+        <joint name="h1/pelvis_rz" pos="0 0 0" axis="0 0 1" limited="false" damping="162.457"/>
+        <site name="h1//unnamed_site_3" pos="0 0 0" group="1" rgba="1 1 1 1"/>
+        <body name="h1/torso_link">
+          <inertial pos="0.000489 0.002797 0.20484" quat="0.999989 -0.00130808 -0.00282289 -0.00349105" mass="17.789" diaginertia="0.487315 0.409628 0.127837"/>
+          <geom name="h1//unnamed_geom_0" class="h1/visual" mesh="h1/torso_link"/>
+          <geom name="h1//unnamed_geom_1" class="h1/visual" material="h1/white" mesh="h1/logo_link"/>
+          <geom name="h1/head" class="h1/collision" size="0.06 0.04" pos="0.05 0 0.64" type="capsule"/>
+          <geom name="h1/helmet" class="h1/collision" size="0.073" pos="0.045 0 0.68"/>
+          <geom name="h1/torso" class="h1/collision" size="0.07 0.1 0.22" pos="0 0 0.25" type="box"/>
+          <geom name="h1/hip" class="h1/collision" size="0.05 0.1" pos="0 0 -0.05" quat="0.707107 0.707107 0 0" type="capsule"/>
+          <site name="h1/imu" pos="-0.04452 -0.01891 0.27756"/>
+          <camera name="h1/head" pos="0.12 0 0.69" quat="0.683613 0.181711 -0.181856 -0.683069" fovy="60"/>
+          <body name="h1/left_shoulder_pitch_link" pos="0.0055 0.15535 0.42999" quat="0.976296 0.216438 0 0">
+            <inertial pos="0.005045 0.053657 -0.015715" quat="0.814858 0.579236 -0.0201072 -0.00936488" mass="1.033" diaginertia="0.00129936 0.000987113 0.000858198"/>
+            <joint name="h1/left_shoulder_pitch" pos="0 0 0" axis="0 1 0" range="-2.87 2.87" damping="18.4315"/>
+            <geom name="h1//unnamed_geom_6" class="h1/visual" mesh="h1/left_shoulder_pitch_link"/>
+            <body name="h1/left_shoulder_roll_link" pos="-0.0055 0.0565 -0.0165" quat="0.976296 -0.216438 0 0">
+              <inertial pos="0.000679 0.00115 -0.094076" quat="0.732491 0.00917179 0.0766656 0.676384" mass="0.793" diaginertia="0.00170388 0.00158256 0.00100336"/>
+              <joint name="h1/left_shoulder_roll" pos="0 0 0" axis="1 0 0" range="-0.34 3.11" damping="17.9241"/>
+              <geom name="h1//unnamed_geom_7" class="h1/visual" mesh="h1/left_shoulder_roll_link"/>
+              <geom name="h1/left_shoulder" class="h1/collision" size="0.04 0.0423792" pos="0 -0.03 -0.006" quat="0.815583 -0.57864 0 0" type="capsule"/>
+              <body name="h1/left_shoulder_yaw_link" pos="0 0 -0.1343">
+                <inertial pos="0.01365 0.002767 -0.16266" quat="0.703042 -0.0331229 -0.0473362 0.708798" mass="0.839" diaginertia="0.00408038 0.00370367 0.000622687"/>
+                <joint name="h1/left_shoulder_yaw" pos="0 0 0" axis="0 0 1" range="-1.3 4.45" damping="12.3899"/>
+                <geom name="h1//unnamed_geom_9" class="h1/visual" mesh="h1/left_shoulder_yaw_link"/>
+                <geom name="h1//unnamed_geom_10" class="h1/collision" size="0.03 0.175" pos="0 0 -0.025" type="capsule"/>
+                <body name="h1/left_elbow_link" pos="0.0185 0 -0.198">
+                  <inertial pos="0.15908 -0.000144 -0.015776" quat="0.0765232 0.720327 0.0853116 0.684102" mass="0.669" diaginertia="0.00601829 0.00600579 0.000408305"/>
+                  <joint name="h1/left_elbow" pos="0 0 0" axis="0 1 0" range="-1.25 2.61" damping="12.1541"/>
+                  <geom name="h1//unnamed_geom_11" class="h1/visual" mesh="h1/left_elbow_link"/>
+                  <geom name="h1//unnamed_geom_12" class="h1/collision" size="0.025 0.140201" pos="0.14 0 -0.0075" quat="0.725774 0 -0.687934 0" type="capsule"/>
+                  <geom name="h1//unnamed_geom_13" class="h1/collision" size="0.033" pos="0.28 0 -0.015"/>
+                  <camera name="h1/left_wrist" pos="0.2 0 0.1" quat="0.641111 0.298717 -0.298955 -0.640601" fovy="60"/>
+                  <body name="h1/left_wrist_link" pos="0.3 0 -0.02">
+                    <inertial pos="0 0 0" mass="0" diaginertia="0 0 0"/>
+                    <joint name="h1/left_wrist" pos="0 0 0" axis="1 0 0" range="-1.5708 1.5708" damping="10.9545"/>
+                    <site name="h1/left_end_effector" pos="0 0 0"/>
+                    <body name="h1/robotiq_2f85_left/" quat="0.5 0.5 0.5 0.5">
+                      <body name="h1/robotiq_2f85_left/base_mount" childclass="h1/robotiq_2f85_left/2f85" pos="0 0 0.007">
+                        <geom name="h1/robotiq_2f85_left//unnamed_geom_0" class="h1/robotiq_2f85_left/visual" material="h1/robotiq_2f85_left/black" mesh="h1/robotiq_2f85_left/base_mount"/>
+                        <geom name="h1/robotiq_2f85_left//unnamed_geom_1" class="h1/robotiq_2f85_left/collision" mesh="h1/robotiq_2f85_left/base_mount"/>
+                        <body name="h1/robotiq_2f85_left/base" pos="0 0 0.0038" quat="0.707107 0 0 -0.707107">
+                          <inertial pos="0 -2.70394e-05 0.0354675" quat="0.999999 -0.00152849 0 0" mass="0.777441" diaginertia="0.000260285 0.000225381 0.000152708"/>
+                          <geom name="h1/robotiq_2f85_left//unnamed_geom_2" class="h1/robotiq_2f85_left/visual" material="h1/robotiq_2f85_left/black" mesh="h1/robotiq_2f85_left/base"/>
+                          <geom name="h1/robotiq_2f85_left//unnamed_geom_3" class="h1/robotiq_2f85_left/collision" mesh="h1/robotiq_2f85_left/base"/>
+                          <site name="h1/robotiq_2f85_left/pinch" pos="0 0 0.145" group="5" rgba="0.9 0.9 0.9 1"/>
+                          <body name="h1/robotiq_2f85_left/right_driver" pos="0 0.0306011 0.054904">
+                            <inertial pos="2.96931e-12 0.0177547 0.00107314" quat="0.681301 0.732003 0 0" mass="0.00899563" diaginertia="1.72352e-06 1.60906e-06 3.22006e-07"/>
+                            <joint name="h1/robotiq_2f85_left/right_driver_joint" class="h1/robotiq_2f85_left/driver" pos="0 0 0" axis="1 0 0"/>
+                            <geom name="h1/robotiq_2f85_left//unnamed_geom_4" class="h1/robotiq_2f85_left/visual" material="h1/robotiq_2f85_left/gray" mesh="h1/robotiq_2f85_left/driver"/>
+                            <geom name="h1/robotiq_2f85_left//unnamed_geom_5" class="h1/robotiq_2f85_left/collision" mesh="h1/robotiq_2f85_left/driver"/>
+                            <body name="h1/robotiq_2f85_left/right_coupler" pos="0 0.0315 -0.0041">
+                              <inertial pos="0 0.00301209 0.0232175" quat="0.705636 -0.0455904 0.0455904 0.705636" mass="0.0140974" diaginertia="4.16206e-06 3.52216e-06 8.88131e-07"/>
+                              <joint name="h1/robotiq_2f85_left/right_coupler_joint" class="h1/robotiq_2f85_left/coupler" pos="0 0 0" axis="1 0 0"/>
+                              <geom name="h1/robotiq_2f85_left//unnamed_geom_6" class="h1/robotiq_2f85_left/visual" material="h1/robotiq_2f85_left/black" mesh="h1/robotiq_2f85_left/coupler"/>
+                              <geom name="h1/robotiq_2f85_left//unnamed_geom_7" class="h1/robotiq_2f85_left/collision" mesh="h1/robotiq_2f85_left/coupler"/>
+                            </body>
+                          </body>
+                          <body name="h1/robotiq_2f85_left/right_spring_link" pos="0 0.0132 0.0609">
+                            <inertial pos="-8.65005e-09 0.0181624 0.0212658" quat="0.663403 -0.244737 0.244737 0.663403" mass="0.0221642" diaginertia="8.96853e-06 6.71733e-06 2.63931e-06"/>
+                            <joint name="h1/robotiq_2f85_left/right_spring_link_joint" class="h1/robotiq_2f85_left/spring_link" pos="0 0 0" axis="1 0 0" springref="2.62"/>
+                            <geom name="h1/robotiq_2f85_left//unnamed_geom_8" class="h1/robotiq_2f85_left/visual" material="h1/robotiq_2f85_left/black" mesh="h1/robotiq_2f85_left/spring_link"/>
+                            <geom name="h1/robotiq_2f85_left//unnamed_geom_9" class="h1/robotiq_2f85_left/collision" mesh="h1/robotiq_2f85_left/spring_link"/>
+                            <body name="h1/robotiq_2f85_left/right_follower" pos="0 0.055 0.0375">
+                              <inertial pos="0 -0.011046 0.0124786" quat="0.986437 0.164143 0 0" mass="0.0125222" diaginertia="2.67415e-06 2.4559e-06 6.02031e-07"/>
+                              <joint name="h1/robotiq_2f85_left/right_follower_joint" class="h1/robotiq_2f85_left/follower" pos="0 -0.018 0.0065" axis="1 0 0"/>
+                              <geom name="h1/robotiq_2f85_left//unnamed_geom_10" class="h1/robotiq_2f85_left/visual" material="h1/robotiq_2f85_left/black" mesh="h1/robotiq_2f85_left/follower"/>
+                              <geom name="h1/robotiq_2f85_left//unnamed_geom_11" class="h1/robotiq_2f85_left/collision" mesh="h1/robotiq_2f85_left/follower"/>
+                              <body name="h1/robotiq_2f85_left/right_pad" pos="0 -0.0189 0.01352">
+                                <inertial pos="0 -0.0025 0.0185" quat="0.707107 0 0 0.707107" mass="0.0035" diaginertia="4.73958e-07 3.64583e-07 1.23958e-07"/>
+                                <geom name="h1/robotiq_2f85_left/right_pad1" class="h1/robotiq_2f85_left/pad_box1" pos="0 -0.0026 0.028125" mass="0"/>
+                                <geom name="h1/robotiq_2f85_left/right_pad2" class="h1/robotiq_2f85_left/pad_box2" pos="0 -0.0026 0.009375" mass="0"/>
+                                <geom name="h1/robotiq_2f85_left//unnamed_geom_14" class="h1/robotiq_2f85_left/visual" mesh="h1/robotiq_2f85_left/pad"/>
+                                <body name="h1/robotiq_2f85_left/right_silicone_pad">
+                                  <geom name="h1/robotiq_2f85_left//unnamed_geom_15" class="h1/robotiq_2f85_left/visual" material="h1/robotiq_2f85_left/black" mesh="h1/robotiq_2f85_left/silicone_pad"/>
+                                </body>
+                              </body>
+                            </body>
+                          </body>
+                          <body name="h1/robotiq_2f85_left/left_driver" pos="0 -0.0306011 0.054904" quat="0 0 0 1">
+                            <inertial pos="0 0.0177547 0.00107314" quat="0.681301 0.732003 0 0" mass="0.00899563" diaginertia="1.72352e-06 1.60906e-06 3.22006e-07"/>
+                            <joint name="h1/robotiq_2f85_left/left_driver_joint" class="h1/robotiq_2f85_left/driver" pos="0 0 0" axis="1 0 0"/>
+                            <geom name="h1/robotiq_2f85_left//unnamed_geom_16" class="h1/robotiq_2f85_left/visual" material="h1/robotiq_2f85_left/gray" mesh="h1/robotiq_2f85_left/driver"/>
+                            <geom name="h1/robotiq_2f85_left//unnamed_geom_17" class="h1/robotiq_2f85_left/collision" mesh="h1/robotiq_2f85_left/driver"/>
+                            <body name="h1/robotiq_2f85_left/left_coupler" pos="0 0.0315 -0.0041">
+                              <inertial pos="0 0.00301209 0.0232175" quat="0.705636 -0.0455904 0.0455904 0.705636" mass="0.0140974" diaginertia="4.16206e-06 3.52216e-06 8.88131e-07"/>
+                              <joint name="h1/robotiq_2f85_left/left_coupler_joint" class="h1/robotiq_2f85_left/coupler" pos="0 0 0" axis="1 0 0"/>
+                              <geom name="h1/robotiq_2f85_left//unnamed_geom_18" class="h1/robotiq_2f85_left/visual" material="h1/robotiq_2f85_left/black" mesh="h1/robotiq_2f85_left/coupler"/>
+                              <geom name="h1/robotiq_2f85_left//unnamed_geom_19" class="h1/robotiq_2f85_left/collision" mesh="h1/robotiq_2f85_left/coupler"/>
+                            </body>
+                          </body>
+                          <body name="h1/robotiq_2f85_left/left_spring_link" pos="0 -0.0132 0.0609" quat="0 0 0 1">
+                            <inertial pos="-8.65005e-09 0.0181624 0.0212658" quat="0.663403 -0.244737 0.244737 0.663403" mass="0.0221642" diaginertia="8.96853e-06 6.71733e-06 2.63931e-06"/>
+                            <joint name="h1/robotiq_2f85_left/left_spring_link_joint" class="h1/robotiq_2f85_left/spring_link" pos="0 0 0" axis="1 0 0" springref="2.62"/>
+                            <geom name="h1/robotiq_2f85_left//unnamed_geom_20" class="h1/robotiq_2f85_left/visual" material="h1/robotiq_2f85_left/black" mesh="h1/robotiq_2f85_left/spring_link"/>
+                            <geom name="h1/robotiq_2f85_left//unnamed_geom_21" class="h1/robotiq_2f85_left/collision" mesh="h1/robotiq_2f85_left/spring_link"/>
+                            <body name="h1/robotiq_2f85_left/left_follower" pos="0 0.055 0.0375">
+                              <inertial pos="0 -0.011046 0.0124786" quat="0.986437 0.164143 0 0" mass="0.0125222" diaginertia="2.67415e-06 2.4559e-06 6.02031e-07"/>
+                              <joint name="h1/robotiq_2f85_left/left_follower_joint" class="h1/robotiq_2f85_left/follower" pos="0 -0.018 0.0065" axis="1 0 0"/>
+                              <geom name="h1/robotiq_2f85_left//unnamed_geom_22" class="h1/robotiq_2f85_left/visual" material="h1/robotiq_2f85_left/black" mesh="h1/robotiq_2f85_left/follower"/>
+                              <geom name="h1/robotiq_2f85_left//unnamed_geom_23" class="h1/robotiq_2f85_left/collision" mesh="h1/robotiq_2f85_left/follower"/>
+                              <body name="h1/robotiq_2f85_left/left_pad" pos="0 -0.0189 0.01352">
+                                <inertial pos="0 -0.0025 0.0185" quat="0.707107 0 0 0.707107" mass="0.0035" diaginertia="4.73958e-07 3.64583e-07 1.23958e-07"/>
+                                <geom name="h1/robotiq_2f85_left/left_pad1" class="h1/robotiq_2f85_left/pad_box1" pos="0 -0.0026 0.028125" mass="0"/>
+                                <geom name="h1/robotiq_2f85_left/left_pad2" class="h1/robotiq_2f85_left/pad_box2" pos="0 -0.0026 0.009375" mass="0"/>
+                                <geom name="h1/robotiq_2f85_left//unnamed_geom_26" class="h1/robotiq_2f85_left/visual" mesh="h1/robotiq_2f85_left/pad"/>
+                                <body name="h1/robotiq_2f85_left/left_silicone_pad">
+                                  <geom name="h1/robotiq_2f85_left//unnamed_geom_27" class="h1/robotiq_2f85_left/visual" material="h1/robotiq_2f85_left/black" mesh="h1/robotiq_2f85_left/silicone_pad"/>
+                                </body>
+                              </body>
+                            </body>
+                          </body>
+                        </body>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+          <body name="h1/right_shoulder_pitch_link" pos="0.0055 -0.15535 0.42999" quat="0.976296 -0.216438 0 0">
+            <inertial pos="0.005045 -0.053657 -0.015715" quat="0.579236 0.814858 0.00936488 0.0201072" mass="1.033" diaginertia="0.00129936 0.000987113 0.000858198"/>
+            <joint name="h1/right_shoulder_pitch" pos="0 0 0" axis="0 1 0" range="-2.87 2.87" damping="18.4315"/>
+            <geom name="h1//unnamed_geom_14" class="h1/visual" mesh="h1/right_shoulder_pitch_link"/>
+            <body name="h1/right_shoulder_roll_link" pos="-0.0055 -0.0565 -0.0165" quat="0.976296 0.216438 0 0">
+              <inertial pos="0.000679 -0.00115 -0.094076" quat="0.676384 0.0766656 0.00917179 0.732491" mass="0.793" diaginertia="0.00170388 0.00158256 0.00100336"/>
+              <joint name="h1/right_shoulder_roll" pos="0 0 0" axis="1 0 0" range="-3.11 0.34" damping="17.9241"/>
+              <geom name="h1//unnamed_geom_15" class="h1/visual" mesh="h1/right_shoulder_roll_link"/>
+              <geom name="h1/right_shoulder" class="h1/collision" size="0.04 0.0423792" pos="0 0.03 -0.006" quat="0.815583 0.57864 0 0" type="capsule"/>
+              <body name="h1/right_shoulder_yaw_link" pos="0 0 -0.1343">
+                <inertial pos="0.01365 -0.002767 -0.16266" quat="0.708798 -0.0473362 -0.0331229 0.703042" mass="0.839" diaginertia="0.00408038 0.00370367 0.000622687"/>
+                <joint name="h1/right_shoulder_yaw" pos="0 0 0" axis="0 0 1" range="-4.45 1.3" damping="12.3899"/>
+                <geom name="h1//unnamed_geom_17" class="h1/visual" mesh="h1/right_shoulder_yaw_link"/>
+                <geom name="h1//unnamed_geom_18" class="h1/collision" size="0.03 0.175" pos="0 0 -0.025" type="capsule"/>
+                <body name="h1/right_elbow_link" pos="0.0185 0 -0.198">
+                  <inertial pos="0.15908 0.000144 -0.015776" quat="-0.0765232 0.720327 -0.0853116 0.684102" mass="0.669" diaginertia="0.00601829 0.00600579 0.000408305"/>
+                  <joint name="h1/right_elbow" pos="0 0 0" axis="0 1 0" range="-1.25 2.61" damping="12.1541"/>
+                  <geom name="h1//unnamed_geom_19" class="h1/visual" mesh="h1/right_elbow_link"/>
+                  <geom name="h1//unnamed_geom_20" class="h1/collision" size="0.025 0.140201" pos="0.14 0 -0.0075" quat="0.725774 0 -0.687934 0" type="capsule"/>
+                  <geom name="h1//unnamed_geom_21" class="h1/collision" size="0.033" pos="0.28 0 -0.015"/>
+                  <camera name="h1/right_wrist" pos="0.2 0 0.1" quat="0.641111 0.298717 -0.298955 -0.640601" fovy="60"/>
+                  <body name="h1/right_wrist_link" pos="0.3 0 -0.02">
+                    <inertial pos="0 0 0" mass="0" diaginertia="0 0 0"/>
+                    <joint name="h1/right_wrist" pos="0 0 0" axis="1 0 0" range="-1.5708 1.5708" damping="10.9545"/>
+                    <site name="h1/right_end_effector" pos="0 0 0"/>
+                    <body name="h1/robotiq_2f85_right/" quat="0.5 0.5 0.5 0.5">
+                      <body name="h1/robotiq_2f85_right/base_mount" childclass="h1/robotiq_2f85_right/2f85" pos="0 0 0.007">
+                        <geom name="h1/robotiq_2f85_right//unnamed_geom_0" class="h1/robotiq_2f85_right/visual" material="h1/robotiq_2f85_right/black" mesh="h1/robotiq_2f85_right/base_mount"/>
+                        <geom name="h1/robotiq_2f85_right//unnamed_geom_1" class="h1/robotiq_2f85_right/collision" mesh="h1/robotiq_2f85_right/base_mount"/>
+                        <body name="h1/robotiq_2f85_right/base" pos="0 0 0.0038" quat="0.707107 0 0 -0.707107">
+                          <inertial pos="0 -2.70394e-05 0.0354675" quat="0.999999 -0.00152849 0 0" mass="0.777441" diaginertia="0.000260285 0.000225381 0.000152708"/>
+                          <geom name="h1/robotiq_2f85_right//unnamed_geom_2" class="h1/robotiq_2f85_right/visual" material="h1/robotiq_2f85_right/black" mesh="h1/robotiq_2f85_right/base"/>
+                          <geom name="h1/robotiq_2f85_right//unnamed_geom_3" class="h1/robotiq_2f85_right/collision" mesh="h1/robotiq_2f85_right/base"/>
+                          <site name="h1/robotiq_2f85_right/pinch" pos="0 0 0.145" group="5" rgba="0.9 0.9 0.9 1"/>
+                          <body name="h1/robotiq_2f85_right/right_driver" pos="0 0.0306011 0.054904">
+                            <inertial pos="2.96931e-12 0.0177547 0.00107314" quat="0.681301 0.732003 0 0" mass="0.00899563" diaginertia="1.72352e-06 1.60906e-06 3.22006e-07"/>
+                            <joint name="h1/robotiq_2f85_right/right_driver_joint" class="h1/robotiq_2f85_right/driver" pos="0 0 0" axis="1 0 0"/>
+                            <geom name="h1/robotiq_2f85_right//unnamed_geom_4" class="h1/robotiq_2f85_right/visual" material="h1/robotiq_2f85_right/gray" mesh="h1/robotiq_2f85_right/driver"/>
+                            <geom name="h1/robotiq_2f85_right//unnamed_geom_5" class="h1/robotiq_2f85_right/collision" mesh="h1/robotiq_2f85_right/driver"/>
+                            <body name="h1/robotiq_2f85_right/right_coupler" pos="0 0.0315 -0.0041">
+                              <inertial pos="0 0.00301209 0.0232175" quat="0.705636 -0.0455904 0.0455904 0.705636" mass="0.0140974" diaginertia="4.16206e-06 3.52216e-06 8.88131e-07"/>
+                              <joint name="h1/robotiq_2f85_right/right_coupler_joint" class="h1/robotiq_2f85_right/coupler" pos="0 0 0" axis="1 0 0"/>
+                              <geom name="h1/robotiq_2f85_right//unnamed_geom_6" class="h1/robotiq_2f85_right/visual" material="h1/robotiq_2f85_right/black" mesh="h1/robotiq_2f85_right/coupler"/>
+                              <geom name="h1/robotiq_2f85_right//unnamed_geom_7" class="h1/robotiq_2f85_right/collision" mesh="h1/robotiq_2f85_right/coupler"/>
+                            </body>
+                          </body>
+                          <body name="h1/robotiq_2f85_right/right_spring_link" pos="0 0.0132 0.0609">
+                            <inertial pos="-8.65005e-09 0.0181624 0.0212658" quat="0.663403 -0.244737 0.244737 0.663403" mass="0.0221642" diaginertia="8.96853e-06 6.71733e-06 2.63931e-06"/>
+                            <joint name="h1/robotiq_2f85_right/right_spring_link_joint" class="h1/robotiq_2f85_right/spring_link" pos="0 0 0" axis="1 0 0" springref="2.62"/>
+                            <geom name="h1/robotiq_2f85_right//unnamed_geom_8" class="h1/robotiq_2f85_right/visual" material="h1/robotiq_2f85_right/black" mesh="h1/robotiq_2f85_right/spring_link"/>
+                            <geom name="h1/robotiq_2f85_right//unnamed_geom_9" class="h1/robotiq_2f85_right/collision" mesh="h1/robotiq_2f85_right/spring_link"/>
+                            <body name="h1/robotiq_2f85_right/right_follower" pos="0 0.055 0.0375">
+                              <inertial pos="0 -0.011046 0.0124786" quat="0.986437 0.164143 0 0" mass="0.0125222" diaginertia="2.67415e-06 2.4559e-06 6.02031e-07"/>
+                              <joint name="h1/robotiq_2f85_right/right_follower_joint" class="h1/robotiq_2f85_right/follower" pos="0 -0.018 0.0065" axis="1 0 0"/>
+                              <geom name="h1/robotiq_2f85_right//unnamed_geom_10" class="h1/robotiq_2f85_right/visual" material="h1/robotiq_2f85_right/black" mesh="h1/robotiq_2f85_right/follower"/>
+                              <geom name="h1/robotiq_2f85_right//unnamed_geom_11" class="h1/robotiq_2f85_right/collision" mesh="h1/robotiq_2f85_right/follower"/>
+                              <body name="h1/robotiq_2f85_right/right_pad" pos="0 -0.0189 0.01352">
+                                <inertial pos="0 -0.0025 0.0185" quat="0.707107 0 0 0.707107" mass="0.0035" diaginertia="4.73958e-07 3.64583e-07 1.23958e-07"/>
+                                <geom name="h1/robotiq_2f85_right/right_pad1" class="h1/robotiq_2f85_right/pad_box1" pos="0 -0.0026 0.028125" mass="0"/>
+                                <geom name="h1/robotiq_2f85_right/right_pad2" class="h1/robotiq_2f85_right/pad_box2" pos="0 -0.0026 0.009375" mass="0"/>
+                                <geom name="h1/robotiq_2f85_right//unnamed_geom_14" class="h1/robotiq_2f85_right/visual" mesh="h1/robotiq_2f85_right/pad"/>
+                                <body name="h1/robotiq_2f85_right/right_silicone_pad">
+                                  <geom name="h1/robotiq_2f85_right//unnamed_geom_15" class="h1/robotiq_2f85_right/visual" material="h1/robotiq_2f85_right/black" mesh="h1/robotiq_2f85_right/silicone_pad"/>
+                                </body>
+                              </body>
+                            </body>
+                          </body>
+                          <body name="h1/robotiq_2f85_right/left_driver" pos="0 -0.0306011 0.054904" quat="0 0 0 1">
+                            <inertial pos="0 0.0177547 0.00107314" quat="0.681301 0.732003 0 0" mass="0.00899563" diaginertia="1.72352e-06 1.60906e-06 3.22006e-07"/>
+                            <joint name="h1/robotiq_2f85_right/left_driver_joint" class="h1/robotiq_2f85_right/driver" pos="0 0 0" axis="1 0 0"/>
+                            <geom name="h1/robotiq_2f85_right//unnamed_geom_16" class="h1/robotiq_2f85_right/visual" material="h1/robotiq_2f85_right/gray" mesh="h1/robotiq_2f85_right/driver"/>
+                            <geom name="h1/robotiq_2f85_right//unnamed_geom_17" class="h1/robotiq_2f85_right/collision" mesh="h1/robotiq_2f85_right/driver"/>
+                            <body name="h1/robotiq_2f85_right/left_coupler" pos="0 0.0315 -0.0041">
+                              <inertial pos="0 0.00301209 0.0232175" quat="0.705636 -0.0455904 0.0455904 0.705636" mass="0.0140974" diaginertia="4.16206e-06 3.52216e-06 8.88131e-07"/>
+                              <joint name="h1/robotiq_2f85_right/left_coupler_joint" class="h1/robotiq_2f85_right/coupler" pos="0 0 0" axis="1 0 0"/>
+                              <geom name="h1/robotiq_2f85_right//unnamed_geom_18" class="h1/robotiq_2f85_right/visual" material="h1/robotiq_2f85_right/black" mesh="h1/robotiq_2f85_right/coupler"/>
+                              <geom name="h1/robotiq_2f85_right//unnamed_geom_19" class="h1/robotiq_2f85_right/collision" mesh="h1/robotiq_2f85_right/coupler"/>
+                            </body>
+                          </body>
+                          <body name="h1/robotiq_2f85_right/left_spring_link" pos="0 -0.0132 0.0609" quat="0 0 0 1">
+                            <inertial pos="-8.65005e-09 0.0181624 0.0212658" quat="0.663403 -0.244737 0.244737 0.663403" mass="0.0221642" diaginertia="8.96853e-06 6.71733e-06 2.63931e-06"/>
+                            <joint name="h1/robotiq_2f85_right/left_spring_link_joint" class="h1/robotiq_2f85_right/spring_link" pos="0 0 0" axis="1 0 0" springref="2.62"/>
+                            <geom name="h1/robotiq_2f85_right//unnamed_geom_20" class="h1/robotiq_2f85_right/visual" material="h1/robotiq_2f85_right/black" mesh="h1/robotiq_2f85_right/spring_link"/>
+                            <geom name="h1/robotiq_2f85_right//unnamed_geom_21" class="h1/robotiq_2f85_right/collision" mesh="h1/robotiq_2f85_right/spring_link"/>
+                            <body name="h1/robotiq_2f85_right/left_follower" pos="0 0.055 0.0375">
+                              <inertial pos="0 -0.011046 0.0124786" quat="0.986437 0.164143 0 0" mass="0.0125222" diaginertia="2.67415e-06 2.4559e-06 6.02031e-07"/>
+                              <joint name="h1/robotiq_2f85_right/left_follower_joint" class="h1/robotiq_2f85_right/follower" pos="0 -0.018 0.0065" axis="1 0 0"/>
+                              <geom name="h1/robotiq_2f85_right//unnamed_geom_22" class="h1/robotiq_2f85_right/visual" material="h1/robotiq_2f85_right/black" mesh="h1/robotiq_2f85_right/follower"/>
+                              <geom name="h1/robotiq_2f85_right//unnamed_geom_23" class="h1/robotiq_2f85_right/collision" mesh="h1/robotiq_2f85_right/follower"/>
+                              <body name="h1/robotiq_2f85_right/left_pad" pos="0 -0.0189 0.01352">
+                                <inertial pos="0 -0.0025 0.0185" quat="0.707107 0 0 0.707107" mass="0.0035" diaginertia="4.73958e-07 3.64583e-07 1.23958e-07"/>
+                                <geom name="h1/robotiq_2f85_right/left_pad1" class="h1/robotiq_2f85_right/pad_box1" pos="0 -0.0026 0.028125" mass="0"/>
+                                <geom name="h1/robotiq_2f85_right/left_pad2" class="h1/robotiq_2f85_right/pad_box2" pos="0 -0.0026 0.009375" mass="0"/>
+                                <geom name="h1/robotiq_2f85_right//unnamed_geom_26" class="h1/robotiq_2f85_right/visual" mesh="h1/robotiq_2f85_right/pad"/>
+                                <body name="h1/robotiq_2f85_right/left_silicone_pad">
+                                  <geom name="h1/robotiq_2f85_right//unnamed_geom_27" class="h1/robotiq_2f85_right/visual" material="h1/robotiq_2f85_right/black" mesh="h1/robotiq_2f85_right/silicone_pad"/>
+                                </body>
+                              </body>
+                            </body>
+                          </body>
+                        </body>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+        <body name="h1/h1_floating_base/">
+          <body name="h1/h1_floating_base/h1_floating_base" childclass="h1/h1_floating_base/h1_floating_base">
+            <joint name="h1/h1_floating_base/h1_floating_base" pos="0 0 0" axis="0 0 1" stiffness="100" range="-2.35 2.35" damping="50"/>
+            <geom name="h1/h1_floating_base//unnamed_geom_0" class="h1/h1_floating_base/visual" mesh="h1/h1_floating_base/pelvis"/>
+            <body name="h1/h1_floating_base/left_hip_yaw_link" pos="0 0.0875 -0.1742">
+              <inertial pos="-0.04923 0.0001 0.0072" quat="0.69699 0.219193 0.233287 0.641667" mass="0" diaginertia="0 0 0"/>
+              <geom name="h1/h1_floating_base//unnamed_geom_1" class="h1/h1_floating_base/visual" mesh="h1/h1_floating_base/left_hip_yaw_link"/>
+              <body name="h1/h1_floating_base/left_hip_roll_link" pos="0.039468 0 0">
+                <inertial pos="-0.0058 -0.00319 -9e-05" quat="0.0438242 0.70721 -0.0729075 0.701867" mass="0" diaginertia="0 0 0"/>
+                <geom name="h1/h1_floating_base//unnamed_geom_2" class="h1/h1_floating_base/visual" mesh="h1/h1_floating_base/left_hip_roll_link"/>
+                <body name="h1/h1_floating_base/left_hip_pitch_link" pos="0 0.11536 0">
+                  <inertial pos="0.00746 -0.02346 -0.08193" quat="0.979828 0.0513522 -0.0169854 -0.192382" mass="0" diaginertia="0 0 0"/>
+                  <geom name="h1/h1_floating_base//unnamed_geom_3" class="h1/h1_floating_base/visual" mesh="h1/h1_floating_base/left_hip_pitch_link"/>
+                  <body name="h1/h1_floating_base/left_knee_link" pos="0 0 -0.4">
+                    <inertial pos="-0.00136 -0.00512 -0.1384" quat="0.626132 -0.034227 -0.0416277 0.777852" mass="0" diaginertia="0 0 0"/>
+                    <geom name="h1/h1_floating_base//unnamed_geom_4" class="h1/h1_floating_base/visual" mesh="h1/h1_floating_base/left_knee_link"/>
+                    <body name="h1/h1_floating_base/left_ankle_link" pos="0 0 -0.4">
+                      <inertial pos="0.06722 0.00015 -0.04497" quat="0.489101 0.503197 0.565782 0.432972" mass="0" diaginertia="0 0 0"/>
+                      <geom name="h1/h1_floating_base//unnamed_geom_5" class="h1/h1_floating_base/visual" mesh="h1/h1_floating_base/left_ankle_link"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+            <body name="h1/h1_floating_base/left_hip_yaw_link_collision_min" pos="0 0.0875 -0.1742">
+              <inertial pos="0 0 0" mass="0" diaginertia="0 0 0"/>
+              <geom name="h1/h1_floating_base//unnamed_geom_6" class="h1/h1_floating_base/collision" size="0.06 0.035" pos="-0.067 0 0" quat="0.707123 0 0.70709 0" type="cylinder"/>
+              <body name="h1/h1_floating_base/left_hip_roll_link_collision_min" pos="0.039468 0 0">
+                <inertial pos="0 0 0" mass="0" diaginertia="0 0 0"/>
+                <geom name="h1/h1_floating_base//unnamed_geom_7" class="h1/h1_floating_base/collision" size="0.05 0.03" pos="0 -0.02 0" quat="0.707107 0.707107 0 0" type="cylinder"/>
+                <body name="h1/h1_floating_base/left_hip_pitch_link_collision_min" pos="0 0.11536 0">
+                  <inertial pos="0 0 0" mass="0" diaginertia="0 0 0"/>
+                  <geom name="h1/h1_floating_base//unnamed_geom_8" class="h1/h1_floating_base/collision" size="0.03 0.21095" pos="0 0 -0.19" quat="0.047458 0 0.998873 0" type="capsule"/>
+                  <geom name="h1/h1_floating_base//unnamed_geom_9" class="h1/h1_floating_base/collision" size="0.03 0.21" pos="0.02 0 -0.19" quat="0 1 0 0" type="capsule"/>
+                  <geom name="h1/h1_floating_base//unnamed_geom_10" class="h1/h1_floating_base/collision" size="0.05 0.02" pos="0 -0.07 0" quat="0.707107 0.707107 0 0" type="cylinder"/>
+                  <body name="h1/h1_floating_base/left_knee_link_collision_min" pos="0 0 -0.4">
+                    <inertial pos="0 0 0" mass="0" diaginertia="0 0 0"/>
+                    <geom name="h1/h1_floating_base//unnamed_geom_11" class="h1/h1_floating_base/collision" size="0.025 0.2" pos="0.02 0 -0.2" quat="0 1 0 0" type="capsule"/>
+                    <geom name="h1/h1_floating_base//unnamed_geom_12" class="h1/h1_floating_base/collision" size="0.05" pos="0 0 -0.115"/>
+                    <body name="h1/h1_floating_base/left_ankle_link_collision_min" pos="0 0 -0.4">
+                      <inertial pos="0 0 0" mass="0" diaginertia="0 0 0"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+            <body name="h1/h1_floating_base/left_hip_yaw_link_collision_max" pos="0 0.0875 -0.1742">
+              <inertial pos="0 0 0" mass="0" diaginertia="0 0 0"/>
+              <geom name="h1/h1_floating_base//unnamed_geom_13" class="h1/h1_floating_base/collision" size="0.06 0.035" pos="-0.067 0 0" quat="0.707123 0 0.70709 0" type="cylinder"/>
+              <body name="h1/h1_floating_base/left_hip_roll_link_collision_max" pos="0.039468 0 0">
+                <inertial pos="0 0 0" mass="0" diaginertia="0 0 0"/>
+                <geom name="h1/h1_floating_base//unnamed_geom_14" class="h1/h1_floating_base/collision" size="0.05 0.03" pos="0 -0.02 0" quat="0.707107 0.707107 0 0" type="cylinder"/>
+                <body name="h1/h1_floating_base/left_hip_pitch_link_collision_max" pos="0 0.11536 0">
+                  <inertial pos="0 0 0" mass="0" diaginertia="0 0 0"/>
+                  <geom name="h1/h1_floating_base//unnamed_geom_15" class="h1/h1_floating_base/collision" size="0.03 0.21095" pos="0 0 -0.19" quat="0.047458 0 0.998873 0" type="capsule"/>
+                  <geom name="h1/h1_floating_base//unnamed_geom_16" class="h1/h1_floating_base/collision" size="0.03 0.21" pos="0.02 0 -0.19" quat="0 1 0 0" type="capsule"/>
+                  <geom name="h1/h1_floating_base//unnamed_geom_17" class="h1/h1_floating_base/collision" size="0.05 0.02" pos="0 -0.07 0" quat="0.707107 0.707107 0 0" type="cylinder"/>
+                  <body name="h1/h1_floating_base/left_knee_link_collision_max" pos="0 0 -0.4">
+                    <inertial pos="0 0 0" mass="0" diaginertia="0 0 0"/>
+                    <geom name="h1/h1_floating_base//unnamed_geom_18" class="h1/h1_floating_base/collision" size="0.025 0.2" pos="0.02 0 -0.2" quat="0 1 0 0" type="capsule"/>
+                    <geom name="h1/h1_floating_base//unnamed_geom_19" class="h1/h1_floating_base/collision" size="0.05" pos="0 0 -0.115"/>
+                    <body name="h1/h1_floating_base/left_ankle_link_collision_max" pos="0 0 -0.4">
+                      <inertial pos="0 0 0" mass="0" diaginertia="0 0 0"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+            <body name="h1/h1_floating_base/right_hip_yaw_link" pos="0 -0.0875 -0.1742">
+              <inertial pos="-0.04923 -0.0001 0.0072" quat="0.641667 0.233287 0.219193 0.69699" mass="0" diaginertia="0 0 0"/>
+              <geom name="h1/h1_floating_base//unnamed_geom_20" class="h1/h1_floating_base/visual" mesh="h1/h1_floating_base/right_hip_yaw_link"/>
+              <body name="h1/h1_floating_base/right_hip_roll_link" pos="0.039468 0 0">
+                <inertial pos="-0.0058 0.00319 -9e-05" quat="-0.0438242 0.70721 0.0729075 0.701867" mass="0" diaginertia="0 0 0"/>
+                <geom name="h1/h1_floating_base//unnamed_geom_21" class="h1/h1_floating_base/visual" mesh="h1/h1_floating_base/right_hip_roll_link"/>
+                <body name="h1/h1_floating_base/right_hip_pitch_link" pos="0 -0.11536 0">
+                  <inertial pos="0.00746 0.02346 -0.08193" quat="0.979828 -0.0513522 -0.0169854 0.192382" mass="0" diaginertia="0 0 0"/>
+                  <geom name="h1/h1_floating_base//unnamed_geom_22" class="h1/h1_floating_base/visual" mesh="h1/h1_floating_base/right_hip_pitch_link"/>
+                  <body name="h1/h1_floating_base/right_knee_link" pos="0 0 -0.4">
+                    <inertial pos="-0.00136 0.00512 -0.1384" quat="0.777852 -0.0416277 -0.034227 0.626132" mass="0" diaginertia="0 0 0"/>
+                    <geom name="h1/h1_floating_base//unnamed_geom_23" class="h1/h1_floating_base/visual" mesh="h1/h1_floating_base/right_knee_link"/>
+                    <body name="h1/h1_floating_base/right_ankle_link" pos="0 0 -0.4">
+                      <inertial pos="0.06722 -0.00015 -0.04497" quat="0.432972 0.565782 0.503197 0.489101" mass="0" diaginertia="0 0 0"/>
+                      <geom name="h1/h1_floating_base//unnamed_geom_24" class="h1/h1_floating_base/visual" mesh="h1/h1_floating_base/right_ankle_link"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+            <body name="h1/h1_floating_base/right_hip_yaw_link_collision_min" pos="0 -0.0875 -0.1742">
+              <inertial pos="0 0 0" mass="0" diaginertia="0 0 0"/>
+              <geom name="h1/h1_floating_base//unnamed_geom_25" class="h1/h1_floating_base/collision" size="0.06 0.035" pos="-0.067 0 0" quat="0.707123 0 0.70709 0" type="cylinder"/>
+              <body name="h1/h1_floating_base/right_hip_roll_link_collision_min" pos="0.039468 0 0">
+                <inertial pos="0 0 0" mass="0" diaginertia="0 0 0"/>
+                <geom name="h1/h1_floating_base//unnamed_geom_26" class="h1/h1_floating_base/collision" size="0.05 0.03" pos="0 0.02 0" quat="0.707107 0.707107 0 0" type="cylinder"/>
+                <body name="h1/h1_floating_base/right_hip_pitch_link_collision_min" pos="0 -0.11536 0">
+                  <inertial pos="0 0 0" mass="0" diaginertia="0 0 0"/>
+                  <geom name="h1/h1_floating_base//unnamed_geom_27" class="h1/h1_floating_base/collision" size="0.03 0.21095" pos="0 0 -0.19" quat="0.047458 0 0.998873 0" type="capsule"/>
+                  <geom name="h1/h1_floating_base//unnamed_geom_28" class="h1/h1_floating_base/collision" size="0.03 0.21" pos="0.02 0 -0.19" quat="0 1 0 0" type="capsule"/>
+                  <geom name="h1/h1_floating_base//unnamed_geom_29" class="h1/h1_floating_base/collision" size="0.05 0.02" pos="0 0.07 0" quat="0.707107 0.707107 0 0" type="cylinder"/>
+                  <body name="h1/h1_floating_base/right_knee_link_collision_min" pos="0 0 -0.4">
+                    <inertial pos="0 0 0" mass="0" diaginertia="0 0 0"/>
+                    <geom name="h1/h1_floating_base//unnamed_geom_30" class="h1/h1_floating_base/collision" size="0.025 0.2" pos="0.02 0 -0.2" quat="0 1 0 0" type="capsule"/>
+                    <geom name="h1/h1_floating_base//unnamed_geom_31" class="h1/h1_floating_base/collision" size="0.05" pos="0 0 -0.115"/>
+                    <body name="h1/h1_floating_base/right_ankle_link_collision_min" pos="0 0 -0.4">
+                      <inertial pos="0 0 0" mass="0" diaginertia="0 0 0"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+            <body name="h1/h1_floating_base/right_hip_yaw_link_collision_max" pos="0 -0.0875 -0.1742">
+              <inertial pos="0 0 0" mass="0" diaginertia="0 0 0"/>
+              <geom name="h1/h1_floating_base//unnamed_geom_32" class="h1/h1_floating_base/collision" size="0.06 0.035" pos="-0.067 0 0" quat="0.707123 0 0.70709 0" type="cylinder"/>
+              <body name="h1/h1_floating_base/right_hip_roll_link_collision_max" pos="0.039468 0 0">
+                <inertial pos="0 0 0" mass="0" diaginertia="0 0 0"/>
+                <geom name="h1/h1_floating_base//unnamed_geom_33" class="h1/h1_floating_base/collision" size="0.05 0.03" pos="0 0.02 0" quat="0.707107 0.707107 0 0" type="cylinder"/>
+                <body name="h1/h1_floating_base/right_hip_pitch_link_collision_max" pos="0 -0.11536 0">
+                  <inertial pos="0 0 0" mass="0" diaginertia="0 0 0"/>
+                  <geom name="h1/h1_floating_base//unnamed_geom_34" class="h1/h1_floating_base/collision" size="0.03 0.21095" pos="0 0 -0.19" quat="0.047458 0 0.998873 0" type="capsule"/>
+                  <geom name="h1/h1_floating_base//unnamed_geom_35" class="h1/h1_floating_base/collision" size="0.03 0.21" pos="0.02 0 -0.19" quat="0 1 0 0" type="capsule"/>
+                  <geom name="h1/h1_floating_base//unnamed_geom_36" class="h1/h1_floating_base/collision" size="0.05 0.02" pos="0 0.07 0" quat="0.707107 0.707107 0 0" type="cylinder"/>
+                  <body name="h1/h1_floating_base/right_knee_link_collision_max" pos="0 0 -0.4">
+                    <inertial pos="0 0 0" mass="0" diaginertia="0 0 0"/>
+                    <geom name="h1/h1_floating_base//unnamed_geom_37" class="h1/h1_floating_base/collision" size="0.025 0.2" pos="0.02 0 -0.2" quat="0 1 0 0" type="capsule"/>
+                    <geom name="h1/h1_floating_base//unnamed_geom_38" class="h1/h1_floating_base/collision" size="0.05" pos="0 0 -0.115"/>
+                    <body name="h1/h1_floating_base/right_ankle_link_collision_max" pos="0 0 -0.4">
+                      <inertial pos="0 0 0" mass="0" diaginertia="0 0 0"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="table/" pos="2.7 2 0" quat="0.707107 0 0 -0.707107">
+      <body name="table/table" childclass="table/table">
+        <geom name="table/mesh" class="table/visual" quat="0.707105 0.707108 0 0" solref="0.004" solimp="0.95 0.99" mass="3" material="table/table" mesh="table/table"/>
+        <geom name="table/mesh_legs" class="table/visual" quat="0.707105 0.707108 0 0" solref="0.004" solimp="0.95 0.99" mass="3" material="table/table_legs" mesh="table/table_legs"/>
+        <geom name="table/collider_002" class="table/collision" quat="0.707105 0.707108 0 0" mesh="table/table_collision_002"/>
+        <geom name="table/collider_003" class="table/collision" quat="0.707105 0.707108 0 0" mesh="table/table_collision_003"/>
+        <geom name="table/collider_004" class="table/collision" quat="0.707105 0.707108 0 0" mesh="table/table_collision_004"/>
+        <geom name="table/collider_005" class="table/collision" quat="0.707105 0.707108 0 0" mesh="table/table_collision_005"/>
+        <geom name="table/collider_006" class="table/collision" quat="0.707105 0.707108 0 0" mesh="table/table_collision_006"/>
+        <geom name="table/collider_007" class="table/collision" quat="0.707105 0.707108 0 0" mesh="table/table_collision_007"/>
+        <body name="table/counter">
+          <geom name="table/collider_001" class="table/collision" quat="0.707105 0.707108 0 0" friction="1.1 0.01 0.01" mesh="table/table_collision_001"/>
+        </body>
+      </body>
+    </body>
+    <body name="kitchen-floor/">
+      <body name="kitchen-floor/kitchen_floor" quat="0 0 0.707107 0.707107">
+        <geom name="kitchen-floor/kitchen_floor_visual" class="kitchen-floor/visual" type="mesh" material="kitchen-floor/mat_kitchen_floor" mesh="kitchen-floor/mesh_floor"/>
+      </body>
+    </body>
+    <body name="kitchen-wall/">
+      <body name="kitchen-wall/wall" quat="0 0 0.707107 0.707107">
+        <geom name="kitchen-wall/wall_visual" class="kitchen-wall/visual" type="mesh" material="kitchen-wall/mat_pure_white" mesh="kitchen-wall/mesh_wall"/>
+        <geom name="kitchen-wall/wall_structural" class="kitchen-wall/structural" type="mesh" mesh="kitchen-wall/mesh_wall"/>
+      </body>
+      <body name="kitchen-wall/window" pos="3.1821 4.965 1.49736" quat="0.707107 0.707107 0 0">
+        <geom name="kitchen-wall/window_visual_0" class="kitchen-wall/visual" type="mesh" material="kitchen-wall/mat_white_plastic" mesh="kitchen-wall/mesh_window_slider_0"/>
+        <geom name="kitchen-wall/window_visual_1" class="kitchen-wall/visual" type="mesh" material="kitchen-wall/mat_glass_white" mesh="kitchen-wall/mesh_window_slider_1"/>
+        <geom name="kitchen-wall/window_visual_2" class="kitchen-wall/visual" type="mesh" material="kitchen-wall/mat_light_wood_cabinets" mesh="kitchen-wall/mesh_window_slider_2"/>
+      </body>
+    </body>
+    <body name="kitchen-wall_1/">
+      <body name="kitchen-wall_1/wall" quat="0 0 0.707107 0.707107">
+        <geom name="kitchen-wall_1/wall_visual" class="kitchen-wall_1/visual" type="mesh" material="kitchen-wall_1/mat_pure_white" mesh="kitchen-wall_1/mesh_wall"/>
+        <geom name="kitchen-wall_1/wall_collider_0" class="kitchen-wall_1/structural" type="mesh" mesh="kitchen-wall_1/mesh_wall_collider_0"/>
+        <geom name="kitchen-wall_1/wall_collider_1" class="kitchen-wall_1/structural" pos="0 0 0" type="mesh" mesh="kitchen-wall_1/mesh_wall_collider_1"/>
+        <geom name="kitchen-wall_1/wall_collider_2" class="kitchen-wall_1/structural" type="mesh" mesh="kitchen-wall_1/mesh_wall_collider_2"/>
+      </body>
+      <body name="kitchen-wall_1/door|1|2" pos="4.965 1.52216 1.04627" quat="0.5 0.5 -0.5 -0.5">
+        <body name="kitchen-wall_1/Doorway_Double_7_mesh_4" pos="-0.97461 -1.0484 0">
+          <geom name="kitchen-wall_1/door|1|2__0" class="kitchen-wall_1/visual" type="mesh" material="kitchen-wall_1/TexturesCom_WoodFine0050_1_seamless_S_rich" mesh="kitchen-wall_1/Doorway_Double_7_mesh_4_0"/>
+          <geom name="kitchen-wall_1/door|1|2__1" class="kitchen-wall_1/structural" type="mesh" density="400" rgba="0.208425 0.971837 0.932214 1" mesh="kitchen-wall_1/Doorway_Double_7_mesh_4_0_collision_0"/>
+          <geom name="kitchen-wall_1/door|1|2__2" class="kitchen-wall_1/structural" type="mesh" density="400" rgba="0.79861 0.187025 0.439496 1" mesh="kitchen-wall_1/Doorway_Double_7_mesh_4_0_collision_1"/>
+          <geom name="kitchen-wall_1/door|1|2__3" class="kitchen-wall_1/structural" type="mesh" density="400" rgba="0.0671937 0.133625 0.708744 1" mesh="kitchen-wall_1/Doorway_Double_7_mesh_4_0_collision_2"/>
+          <body name="kitchen-wall_1/Doorway_Double_7_mesh_0" pos="0.06048 1.016 0">
+            <geom name="kitchen-wall_1/door|1|2__4" class="kitchen-wall_1/visual" type="mesh" material="kitchen-wall_1/LightWoodCounters2" mesh="kitchen-wall_1/Doorway_Double_7_mesh_0_0"/>
+            <geom name="kitchen-wall_1/door|1|2__5" class="kitchen-wall_1/structural" type="mesh" density="400" rgba="0.48821 0.479278 0.578217 1" mesh="kitchen-wall_1/Doorway_Double_7_mesh_0_0_collision_0"/>
+            <geom name="kitchen-wall_1/door|1|2__6" class="kitchen-wall_1/visual" type="mesh" material="kitchen-wall_1/BlackPlastic" mesh="kitchen-wall_1/Doorway_Double_7_mesh_0_1"/>
+            <geom name="kitchen-wall_1/door|1|2__7" class="kitchen-wall_1/structural" type="mesh" density="400" rgba="0.923919 0.942775 0.586292 1" mesh="kitchen-wall_1/Doorway_Double_7_mesh_0_1_collision_0"/>
+            <body name="kitchen-wall_1/Doorway_Double_7_mesh_1" pos="0.85557 -0.00052 -0.0066" quat="0 0 1 0">
+              <geom name="kitchen-wall_1/door|1|2__8" class="kitchen-wall_1/visual" type="mesh" material="kitchen-wall_1/BlackPlastic" mesh="kitchen-wall_1/Doorway_Double_7_mesh_1_0"/>
+              <geom name="kitchen-wall_1/door|1|2__9" class="kitchen-wall_1/structural" type="mesh" density="400" rgba="0.848798 0.450809 0.466635 1" mesh="kitchen-wall_1/Doorway_Double_7_mesh_1_0_collision_0"/>
+              <geom name="kitchen-wall_1/door|1|2__10" class="kitchen-wall_1/structural" type="mesh" density="400" rgba="0.53727 0.775111 0.432115 1" mesh="kitchen-wall_1/Doorway_Double_7_mesh_1_0_collision_1"/>
+              <geom name="kitchen-wall_1/door|1|2__11" class="kitchen-wall_1/structural" type="mesh" density="400" rgba="0.511616 0.804611 0.566225 1" mesh="kitchen-wall_1/Doorway_Double_7_mesh_1_0_collision_2"/>
+              <geom name="kitchen-wall_1/door|1|2__12" class="kitchen-wall_1/structural" type="mesh" density="400" rgba="0.429675 0.784925 0.180615 1" mesh="kitchen-wall_1/Doorway_Double_7_mesh_1_0_collision_3"/>
+              <geom name="kitchen-wall_1/door|1|2__13" class="kitchen-wall_1/structural" type="mesh" density="400" rgba="0.340402 0.0277045 0.0415994 1" mesh="kitchen-wall_1/Doorway_Double_7_mesh_1_0_collision_4"/>
+            </body>
+          </body>
+          <body name="kitchen-wall_1/Doorway_Double_7_mesh_2" pos="1.88874 1.016 0" quat="0.0007963 0 1 0">
+            <geom name="kitchen-wall_1/door|1|2__14" class="kitchen-wall_1/visual" type="mesh" material="kitchen-wall_1/LightWoodCounters2" mesh="kitchen-wall_1/Doorway_Double_7_mesh_2_0"/>
+            <geom name="kitchen-wall_1/door|1|2__15" class="kitchen-wall_1/structural" type="mesh" density="400" rgba="0.509187 0.409356 0.48767 1" mesh="kitchen-wall_1/Doorway_Double_7_mesh_2_0_collision_0"/>
+            <geom name="kitchen-wall_1/door|1|2__16" class="kitchen-wall_1/visual" type="mesh" material="kitchen-wall_1/BlackPlastic" mesh="kitchen-wall_1/Doorway_Double_7_mesh_2_1"/>
+            <geom name="kitchen-wall_1/door|1|2__17" class="kitchen-wall_1/structural" type="mesh" density="400" rgba="0.665475 0.936859 0.143639 1" mesh="kitchen-wall_1/Doorway_Double_7_mesh_2_1_collision_0"/>
+            <body name="kitchen-wall_1/Doorway_Double_7_mesh_3" pos="0.85557 -0.00052 -0.0066" quat="0 0 1 0">
+              <geom name="kitchen-wall_1/door|1|2__18" class="kitchen-wall_1/visual" type="mesh" material="kitchen-wall_1/BlackPlastic" mesh="kitchen-wall_1/Doorway_Double_7_mesh_3_0"/>
+              <geom name="kitchen-wall_1/door|1|2__19" class="kitchen-wall_1/structural" type="mesh" density="400" rgba="0.340047 0.73589 0.498966 1" mesh="kitchen-wall_1/Doorway_Double_7_mesh_3_0_collision_0"/>
+              <geom name="kitchen-wall_1/door|1|2__20" class="kitchen-wall_1/structural" type="mesh" density="400" rgba="0.834008 0.207944 0.408948 1" mesh="kitchen-wall_1/Doorway_Double_7_mesh_3_0_collision_1"/>
+              <geom name="kitchen-wall_1/door|1|2__21" class="kitchen-wall_1/structural" type="mesh" density="400" rgba="0.166687 0.402901 0.75844 1" mesh="kitchen-wall_1/Doorway_Double_7_mesh_3_0_collision_2"/>
+              <geom name="kitchen-wall_1/door|1|2__22" class="kitchen-wall_1/structural" type="mesh" density="400" rgba="0.832643 0.560846 0.75748 1" mesh="kitchen-wall_1/Doorway_Double_7_mesh_3_0_collision_3"/>
+              <geom name="kitchen-wall_1/door|1|2__23" class="kitchen-wall_1/structural" type="mesh" density="400" rgba="0.721209 0.283858 0.49664 1" mesh="kitchen-wall_1/Doorway_Double_7_mesh_3_0_collision_4"/>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="kitchen-wall_2/">
+      <body name="kitchen-wall_2/wall" quat="0 0 0.707107 0.707107">
+        <geom name="kitchen-wall_2/wall_visual" class="kitchen-wall_2/visual" pos="0 0 0" type="mesh" material="kitchen-wall_2/mat_kitchen_tile" mesh="kitchen-wall_2/mesh_wall"/>
+        <geom name="kitchen-wall_2/wall_collider" class="kitchen-wall_2/structural" pos="0 0 0" type="mesh" mesh="kitchen-wall_2/mesh_wall"/>
+      </body>
+    </body>
+    <body name="kitchen-wall_3/">
+      <body name="kitchen-wall_3/wall" quat="0 0 0.707107 0.707107">
+        <geom name="kitchen-wall_3/wall_visual" class="kitchen-wall_3/visual" type="mesh" material="kitchen-wall_3/mat_kitchen_tile" mesh="kitchen-wall_3/mesh_wall"/>
+        <geom name="kitchen-wall_3/wall_collider" class="kitchen-wall_3/structural" type="mesh" mesh="kitchen-wall_3/mesh_wall"/>
+      </body>
+      <body name="kitchen-wall_3/window|2|1" pos="0 2.81588 1.49736" quat="0.5 0.5 0.5 0.5">
+        <geom name="kitchen-wall_3/window|2|1__0" class="kitchen-wall_3/visual" type="mesh" material="kitchen-wall_3/WhitePlastic" mesh="kitchen-wall_3/Window_Slider_48x36_0"/>
+        <geom name="kitchen-wall_3/window|2|1__1" class="kitchen-wall_3/visual" type="mesh" material="kitchen-wall_3/Glass_White_Mat" mesh="kitchen-wall_3/Window_Slider_48x36_1"/>
+        <geom name="kitchen-wall_3/window|2|1__2" class="kitchen-wall_3/visual" type="mesh" material="kitchen-wall_3/LightWoodCabinets" mesh="kitchen-wall_3/Window_Slider_48x36_2"/>
+        <geom name="kitchen-wall_3/window|2|1__3" class="kitchen-wall_3/structural" type="mesh" rgba="0.944583 0.995235 0.261189 1" mesh="kitchen-wall_3/Window_Slider_48x36_collision_0"/>
+        <geom name="kitchen-wall_3/window|2|1__4" class="kitchen-wall_3/structural" type="mesh" rgba="0.896558 0.0638864 0.968589 1" mesh="kitchen-wall_3/Window_Slider_48x36_collision_1"/>
+        <geom name="kitchen-wall_3/window|2|1__5" class="kitchen-wall_3/structural" type="mesh" rgba="0.133193 0.135707 0.331997 1" mesh="kitchen-wall_3/Window_Slider_48x36_collision_2"/>
+        <geom name="kitchen-wall_3/window|2|1__6" class="kitchen-wall_3/structural" type="mesh" rgba="0.510005 0.834315 0.111752 1" mesh="kitchen-wall_3/Window_Slider_48x36_collision_3"/>
+        <geom name="kitchen-wall_3/window|2|1__7" class="kitchen-wall_3/structural" type="mesh" rgba="0.819875 0.984394 0.0310008 1" mesh="kitchen-wall_3/Window_Slider_48x36_collision_4"/>
+        <geom name="kitchen-wall_3/window|2|1__8" class="kitchen-wall_3/structural" type="mesh" rgba="0.698702 0.898761 0.025221 1" mesh="kitchen-wall_3/Window_Slider_48x36_collision_5"/>
+        <geom name="kitchen-wall_3/window|2|1__9" class="kitchen-wall_3/structural" type="mesh" rgba="0.596463 0.929878 0.776919 1" mesh="kitchen-wall_3/Window_Slider_48x36_collision_6"/>
+        <geom name="kitchen-wall_3/window|2|1__10" class="kitchen-wall_3/structural" type="mesh" rgba="0.0187445 0.0792978 0.343044 1" mesh="kitchen-wall_3/Window_Slider_48x36_collision_7"/>
+        <geom name="kitchen-wall_3/window|2|1__11" class="kitchen-wall_3/structural" type="mesh" rgba="0.789698 0.602287 0.889566 1" mesh="kitchen-wall_3/Window_Slider_48x36_collision_8"/>
+        <geom name="kitchen-wall_3/window|2|1__12" class="kitchen-wall_3/structural" type="mesh" rgba="0.832988 0.447545 0.849753 1" mesh="kitchen-wall_3/Window_Slider_48x36_collision_9"/>
+        <geom name="kitchen-wall_3/window|2|1__13" class="kitchen-wall_3/structural" type="mesh" rgba="0.253049 0.558743 0.287392 1" mesh="kitchen-wall_3/Window_Slider_48x36_collision_10"/>
+        <geom name="kitchen-wall_3/window|2|1__14" class="kitchen-wall_3/structural" type="mesh" rgba="0.0979904 0.107261 0.83091 1" mesh="kitchen-wall_3/Window_Slider_48x36_collision_11"/>
+        <geom name="kitchen-wall_3/window|2|1__15" class="kitchen-wall_3/structural" type="mesh" rgba="0.0725046 0.96411 0.51851 1" mesh="kitchen-wall_3/Window_Slider_48x36_collision_12"/>
+        <geom name="kitchen-wall_3/window|2|1__16" class="kitchen-wall_3/structural" type="mesh" rgba="0.314114 0.26845 0.226201 1" mesh="kitchen-wall_3/Window_Slider_48x36_collision_13"/>
+        <geom name="kitchen-wall_3/window|2|1__17" class="kitchen-wall_3/structural" type="mesh" rgba="0.628374 0.56595 0.167817 1" mesh="kitchen-wall_3/Window_Slider_48x36_collision_14"/>
+        <geom name="kitchen-wall_3/window|2|1__18" class="kitchen-wall_3/structural" type="mesh" rgba="0.420214 0.699292 0.0851064 1" mesh="kitchen-wall_3/Window_Slider_48x36_collision_15"/>
+        <geom name="kitchen-wall_3/window|2|1__19" class="kitchen-wall_3/structural" type="mesh" rgba="0.831664 0.09949 0.836844 1" mesh="kitchen-wall_3/Window_Slider_48x36_collision_16"/>
+      </body>
+    </body>
+    <body name="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="1 1 0.75" quat="0.707107 0 0 -0.707107">
+      <joint name="partnet_a44c2110f646309bc7fb1a0a584939a5/" type="free" limited="false" actuatorfrclimited="false"/>
+      <body name="partnet_a44c2110f646309bc7fb1a0a584939a5/fridge">
+        <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5/frame-5" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/new-5"/>
+        <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5//unnamed_geom_1" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/new-0"/>
+        <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5//unnamed_geom_2" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/new-5"/>
+        <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5//unnamed_geom_3" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/new-0"/>
+        <body name="partnet_a44c2110f646309bc7fb1a0a584939a5/link_1" pos="-0.33094 -0.55436 0.772517" quat="0.5 0.5 -0.5 -0.5">
+          <joint name="partnet_a44c2110f646309bc7fb1a0a584939a5/joint_1" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="0 0 0" axis="0 1 0" range="0 3.14159"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5/door_frame-10" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="-0.55436 -0.772517 -0.33094" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/new-3"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5/handle-11" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="-0.55436 -0.772517 -0.33094" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/new-1"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5/other_leaf-13" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="-0.55436 -0.772517 -0.33094" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/original-3"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5//unnamed_geom_7" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="-0.55436 -0.772517 -0.33094" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/original-2"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5//unnamed_geom_8" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="-0.55436 -0.772517 -0.33094" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/original-4"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5//unnamed_geom_9" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="-0.55436 -0.772517 -0.33094" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/original-5"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5//unnamed_geom_10" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="-0.55436 -0.772517 -0.33094" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/original-6"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5//unnamed_geom_11" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="-0.55436 -0.772517 -0.33094" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/original-7"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5//unnamed_geom_12" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="-0.55436 -0.772517 -0.33094" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/original-8"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5//unnamed_geom_13" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="-0.55436 -0.772517 -0.33094" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/original-9"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5//unnamed_geom_14" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="-0.55436 -0.772517 -0.33094" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/new-3"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5//unnamed_geom_15" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="-0.55436 -0.772517 -0.33094" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/new-1"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5//unnamed_geom_16" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="-0.55436 -0.772517 -0.33094" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/original-3"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5//unnamed_geom_17" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="-0.55436 -0.772517 -0.33094" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/original-2"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5//unnamed_geom_18" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="-0.55436 -0.772517 -0.33094" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/original-4"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5//unnamed_geom_19" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="-0.55436 -0.772517 -0.33094" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/original-5"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5//unnamed_geom_20" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="-0.55436 -0.772517 -0.33094" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/original-6"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5//unnamed_geom_21" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="-0.55436 -0.772517 -0.33094" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/original-7"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5//unnamed_geom_22" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="-0.55436 -0.772517 -0.33094" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/original-8"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5//unnamed_geom_23" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="-0.55436 -0.772517 -0.33094" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/original-9"/>
+        </body>
+        <body name="partnet_a44c2110f646309bc7fb1a0a584939a5/link_2" pos="-0.322368 0.535019 0.772517" quat="0.5 0.5 -0.5 -0.5">
+          <joint name="partnet_a44c2110f646309bc7fb1a0a584939a5/joint_2" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="0 0 0" axis="0 -1 0" range="0 3.14159"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5/door_frame-8" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="0.535019 -0.772517 -0.322368" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/new-4"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5/handle-9" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="0.535019 -0.772517 -0.322368" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/new-2"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5//unnamed_geom_26" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="0.535019 -0.772517 -0.322368" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/new-4"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5//unnamed_geom_27" class="partnet_a44c2110f646309bc7fb1a0a584939a5/" pos="0.535019 -0.772517 -0.322368" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5/new-2"/>
+        </body>
+      </body>
+    </body>
+    <body name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="1 4 0.75" quat="0.707107 0 0 0.707107">
+      <joint name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" type="free" limited="false" actuatorfrclimited="false"/>
+      <body name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/fridge">
+        <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/frame-5" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/new-5"/>
+        <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1//unnamed_geom_1" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/new-0"/>
+        <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1//unnamed_geom_2" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/new-5"/>
+        <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1//unnamed_geom_3" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/new-0"/>
+        <body name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/link_1" pos="-0.33094 -0.55436 0.772517" quat="0.5 0.5 -0.5 -0.5">
+          <joint name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/joint_1" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="0 0 0" axis="0 1 0" range="0 3.14159"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/door_frame-10" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="-0.55436 -0.772517 -0.33094" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/new-3"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/handle-11" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="-0.55436 -0.772517 -0.33094" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/new-1"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/other_leaf-13" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="-0.55436 -0.772517 -0.33094" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-3"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1//unnamed_geom_7" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="-0.55436 -0.772517 -0.33094" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-2"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1//unnamed_geom_8" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="-0.55436 -0.772517 -0.33094" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-4"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1//unnamed_geom_9" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="-0.55436 -0.772517 -0.33094" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-5"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1//unnamed_geom_10" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="-0.55436 -0.772517 -0.33094" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-6"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1//unnamed_geom_11" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="-0.55436 -0.772517 -0.33094" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-7"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1//unnamed_geom_12" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="-0.55436 -0.772517 -0.33094" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-8"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1//unnamed_geom_13" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="-0.55436 -0.772517 -0.33094" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-9"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1//unnamed_geom_14" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="-0.55436 -0.772517 -0.33094" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/new-3"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1//unnamed_geom_15" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="-0.55436 -0.772517 -0.33094" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/new-1"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1//unnamed_geom_16" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="-0.55436 -0.772517 -0.33094" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-3"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1//unnamed_geom_17" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="-0.55436 -0.772517 -0.33094" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-2"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1//unnamed_geom_18" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="-0.55436 -0.772517 -0.33094" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-4"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1//unnamed_geom_19" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="-0.55436 -0.772517 -0.33094" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-5"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1//unnamed_geom_20" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="-0.55436 -0.772517 -0.33094" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-6"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1//unnamed_geom_21" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="-0.55436 -0.772517 -0.33094" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-7"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1//unnamed_geom_22" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="-0.55436 -0.772517 -0.33094" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-8"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1//unnamed_geom_23" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="-0.55436 -0.772517 -0.33094" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/original-9"/>
+        </body>
+        <body name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/link_2" pos="-0.322368 0.535019 0.772517" quat="0.5 0.5 -0.5 -0.5">
+          <joint name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/joint_2" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="0 0 0" axis="0 -1 0" range="0 3.14159"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/door_frame-8" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="0.535019 -0.772517 -0.322368" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/new-4"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1/handle-9" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="0.535019 -0.772517 -0.322368" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/new-2"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1//unnamed_geom_26" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="0.535019 -0.772517 -0.322368" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/new-4"/>
+          <geom name="partnet_a44c2110f646309bc7fb1a0a584939a5_1//unnamed_geom_27" class="partnet_a44c2110f646309bc7fb1a0a584939a5_1/" pos="0.535019 -0.772517 -0.322368" type="mesh" mesh="partnet_a44c2110f646309bc7fb1a0a584939a5_1/new-2"/>
+        </body>
+      </body>
+    </body>
+    <body name="partnet_dc5c91c8c01b1c8c506c648223cdabe9/" pos="1 2 0.25">
+      <joint name="partnet_dc5c91c8c01b1c8c506c648223cdabe9/" type="free" limited="false" actuatorfrclimited="false"/>
+      <body name="partnet_dc5c91c8c01b1c8c506c648223cdabe9/microwave">
+        <geom name="partnet_dc5c91c8c01b1c8c506c648223cdabe9//unnamed_geom_0" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="partnet_dc5c91c8c01b1c8c506c648223cdabe9/original-5"/>
+        <geom name="partnet_dc5c91c8c01b1c8c506c648223cdabe9//unnamed_geom_1" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="partnet_dc5c91c8c01b1c8c506c648223cdabe9/new-4"/>
+        <geom name="partnet_dc5c91c8c01b1c8c506c648223cdabe9//unnamed_geom_2" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="partnet_dc5c91c8c01b1c8c506c648223cdabe9/new-3"/>
+        <geom name="partnet_dc5c91c8c01b1c8c506c648223cdabe9//unnamed_geom_3" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="partnet_dc5c91c8c01b1c8c506c648223cdabe9/new-2"/>
+        <geom name="partnet_dc5c91c8c01b1c8c506c648223cdabe9//unnamed_geom_4" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="partnet_dc5c91c8c01b1c8c506c648223cdabe9/new-1"/>
+        <geom name="partnet_dc5c91c8c01b1c8c506c648223cdabe9//unnamed_geom_5" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="partnet_dc5c91c8c01b1c8c506c648223cdabe9/new-0"/>
+        <body name="partnet_dc5c91c8c01b1c8c506c648223cdabe9/link_0" pos="-0.422377 0.722522 0.435315" quat="0.5 0.5 -0.5 -0.5">
+          <joint name="partnet_dc5c91c8c01b1c8c506c648223cdabe9/joint_0" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/" pos="0 0 0" axis="0 -1 0" range="0 1.5708"/>
+          <geom name="partnet_dc5c91c8c01b1c8c506c648223cdabe9//unnamed_geom_6" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/" pos="0.722522 -0.435315 -0.422377" type="mesh" mesh="partnet_dc5c91c8c01b1c8c506c648223cdabe9/original-12"/>
+          <geom name="partnet_dc5c91c8c01b1c8c506c648223cdabe9//unnamed_geom_7" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/" pos="0.722522 -0.435315 -0.422377" type="mesh" mesh="partnet_dc5c91c8c01b1c8c506c648223cdabe9/original-9"/>
+          <geom name="partnet_dc5c91c8c01b1c8c506c648223cdabe9//unnamed_geom_8" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/" pos="0.722522 -0.435315 -0.422377" type="mesh" mesh="partnet_dc5c91c8c01b1c8c506c648223cdabe9/original-11"/>
+          <geom name="partnet_dc5c91c8c01b1c8c506c648223cdabe9//unnamed_geom_9" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/" pos="0.722522 -0.435315 -0.422377" type="mesh" mesh="partnet_dc5c91c8c01b1c8c506c648223cdabe9/original-10"/>
+        </body>
+        <body name="partnet_dc5c91c8c01b1c8c506c648223cdabe9/link_1" pos="-0.576265 -0.629274 -0.113024" quat="0.5 0.5 -0.5 -0.5">
+          <geom name="partnet_dc5c91c8c01b1c8c506c648223cdabe9//unnamed_geom_10" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/" pos="-0.629274 0.113024 -0.576265" type="mesh" mesh="partnet_dc5c91c8c01b1c8c506c648223cdabe9/original-4"/>
+        </body>
+        <body name="partnet_dc5c91c8c01b1c8c506c648223cdabe9/link_2" pos="-0.57378 -0.627714 0.156373" quat="0.5 0.5 -0.5 -0.5">
+          <geom name="partnet_dc5c91c8c01b1c8c506c648223cdabe9//unnamed_geom_11" class="partnet_dc5c91c8c01b1c8c506c648223cdabe9/" pos="-0.627714 -0.156373 -0.57378" type="mesh" mesh="partnet_dc5c91c8c01b1c8c506c648223cdabe9/original-3"/>
+        </body>
+      </body>
+    </body>
+    <body name="ycb-003_cracker_box/">
+      <joint name="ycb-003_cracker_box/" type="free" limited="false" actuatorfrclimited="false"/>
+      <body name="ycb-003_cracker_box//unnamed_body_0">
+        <geom name="ycb-003_cracker_box//unnamed_geom_0" class="ycb-003_cracker_box/" type="mesh" friction="1.5 0.1 0.01" solref="0.004" solimp="0.95 0.99" mass="2" material="ycb-003_cracker_box/ycb-object-material" mesh="ycb-003_cracker_box/ycb-object-meshfile"/>
+      </body>
+    </body>
+    <body name="ycb-004_sugar_box/">
+      <joint name="ycb-004_sugar_box/" type="free" limited="false" actuatorfrclimited="false"/>
+      <body name="ycb-004_sugar_box//unnamed_body_0">
+        <geom name="ycb-004_sugar_box//unnamed_geom_0" class="ycb-004_sugar_box/" type="mesh" friction="1.5 0.1 0.01" solref="0.004" solimp="0.95 0.99" mass="2" material="ycb-004_sugar_box/ycb-object-material" mesh="ycb-004_sugar_box/ycb-object-meshfile"/>
+      </body>
+    </body>
+    <body name="ycb-006_mustard_bottle/">
+      <joint name="ycb-006_mustard_bottle/" type="free" limited="false" actuatorfrclimited="false"/>
+      <body name="ycb-006_mustard_bottle//unnamed_body_0">
+        <geom name="ycb-006_mustard_bottle//unnamed_geom_0" class="ycb-006_mustard_bottle/" type="mesh" friction="1.5 0.1 0.01" solref="0.004" solimp="0.95 0.99" mass="2" material="ycb-006_mustard_bottle/ycb-object-material" mesh="ycb-006_mustard_bottle/ycb-object-meshfile"/>
+      </body>
+    </body>
+  </worldbody>
+  <contact>
+    <exclude name="h1//unnamed_contact_0" body1="h1/torso_link" body2="h1/left_shoulder_roll_link"/>
+    <exclude name="h1//unnamed_contact_1" body1="h1/torso_link" body2="h1/right_shoulder_roll_link"/>
+    <exclude name="h1/robotiq_2f85_left//unnamed_contact_1" body1="h1/robotiq_2f85_left/base" body2="h1/robotiq_2f85_left/right_driver"/>
+    <exclude name="h1/robotiq_2f85_left//unnamed_contact_3" body1="h1/robotiq_2f85_left/base" body2="h1/robotiq_2f85_left/right_spring_link"/>
+    <exclude name="h1/robotiq_2f85_left//unnamed_contact_0" body1="h1/robotiq_2f85_left/base" body2="h1/robotiq_2f85_left/left_driver"/>
+    <exclude name="h1/robotiq_2f85_left//unnamed_contact_2" body1="h1/robotiq_2f85_left/base" body2="h1/robotiq_2f85_left/left_spring_link"/>
+    <exclude name="h1/robotiq_2f85_left//unnamed_contact_4" body1="h1/robotiq_2f85_left/right_coupler" body2="h1/robotiq_2f85_left/right_follower"/>
+    <exclude name="h1/robotiq_2f85_left//unnamed_contact_5" body1="h1/robotiq_2f85_left/left_coupler" body2="h1/robotiq_2f85_left/left_follower"/>
+    <exclude name="h1/robotiq_2f85_right//unnamed_contact_1" body1="h1/robotiq_2f85_right/base" body2="h1/robotiq_2f85_right/right_driver"/>
+    <exclude name="h1/robotiq_2f85_right//unnamed_contact_3" body1="h1/robotiq_2f85_right/base" body2="h1/robotiq_2f85_right/right_spring_link"/>
+    <exclude name="h1/robotiq_2f85_right//unnamed_contact_0" body1="h1/robotiq_2f85_right/base" body2="h1/robotiq_2f85_right/left_driver"/>
+    <exclude name="h1/robotiq_2f85_right//unnamed_contact_2" body1="h1/robotiq_2f85_right/base" body2="h1/robotiq_2f85_right/left_spring_link"/>
+    <exclude name="h1/robotiq_2f85_right//unnamed_contact_4" body1="h1/robotiq_2f85_right/right_coupler" body2="h1/robotiq_2f85_right/right_follower"/>
+    <exclude name="h1/robotiq_2f85_right//unnamed_contact_5" body1="h1/robotiq_2f85_right/left_coupler" body2="h1/robotiq_2f85_right/left_follower"/>
+    <exclude name="partnet_dc5c91c8c01b1c8c506c648223cdabe9//unnamed_contact_0" body1="partnet_dc5c91c8c01b1c8c506c648223cdabe9/microwave" body2="partnet_dc5c91c8c01b1c8c506c648223cdabe9/link_0"/>
+    <exclude name="partnet_dc5c91c8c01b1c8c506c648223cdabe9//unnamed_contact_1" body1="partnet_dc5c91c8c01b1c8c506c648223cdabe9/microwave" body2="partnet_dc5c91c8c01b1c8c506c648223cdabe9/link_1"/>
+    <exclude name="partnet_dc5c91c8c01b1c8c506c648223cdabe9//unnamed_contact_2" body1="partnet_dc5c91c8c01b1c8c506c648223cdabe9/microwave" body2="partnet_dc5c91c8c01b1c8c506c648223cdabe9/link_2"/>
+  </contact>
+  <equality>
+    <connect name="h1/robotiq_2f85_left//unnamed_equality_0" class="h1/robotiq_2f85_left/" body1="h1/robotiq_2f85_left/right_follower" body2="h1/robotiq_2f85_left/right_coupler" anchor="0 0 0" solref="0.005" solimp="0.95 0.99"/>
+    <connect name="h1/robotiq_2f85_left//unnamed_equality_1" class="h1/robotiq_2f85_left/" body1="h1/robotiq_2f85_left/left_follower" body2="h1/robotiq_2f85_left/left_coupler" anchor="0 0 0" solref="0.005" solimp="0.95 0.99"/>
+    <joint name="h1/robotiq_2f85_left//unnamed_equality_2" class="h1/robotiq_2f85_left/" joint1="h1/robotiq_2f85_left/right_driver_joint" joint2="h1/robotiq_2f85_left/left_driver_joint" polycoef="0 1 0 0 0" solref="0.005" solimp="0.95 0.99"/>
+    <connect name="h1/robotiq_2f85_right//unnamed_equality_0" class="h1/robotiq_2f85_right/" body1="h1/robotiq_2f85_right/right_follower" body2="h1/robotiq_2f85_right/right_coupler" anchor="0 0 0" solref="0.005" solimp="0.95 0.99"/>
+    <connect name="h1/robotiq_2f85_right//unnamed_equality_1" class="h1/robotiq_2f85_right/" body1="h1/robotiq_2f85_right/left_follower" body2="h1/robotiq_2f85_right/left_coupler" anchor="0 0 0" solref="0.005" solimp="0.95 0.99"/>
+    <joint name="h1/robotiq_2f85_right//unnamed_equality_2" class="h1/robotiq_2f85_right/" joint1="h1/robotiq_2f85_right/right_driver_joint" joint2="h1/robotiq_2f85_right/left_driver_joint" polycoef="0 1 0 0 0" solref="0.005" solimp="0.95 0.99"/>
+  </equality>
+  <tendon>
+    <fixed name="h1/robotiq_2f85_left/split" class="h1/robotiq_2f85_left/">
+      <joint joint="h1/robotiq_2f85_left/right_driver_joint" coef="0.5"/>
+      <joint joint="h1/robotiq_2f85_left/left_driver_joint" coef="0.5"/>
+    </fixed>
+    <fixed name="h1/robotiq_2f85_right/split" class="h1/robotiq_2f85_right/">
+      <joint joint="h1/robotiq_2f85_right/right_driver_joint" coef="0.5"/>
+      <joint joint="h1/robotiq_2f85_right/left_driver_joint" coef="0.5"/>
+    </fixed>
+  </tendon>
+  <actuator>
+    <general name="h1/pelvis_x" class="h1/" joint="h1/pelvis_x" ctrllimited="false" biastype="affine" gainprm="10000" biasprm="0 -10000"/>
+    <general name="h1/pelvis_y" class="h1/" joint="h1/pelvis_y" ctrllimited="false" biastype="affine" gainprm="10000" biasprm="0 -10000"/>
+    <general name="h1/pelvis_rz" class="h1/" joint="h1/pelvis_rz" ctrllimited="false" biastype="affine" gainprm="10000" biasprm="0 -10000"/>
+    <general name="h1/left_shoulder_pitch" class="h1/" joint="h1/left_shoulder_pitch" ctrlrange="-2.87 2.87" biastype="affine" gainprm="300" biasprm="0 -300"/>
+    <general name="h1/left_shoulder_roll" class="h1/" joint="h1/left_shoulder_roll" ctrlrange="-0.34 3.11" biastype="affine" gainprm="300" biasprm="0 -300"/>
+    <general name="h1/left_shoulder_yaw" class="h1/" joint="h1/left_shoulder_yaw" ctrlrange="-1.3 4.45" biastype="affine" gainprm="300" biasprm="0 -300"/>
+    <general name="h1/left_elbow" class="h1/" joint="h1/left_elbow" ctrlrange="-1.25 2.61" biastype="affine" gainprm="300" biasprm="0 -300"/>
+    <general name="h1/right_shoulder_pitch" class="h1/" joint="h1/right_shoulder_pitch" ctrlrange="-2.87 2.87" biastype="affine" gainprm="300" biasprm="0 -300"/>
+    <general name="h1/right_shoulder_roll" class="h1/" joint="h1/right_shoulder_roll" ctrlrange="-3.11 0.34" biastype="affine" gainprm="300" biasprm="0 -300"/>
+    <general name="h1/right_shoulder_yaw" class="h1/" joint="h1/right_shoulder_yaw" ctrlrange="-4.45 1.3" biastype="affine" gainprm="300" biasprm="0 -300"/>
+    <general name="h1/right_elbow" class="h1/" joint="h1/right_elbow" ctrlrange="-1.25 2.61" biastype="affine" gainprm="300" biasprm="0 -300"/>
+    <general name="h1/left_wrist" class="h1/" joint="h1/left_wrist" ctrlrange="-1.5708 1.5708" biastype="affine" gainprm="300" biasprm="0 -300"/>
+    <general name="h1/right_wrist" class="h1/" joint="h1/right_wrist" ctrlrange="-1.5708 1.5708" biastype="affine" gainprm="300" biasprm="0 -300"/>
+    <general name="h1/robotiq_2f85_left/fingers_actuator" class="h1/robotiq_2f85_left/2f85" tendon="h1/robotiq_2f85_left/split" ctrlrange="0 255" forcerange="-5 5" gainprm="0.313725" biasprm="0 -100 -10"/>
+    <general name="h1/robotiq_2f85_right/fingers_actuator" class="h1/robotiq_2f85_right/2f85" tendon="h1/robotiq_2f85_right/split" ctrlrange="0 255" forcerange="-5 5" gainprm="0.313725" biasprm="0 -100 -10"/>
+  </actuator>
+</mujoco>
