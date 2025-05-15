@@ -1,1 +1,918 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Taskverse">
+  <meta name="keywords" content="Benchmarking, Bimanual Manipulation, Robotics">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taskverse: Where Robotic Manipulation Meets Structured and Scalable Evaluation</title>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+
+
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-family: Arial, sans-serif;
+    }
+
+
+    th,
+    td {
+      border: 0px;
+    }
+
+    th {
+      background-color: #b2b2c8;
+    }
+  </style>
+
+
+</head>
+
+<body onload="">
+
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+
+            <h1 class="title is-1 publication-title"> <img src="./media/taskverse_icon.png" width="30%" height="30%" />
+              Where Robotic Manipulation Meets Structured and Scalable Evaluation </h1>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"> Anonymous Submission </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Video</h2>
+          <div class="content has-text-justified">
+
+            <video id="teaser_box" autoplay muted controls loop width="100%">
+              <source src="./media/taskverse.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              We present <b>TASKVERSE</b>, a simulation benchmark and structured evaluation framework for bimanual
+              robotic
+              manipulation. Unlike existing benchmarks that evaluate policies solely based on task success, TASKVERSE
+              introduces
+              an initial suite of tiered, semantically diverse manipulation tasks with fine-grained diagnostic metrics
+              to probe the
+              capabilities and failure modes of learning-based agents. The benchmark provides an initial set of tasks
+              that target
+              specific skills such as coordination, precision, and interaction under variability, and are decomposed
+              into variations
+              that focus on spatial and physical variability. Alongside sparse rewards, TASKVERSE includes high-quality
+              human
+              demonstrations to support data-driven learning. Our evaluation shows that aggregate success rates often
+              conceal critical
+              skill deficiencies, and that TASKVERSE enables nuanced, stagewise insights into policy behavior. By
+              systematically
+              characterizing when, where, and why policies fail, TASKVERSE provides a new foundation for developing
+              and
+              evaluating generalizable robotic agents.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+
+      <div class="rows">
+
+        <div class="rows is-centered ">
+          <div class="row is-full-width">
+            <h2 class="title is-3">Benchmark</h2>
+
+            <h3 class="title is-4">Task Overview</h3>
+
+            <div class="container">
+              <div id="demo-carousel" class="carousel" style="overflow: hidden">
+
+
+                <div class="item item-1">
+                  <video id="teaser_box" autoplay playsinline muted loop width="100%">
+                    <source src="./media/demo_videos/LiftPot_BimanualPanda_2025-04-10_00-04-30.mp4" type="video/mp4" />
+                  </video>
+                  <div style="width: 100%; text-align: center;">(a) Lift Pot</div>
+                </div>
+
+                <div class="item item-2">
+                  <video id="teaser_box" autoplay playsinline muted loop width="100%">
+                    <source src="./media/demo_videos/LiftTrayEnv_BimanualPanda_2025-04-13_05-07-49.mp4"
+                      type="video/mp4" />
+                  </video>
+                  <div style="width: 100%; text-align: center;">(b) Lift Tray</div>
+                </div>
+
+                <div class="item item-3">
+                  <video id="teaser_box" autoplay playsinline muted loop width="100%">
+                    <source src="./media/demo_videos/MoveTrayEnv_BimanualPanda_2025-04-13_23-15-27.mp4"
+                      type="video/mp4" />
+                  </video>
+                  <div style="width: 100%; text-align: center;">(c) Move Tray</div>
+                </div>
+
+                <div class="item item-4">
+                  <video id="teaser_box" autoplay playsinline muted loop width="100%">
+                    <source src="./media/demo_videos/PackBoxEnv_BimanualPanda_2025-04-13_05-31-15.mp4"
+                      type="video/mp4" />
+                  </video>
+                  <div style="width: 100%; text-align: center;">(d) Pack Box</div>
+                </div>
+
+                <div class="item item-5">
+                  <video id="teaser_box" autoplay playsinline muted loop width="100%">
+                    <source src="./media/demo_videos/ReachTargetDual_BimanualPanda_2025-04-06_22-21-54.mp4"
+                      type="video/mp4" />
+                  </video>
+                  <div style="width: 100%; text-align: center;">(e) Reach Target</div>
+                </div>
+
+                <div class="item item-6">
+                  <video id="teaser_box" autoplay playsinline muted loop width="100%">
+                    <source src="./media/demo_videos/RotateValveEnv_BimanualPanda_2025-04-16_19-37-12.mp4"
+                      type="video/mp4" />
+                  </video>
+                  <div style="width: 100%; text-align: center;">(f) Rotate Valve</div>
+                </div>
+
+                <div class="item item-7">
+                  <video id="teaser_box" autoplay playsinline muted loop width="100%">
+                    <source src="./media/demo_videos/StaticCubeHandover_BimanualPanda_2025-04-14_17-51-16.mp4"
+                      type="video/mp4" />
+                  </video>
+                  <div style="width: 100%; text-align: center;">(g) Cube Handover</div>
+                </div>
+
+              </div>
+
+              <br />
+              <br />
+
+
+              <h3 class="title is-4">Taskverse Benchmark</h3>
+
+
+              <div class="content has-text-justified">
+                <p>
+                  TASKVERSE is a benchmark for evaluating bimanual manipulation policies under diverse task settings.
+                  The first
+                  iteration consists of 10 base tasks and 3000+ human demonstrations. The tasks are derived from common
+                  tasks that humans
+                  perform in diverse settings, from service style tasks such as lifting a tray, to warehouse tasks like
+                  closing a box, to
+                  industrial tasks like rotating hand-wheels. Each task includes multiple variations—ranging from static
+                  setups to dynamic
+                  shifts in object pose and semantic context—designed to assess policy performance in a systematic
+                  manner. To facilitate
+                  research in imitation learning and demo-driven policy training, we provide a suite of raw expert human
+                  demonstrations,
+                  along with fine-grained evaluation metrics such as trajectory smoothness, environment collisions, etc.
+                </p>
+
+                <img src="./media/taskverse_overview.png" />
+
+                <h3 class="title is-4">Base Task Set in RobotArena</h3>
+
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Task Name</th>
+                      <th>Variations</th>
+                      <th># Demos</th>
+                      <th>Traj Len</th>
+                      <th>Skills</th>
+                      <th>Coordination Type</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Bread in Toaster</td>
+                      <td>Static, Pos</td>
+                      <td>151</td>
+                      <td>98.229</td>
+                      <td>grasp, lift, insert</td>
+                      <td>Loosely Coord.</td>
+                    </tr>
+                    <tr>
+                      <td>Cube Handover</td>
+                      <td>Static, Pos, Rot, PR, Vertical</td>
+                      <td>511</td>
+                      <td>93.631</td>
+                      <td>grasp, hold</td>
+                      <td>Loosely Coord.</td>
+                    </tr>
+                    <tr>
+                      <td>Lift Pot</td>
+                      <td>Static, Pos, Rot, PR</td>
+                      <td>390</td>
+                      <td>58.561</td>
+                      <td>grasp, lift</td>
+                      <td>Tight Sym.</td>
+                    </tr>
+                    <tr>
+                      <td>Lift Tray</td>
+                      <td>Static, Pos, Rot, PR, Drag</td>
+                      <td>730</td>
+                      <td>77.318</td>
+                      <td>grasp, lift</td>
+                      <td>Tight Sym.</td>
+                    </tr>
+                    <tr>
+                      <td>Pack Box</td>
+                      <td>Static, Pos, Rot, PR</td>
+                      <td>312</td>
+                      <td>123.016</td>
+                      <td>push</td>
+                      <td>Uncoord.</td>
+                    </tr>
+                    <tr>
+                      <td>Pick Single Book From Table</td>
+                      <td>Static, Pos, Rot, PR</td>
+                      <td>359</td>
+                      <td>103.364</td>
+                      <td>grasp, lift</td>
+                      <td>Loosely Coord.</td>
+                    </tr>
+                    <tr>
+                      <td>Rotate Valve</td>
+                      <td>Static, Pos, Rot, PR</td>
+                      <td>456</td>
+                      <td>112.484</td>
+                      <td>grasp, rotate along axis</td>
+                      <td>Uncoord.</td>
+                    </tr>
+                    <tr>
+                      <td>Stack Single Book Shelf</td>
+                      <td>Static, Pos, PR</td>
+                      <td>199</td>
+                      <td>187.280</td>
+                      <td>push, grasp, lift, place</td>
+                      <td>Loosely Coord.</td>
+                    </tr>
+                    <tr>
+                      <td>Stack Two Block</td>
+                      <td>Static, Pos, Rot, PR</td>
+                      <td>400</td>
+                      <td>108.368</td>
+                      <td>grasp, hold, place</td>
+                      <td>Loosely Coord.</td>
+                    </tr>
+                    <tr>
+                      <td>Sweep Table</td>
+                      <td>Static</td>
+                      <td>104</td>
+                      <td>121.327</td>
+                      <td>grasp, sweep</td>
+                      <td>Loosely Coord.</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+        </div>
+  </section>
+
+
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+
+      <div class="rows">
+        <h2 class="title is-3">Evaluation Metrics</h2>
+        <div class="content has-text-justified">
+          <p>
+            We evaluate policy performance across trajectory, precision, task progression, and bimanual coordination.
+          </p>
+        </div>
+
+        <div class="columns is-multiline">
+
+          <!-- Trajectory-Based Metrics -->
+          <div class="column is-full-tablet is-half-desktop">
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+                  <span class="icon mr-2"><i class="fas fa-route"></i></span>
+                  Trajectory-Based Metrics
+                </p>
+              </header>
+              <div class="card-content">
+                <ul>
+                  <li><strong>Joint Path Length:</strong> Total angular joint distance during execution.</li>
+                  <li><strong>Cartesian Path Length:</strong> 3D distance traveled by end-effectors.</li>
+                  <li><strong>Jerk (Joint / Cartesian):</strong> Measures motion smoothness.</li>
+                  <li><strong>Collision Counts:</strong> Number of robot/environment collisions.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Spatial Precision Metrics -->
+          <div class="column is-full-tablet is-half-desktop">
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+                  <span class="icon mr-2"><i class="fas fa-crosshairs"></i></span>
+                  Spatial Precision Metrics
+                </p>
+              </header>
+              <div class="card-content">
+                <ul>
+                  <li><strong>Final Distance to Target:</strong> Distance between final and goal object pose.</li>
+                  <li><strong>Orientation Error:</strong> Geodesic difference between object rotations.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Task Progression Metrics -->
+          <div class="column is-full-tablet is-half-desktop">
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+                  <span class="icon mr-2"><i class="fas fa-tasks"></i></span>
+                  Task Progression Metrics
+                </p>
+              </header>
+              <div class="card-content">
+                <ul>
+                  <li><strong>Stage-wise Success:</strong> Binary success indicators for each sub-task.</li>
+                  <li><strong>Time in Each Stage:</strong> Timesteps spent per task stage.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bimanual Coordination Metrics -->
+          <div class="column is-full-tablet is-half-desktop">
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+                  <span class="icon mr-2"><i class="fas fa-hands-helping"></i></span>
+                  Bimanual Coordination Metrics
+                </p>
+              </header>
+              <div class="card-content">
+                <ul>
+                  <li><strong>Gripper Vertical Sync:</strong> Height difference between two arms.</li>
+                  <li><strong>EE Velocity Difference:</strong> Measures arm coordination.</li>
+                  <li><strong>Slip Count:</strong> Tracks unintended object drops.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+
+      <div class="rows">
+
+        <h2 class="title is-3">Simulation Results</h2>
+        <h3 class="title is-4">Task rollouts</h3>
+
+        <div class="columns">
+          <div class="column has-text-centered">
+            Task
+            <div class="select is-small">
+              <select id="single-menu-tasks" onchange="updateSingleVideo()">
+              </select>
+            </div>
+            with variation
+            <div class="select is-small">
+              <select id="single-menu-variations" onchange="updateSingleVideo()"></select>
+            </div>
+            and method
+            <div class="select is-small">
+              <select id="single-menu-method" onchange="updateSingleVideo()">
+                <option value="bc" selected>Behavior Cloning</option>
+                <option value="act">ACT</option>
+                <option value="diffusion">Diffusion Policy</option>
+                <option value="openvla">OpenVLA</option>
+              </select>
+            </div>
+            episode
+            <div class="select is-small">
+              <select id="single-menu-instances" onchange="updateSingleVideo()">
+                <option value="0">01</option>
+                <option value="1">02</option>
+                <option value="2">03</option>
+                <option value="3">04</option>
+                <option value="4" selected>05</option>
+              </select>
+            </div>
+            <br />
+          <br />
+
+            <video id="single-task-result-video" muted autoplay playsinline loop width="640px">
+              <source src="#" type="video/mp4">
+            </video>
+          </div>
+
+        </div>
+
+
+        <div class="container is-max-widescreen">
+
+          <h3 class="title is-4">Performance on Bimanual Tasks with
+            Variations</h3>
+
+          <div class="rows">
+
+
+            <!-- Table 1 -->
+            <table style="text-align: center;">
+              <thead>
+                <tr>
+                  <th rowspan="2">Method</th>
+                  <th colspan="3">Overall Metrics</th>
+                  <th colspan="5">Lift Tray</th>
+                  <th colspan="4">Stack Two Cubes</th>
+                </tr>
+                <tr>
+                  <th>Success</th>
+                  <th>Rank</th>
+                  <th>SPL</th>
+                  <th>Static</th>
+                  <th>Pos</th>
+                  <th>Ori</th>
+                  <th>P+O</th>
+                  <th>T</th>
+                  <th>Static</th>
+                  <th>Pos</th>
+                  <th>Ori</th>
+                  <th>P+O</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ACT</td>
+                  <td>0.35</td>
+                  <td>1.28</td>
+                  <td>0.27</td>
+                  <td>1.00</td>
+                  <td>0.52</td>
+                  <td>0.45</td>
+                  <td>0.82</td>
+                  <td>1.00</td>
+                  <td>0.16</td>
+                  <td>0.09</td>
+                  <td>0.02</td>
+                  <td>0.11</td>
+                </tr>
+                <tr>
+                  <td>BC</td>
+                  <td>0.09</td>
+                  <td>2.95</td>
+                  <td>0.06</td>
+                  <td>0.56</td>
+                  <td>0.35</td>
+                  <td>0.34</td>
+                  <td>0.31</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.03</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                </tr>
+                <tr>
+                  <td>DP</td>
+                  <td>0.19</td>
+                  <td>2.36</td>
+                  <td>0.15</td>
+                  <td>0.68</td>
+                  <td>0.04</td>
+                  <td>0.43</td>
+                  <td>0.37</td>
+                  <td>0.15</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.01</td>
+                </tr>
+                <tr>
+                  <td>OpenVLA</td>
+                  <td>0.16</td>
+                  <td>2.27</td>
+                  <td>0.08</td>
+                  <td>1.00</td>
+                  <td>0.20</td>
+                  <td>0.54</td>
+                  <td>0.32</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.04</td>
+                  <td>0.02</td>
+                  <td>0.04</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Table 2 -->
+            <table style="text-align: center;">
+              <thead>
+                <tr>
+                  <th rowspan="2">Method</th>
+                  <th colspan="3">Stack Single Book Shelf</th>
+                  <th colspan="5">Rod Handover</th>
+                  <th colspan="4">Lift Pot</th>
+                </tr>
+                <tr>
+                  <th>Static</th>
+                  <th>Pos</th>
+                  <th>P+O</th>
+                  <th>Static</th>
+                  <th>Pos</th>
+                  <th>Ori</th>
+                  <th>P+O</th>
+                  <th>P+O+T</th>
+                  <th>Static</th>
+                  <th>Pos</th>
+                  <th>Ori</th>
+                  <th>P+O</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ACT</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.03</td>
+                  <td>0.63</td>
+                  <td>0.82</td>
+                  <td>0.51</td>
+                  <td>0.32</td>
+                  <td>0.46</td>
+                  <td>1.00</td>
+                  <td>0.53</td>
+                  <td>0.73</td>
+                  <td>0.22</td>
+                </tr>
+                <tr>
+                  <td>BC</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.04</td>
+                  <td>0.04</td>
+                  <td>0.05</td>
+                  <td>0.05</td>
+                  <td>0.00</td>
+                </tr>
+                <tr>
+                  <td>DP</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.64</td>
+                  <td>0.00</td>
+                  <td>0.11</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.91</td>
+                  <td>0.00</td>
+                  <td>0.77</td>
+                  <td>0.21</td>
+                </tr>
+                <tr>
+                  <td>OpenVLA</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>1.00</td>
+                  <td>0.08</td>
+                  <td>0.06</td>
+                  <td>0.00</td>
+                  <td>0.14</td>
+                  <td>0.98</td>
+                  <td>0.06</td>
+                  <td>0.08</td>
+                  <td>0.04</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Table 3 -->
+            <table style="text-align: center;">
+              <thead>
+                <tr>
+                  <th rowspan="2">Method</th>
+                  <th colspan="4">Pack Box</th>
+                  <th colspan="4">Pick Book from Table</th>
+                  <th colspan="4">Rotate Valve</th>
+                </tr>
+                <tr>
+                  <th>Static</th>
+                  <th>Pos</th>
+                  <th>Ori</th>
+                  <th>P+O</th>
+                  <th>Static</th>
+                  <th>Pos</th>
+                  <th>Ori</th>
+                  <th>P+O</th>
+                  <th>Static</th>
+                  <th>Pos</th>
+                  <th>P+O</th>
+                  <th>T</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ACT</td>
+                  <td>0.33</td>
+                  <td>0.82</td>
+                  <td>0.11</td>
+                  <td>0.37</td>
+                  <td>0.00</td>
+                  <td>0.13</td>
+                  <td>0.20</td>
+                  <td>0.18</td>
+                  <td>1.00</td>
+                  <td>0.12</td>
+                  <td>0.09</td>
+                  <td>0.03</td>
+                </tr>
+                <tr>
+                  <td>BC</td>
+                  <td>0.00</td>
+                  <td>0.51</td>
+                  <td>0.00</td>
+                  <td>0.10</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.89</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.01</td>
+                </tr>
+                <tr>
+                  <td>DP</td>
+                  <td>0.16</td>
+                  <td>0.73</td>
+                  <td>0.23</td>
+                  <td>0.32</td>
+                  <td>0.17</td>
+                  <td>0.00</td>
+                  <td>0.15</td>
+                  <td>0.01</td>
+                  <td>1.00</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.01</td>
+                </tr>
+                <tr>
+                  <td>OpenVLA</td>
+                  <td>0.00</td>
+                  <td>0.10</td>
+                  <td>0.06</td>
+                  <td>0.06</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.02</td>
+                  <td>1.00</td>
+                  <td>0.02</td>
+                  <td>0.00</td>
+                  <td>0.02</td>
+                </tr>
+              </tbody>
+            </table>
+
+
+          </div>
+        </div>
+
+      </div>
+
+
+      <h2 class="title is-4">Real-world experiments</h2>
+      <div class="container">
+        To validate the trends observed in our simulation benchmarks, we conducted real-world experiments
+        on three tasks—Lift Tray, Stack Two Cubes, and Rod Handover – using a bimanual Franka
+        Panda robot setup. These tasks closely mirror their simulated counterparts and include multiple task
+        variations. For each task, we collected 100 demonstrations under the static variation using a VR
+        Oculus controller, and fine-tuned OpenVLA until training accuracy plateaued. We then evaluated
+        each task variation over 25 trials. The results, shown in Figure 4, demonstrate a strong correlation
+        between the real-world task performance of OpenVLA and the trends observed in simulation, with
+        performance decreasing as task complexity increased due to variations
+      </div>
+
+
+    </div>
+    </div>
+    </div>
+  </section>
+
+
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Interactive demo (WIP)</h2>
+          <h3 class="title is-4">Lift tray</h3>
+
+          <div class="content has-text-justified">
+            <iframe src="./demo.html" height="300" width="100%" title="Interactive demo"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content has-text-centered">
+            <p>
+              Website template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>
+              made by the amazing <a href="https://keunhong.com/">Keunhong Park</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+<script>
+  let videoData = {};
+  const allMethods = {
+    bc: "Behavior Cloning",
+    act: "ACT",
+    diffusion: "Diffusion Policy",
+    openvla: "OpenVLA"
+  };
+
+  async function loadVideoData() {
+    try {
+      const response = await fetch("static/data/video_data.json");
+      videoData = await response.json();
+
+      const taskMenu = document.getElementById("single-menu-tasks");
+      taskMenu.innerHTML = "";
+
+      for (const task in videoData) {
+        const option = document.createElement("option");
+        option.value = task;
+        option.text = task.replaceAll("_", " ").replace(/\b\w/g, l => l.toUpperCase());
+        taskMenu.appendChild(option);
+      }
+
+      populateVariations();
+    } catch (err) {
+      console.error("Failed to load video data:", err);
+    }
+  }
+
+  function populateVariations() {
+    const task = document.getElementById("single-menu-tasks").value;
+    const variationMenu = document.getElementById("single-menu-variations");
+    variationMenu.innerHTML = "";
+
+    const variations = videoData[task];
+    if (!variations) return;
+
+    for (const variation in variations) {
+      const option = document.createElement("option");
+      option.value = variation;
+      option.text = variation === "base" ? "(base)" : variation.replaceAll("_", " ");
+      variationMenu.appendChild(option);
+    }
+
+    variationMenu.options[0].selected = true;
+    populateMethods();
+  }
+
+  function populateMethods() {
+    const task = document.getElementById("single-menu-tasks").value;
+    const variation = document.getElementById("single-menu-variations").value;
+    const methodMenu = document.getElementById("single-menu-method");
+    methodMenu.innerHTML = "";
+
+    const availableMethods = videoData?.[task]?.[variation] || {};
+
+    let firstEnabled = null;
+
+    for (const key in allMethods) {
+      const option = document.createElement("option");
+      option.value = key;
+      option.text = allMethods[key];
+
+      if (key in availableMethods) {
+        option.disabled = false;
+        if (!firstEnabled) firstEnabled = option;
+      } else {
+        option.disabled = true;
+      }
+
+      methodMenu.appendChild(option);
+    }
+
+    if (firstEnabled) {
+      firstEnabled.selected = true;
+    }
+
+    methodMenu.disabled = false;
+    updateSingleVideo();
+  }
+
+  function updateSingleVideo() {
+    const task = document.getElementById("single-menu-tasks").value;
+    const variation = document.getElementById("single-menu-variations").value;
+    const method = document.getElementById("single-menu-method").value;
+    const index = parseInt(document.getElementById("single-menu-instances").value, 10);
+
+    const methodData = videoData?.[task]?.[variation]?.[method];
+    if (!methodData || !methodData.length) {
+      document.getElementById("single-task-result-video").pause();
+      return;
+    }
+
+    const selectedVideo = methodData[index % methodData.length];
+    const variationSuffix = variation === "base" ? "" : `_${variation}`;
+    const path = `media/simulation/${task}${variationSuffix}/${method}/${selectedVideo}`;
+
+    const video = document.getElementById("single-task-result-video");
+    video.querySelector("source").src = path;
+    video.load();
+  }
+
+  document.getElementById("single-menu-tasks").addEventListener("change", populateVariations);
+  document.getElementById("single-menu-variations").addEventListener("change", populateMethods);
+  document.getElementById("single-menu-method").addEventListener("change", updateSingleVideo);
+  document.getElementById("single-menu-instances").addEventListener("change", updateSingleVideo);
+
+  window.onload = loadVideoData;
+</script>
+
+
+
+</html>
