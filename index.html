@@ -771,6 +771,138 @@
 
 
 
+
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <h2 class="title is-3">Failure Analysis & Metric Summary</h2>
+      <p>
+        This section provides a visual summary of performance degradation using <strong>radial metrics plots</strong>
+        and <strong>failure mode heatmaps</strong>. These visualizations allow fine-grained interpretation of agent
+        performance under different task variations.
+      </p>
+
+      <br />
+
+      <!-- Dropdown Controls: Inline Labels and Natural Width -->
+      <div class="columns is-vcentered mb-5">
+        <div class="column is-half">
+          <div class="field is-horizontal is-align-items-center">
+            <div class="field-label is-normal">
+              <label class="label">Task</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <div class="select is-small">
+                    <select id="failure-task-select" onchange="updateFailurePlots()"></select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="field-label is-normal">
+              <label class="label">Metric</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <div class="select is-small">
+                    <select id="failure-metric-select" onchange="updateFailurePlots()"></select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plots -->
+      <div class="columns is-multiline">
+        <!-- Radial Graph -->
+        <div class="column is-half has-text-centered">
+          <h3 class="title is-5">Radial Graph</h3>
+          <figure class="image">
+            <img id="radial-plot" src="" alt="Radial Metrics Plot" style="width: 100%; height: auto;" />
+          </figure>
+        </div>
+
+        <!-- Failure Summary Plot: Vertically Centered -->
+        <div class="column is-half is-flex is-align-items-center is-justify-content-center has-text-centered"
+          style="flex-direction: column;">
+          <h3 class="title is-5">Failure Summary Plot</h3>
+          <figure class="image">
+            <img id="failure-plot" src="" alt="Failure Summary Plot" style="width: 100%; height: auto;" />
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <script>
+    const plotMap = {
+      "lift_pot": ["metrics", "static", "orientation", "position_orientation"],
+      "rotate_valve": ["metrics", "position", "position_orientation", "obstacle"],
+      "cube_handover": ["metrics", "static", "orientation", "vertical", "position"],
+      "stack_single_book_shelf": ["metrics", "static", "position", "position_orientation"],
+      "stack_two_blocks": ["metrics", "static", "orientation", "position"],
+      "lift_tray": ["metrics", "position", "orientation", "position_orientation", "drag"],
+      "pack_box": ["metrics", "rotation", "position", "position_orientation"],
+      "pick_single_book_from_table": ["metrics", "static", "orientation", "position_orientation"]
+    };
+
+    function populateFailureDropdowns() {
+      const taskSelect = document.getElementById("failure-task-select");
+      const metricSelect = document.getElementById("failure-metric-select");
+
+      taskSelect.innerHTML = '';
+      for (const task in plotMap) {
+        const option = document.createElement("option");
+        option.value = task;
+        option.text = task.replaceAll("_", " ").replace(/\b\w/g, l => l.toLowerCase());
+        taskSelect.appendChild(option);
+      }
+
+      updateMetricOptions();
+    }
+
+    function updateMetricOptions() {
+      const task = document.getElementById("failure-task-select").value;
+      const metricSelect = document.getElementById("failure-metric-select");
+
+      metricSelect.innerHTML = '';
+      plotMap[task].forEach(metric => {
+        const option = document.createElement("option");
+        option.value = metric;
+        option.text = metric === "metrics" ? "base" : metric.replaceAll("_", " ").toLowerCase();
+        metricSelect.appendChild(option);
+      });
+
+      updateFailurePlots();
+    }
+
+    function updateFailurePlots() {
+      const task = document.getElementById("failure-task-select").value;
+      const metric = document.getElementById("failure-metric-select").value;
+
+      const suffix = metric === "metrics" ? "" : `_${metric}`;
+      const radialPath = `./media/radial_graph/${task}${suffix}_metrics.png`;
+      const failurePath = `./media/failure_summary_plots/${task}${suffix}_metrics_summary.png`;
+
+      document.getElementById("radial-plot").src = radialPath;
+      document.getElementById("failure-plot").src = failurePath;
+    }
+
+    document.getElementById("failure-task-select").addEventListener("change", updateMetricOptions);
+    document.getElementById("failure-metric-select").addEventListener("change", updateFailurePlots);
+
+    window.addEventListener("DOMContentLoaded", populateFailureDropdowns);
+  </script>
+
+
   <section class="section">
     <div class="container is-max-widescreen">
       <div class="columns is-centered has-text-centered">
